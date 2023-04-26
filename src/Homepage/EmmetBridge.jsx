@@ -45,7 +45,7 @@ function EmmetBridge() {
                         <label htmlFor="">Origin Network</label>
                         <select name="FromTokken" id="FromTokken">
                             <option value="BINANCE">BINANCE</option>
-                            <option value="BINANCE">BUUNANCE</option>
+                            <option value="BINANCE">BINANCE</option>
                         </select>
                         <img src={DownArrow} alt="DownArrow" className="selectArrow" />
                     </div>
