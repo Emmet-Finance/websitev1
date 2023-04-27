@@ -1,0 +1,242 @@
+/* Responsive */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    
+}
+/* Responsive */
+
+@media only screen and (max-width: 1450px) {
+   
+}/*  (max-width: 1450px) */
+
+@media only screen and (max-width: 1260px) {
+
+} /*  (max-width: 1260px) */
+
+@media only screen and (max-width: 1100px) {
+
+} /*  (max-width: 1100px) */
+
+@media only screen and (max-width: 1199px) {
+
+    
+section.home_banar {
+    padding: 235px 0 40px;
+  }
+  
+  h1.page_title {
+    font-size: 46px;
+    line-height: 1.2;
+  }
+  
+  .banarContent_top p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  .banar_bottom {
+    margin-top: 90px;
+  }
+  
+  ul.social li a {
+    margin-right: 20px;
+  }
+  
+  section.feature_box_area {
+    padding: 120px 0 15px;
+  }
+  
+  .feature_box {
+    margin-bottom: 50px;
+  }
+  
+  section.emmetBridge_area {
+    padding: 85px 0 55px 0;
+  }
+  
+  .EmmetBridge_Box {
+    padding: 25px;
+  }
+  
+  h2 {
+    font-size: 34px;
+    line-height: 1.2;
+  }
+  
+  img.apiImg {
+    max-width: 100%;
+  }
+  
+  section.security_area {
+    padding: 60px 0 20px 0;
+  }
+  
+  section.faq_area {
+    padding: 80px 0 100px;
+  }
+    
+} /* (max-width: 1199px) */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+} /*  (min-width: 768px) and (max-width: 991px) */
+
+@media only screen and (max-width: 991px) {
+    .EmmetBridge_Box {
+        margin: 0 auto -140px auto;
+    }
+    
+    .emmetBridge_content_area {
+        padding: 210px 0 70px;
+    }
+    
+    .accordion-button {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+    .navbar-nav {padding-top: 10px;}
+
+    .navbar-collapse {
+        background: #35CE8D;
+    }
+
+    .navbar-collapse .enterApp {
+        margin: 10px 0px 20px 20px;
+    }
+
+}/*and (max-width: 991px)*/
+    
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+   
+} /* (min-width: 426px) and (max-width: 767px) */
+      
+@media only screen and (max-width: 767px) {
+
+    .roadMap_box {
+        margin: 0;
+        height: unset;
+        background: transparent;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    
+    .roadMap_item_content {
+        position: relative;
+        margin: 0 0 20px 0 !important;
+    }
+    
+    .roadMap_item {
+        width: 50%;
+        max-width: unset;
+        margin-bottom: 50px;
+        padding: 0 20px;
+    }
+    
+    .activemap .roadMap_item_content {
+        margin-bottom: 60px !important;
+    }
+    
+    .roadMap_box::before, .roadMap_box::after {
+        display: none;
+    }
+    
+    .roadMap_item4 .roadMap_item_content {
+        margin-bottom: 82px !important;
+    }
+
+}/* and (max-width: 767px) */
+       
+@media only screen and (max-width: 575px) {
+
+    section.feature_box_area {
+        padding-top: 80px;
+    }
+
+    .roadMap_item {
+        width: 100%;
+    }
+    
+    .roadMap_item4 .roadMap_item_content {
+        margin-bottom: 20px !important;
+    }
+    
+    section.roadMap_area {
+        padding: 70px 0 30px 0;
+    }
+
+    select#FromToken option {
+        padding: 10px;
+        text-indent: 5px;
+        border-radius: 0;
+    }
+    
+    section.home_banar {
+        padding: 195px 0 40px;
+    }
+    
+    h1.page_title {
+        font-size: 30px;
+    }
+    
+    section.tokken_area {
+        padding: 25px 15px;
+    }
+    
+    .feature_box {
+        max-width: unset;
+    }
+    
+    img.feature_img {
+        margin-bottom: 24px;
+    }
+    
+    .feature_box p {
+        margin-top: 18px;
+        margin-bottom: 19px;
+    }
+    
+    section.emmetBridge_area {
+        padding: 65px 0 35px 0;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    .emmetBridge_content_area p br {
+        display: none;
+    }
+    
+    .oneStopBox h3 {
+        font-size: 22px;
+        top: -21px;
+    }
+    
+    .oneStopBox {
+        padding: 32px 20px 20px 20px;
+    }
+    
+    section.oneStop_area .container>.row>div {
+        margin-bottom: 40px;
+    }
+    
+    section.typeScriot_area {
+        padding: 80px 0 70px 0;
+    }
+
+} /* (max-width: 575px) */
+    
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+	
+}     /*  (min-width: 320px) and (max-width: 425px) */
+
+@media only screen and (max-width: 480px) {
+
+} /* (max-width: 480px) */
+      
+@media only screen and (max-width: 360px) {
+
+} /* (max-width: 360px)  */
+   
