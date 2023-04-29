@@ -1,9 +1,12 @@
 import React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+
 import EmmetLogo from '../assets/img/logo-2.svg';
 import DownArrow from '../assets/img/chevron-down.svg';
 import UpDownCirlce from '../assets/img/up-down-circle.svg';
 import LinkLogo from '../assets/img/link.svg';
-
+import Binance from '../assets/img/coin-logo/Binance_logo.svg';
+import Ethereum from '../assets/img/coin-logo/ethereum-eth-logo.svg';
 function EmmetBridge() {
     return ( 
         <div className="EmmetBridge_Box">
@@ -14,19 +17,23 @@ function EmmetBridge() {
                 <p>From</p>
                 <div className="emmetFrom">
                     <div className="emmetTokken">
-                        <label htmlFor="">Tokken</label>
-                        <select name="FromTokken" id="FromTokken">
-                            <option value="usdt">USDT</option>
-                            <option value="usdt">USDT</option>
+                        <label htmlFor="">Token</label>
+                        <select name="FromToken" id="FromToken">
+                            <option value="BUSD">USDT</option>
                         </select>
                         <img src={DownArrow} alt="DownArrow" className="selectArrow" />
                     </div>
                     <div className="originNetwork">
                         <label htmlFor="">Origin Network</label>
-                        <select name="FromTokken" id="FromTokken">
-                            <option value="BINANCE">BINANCE</option>
-                            <option value="BINANCE">BINANCE</option>
-                        </select>
+                        <Dropdown>
+                            <Dropdown.Toggle id="logoDropdown">
+                                <img src={Binance} alt="Binance" className='coinLogo' />
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#"><img src={Binance} alt="Binance" className='coinLogo' /></Dropdown.Item>
+                                <Dropdown.Item href="#"><img src={Ethereum} alt="Binance" className='coinLogo' /></Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <img src={DownArrow} alt="DownArrow" className="selectArrow" />
                     </div>
                 </div>
@@ -34,19 +41,23 @@ function EmmetBridge() {
                 <p>To</p>
                 <div className="emmetFrom">
                     <div className="emmetTokken">
-                        <label htmlFor="">Tokken</label>
-                        <select name="FromTokken" id="FromTokken">
-                            <option value="usdt">USDT</option>
-                            <option value="usdt">USDT</option>
+                        <label htmlFor="">Token</label>
+                        <select name="FromToken" id="FromToken">
+                            <option value="BUSD">BUSD</option>
                         </select>
                         <img src={DownArrow} alt="DownArrow" className="selectArrow" />
                     </div>
                     <div className="originNetwork">
-                        <label htmlFor="">Origin Network</label>
-                        <select name="FromTokken" id="FromTokken">
-                            <option value="BINANCE">BINANCE</option>
-                            <option value="BINANCE">BINANCE</option>
-                        </select>
+                        <label htmlFor="">Destination Network</label>
+                        <Dropdown>
+                            <Dropdown.Toggle id="logoDropdown">
+                                <Dropdown.Item href="#"><img src={Binance} alt="Binance" className='coinLogo' /></Dropdown.Item>
+                            </Dropdown.Toggle>
+                            <Dropdown.Menu>
+                                <Dropdown.Item href="#"><img src={Binance} alt="Binance" className='coinLogo' /></Dropdown.Item>
+                                <Dropdown.Item href="#"><img src={Ethereum} alt="Binance" className='coinLogo' /></Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                         <img src={DownArrow} alt="DownArrow" className="selectArrow" />
                     </div>
                 </div>
@@ -58,6 +69,7 @@ function EmmetBridge() {
                 <br />
                 <div className="toAccount">
                     <p>To Account</p>
+                    <h4>Destination Account</h4>
                     <ul>
                         <li>
                             <span>Slippage</span>

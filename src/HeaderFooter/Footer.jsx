@@ -37,14 +37,14 @@ function Footer() {
             <div className="footer_bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-12 col-sm-12 col-12">
                             <div className="footerWdiget">
                                 <h3>Contact</h3>
                                 <ul className="footer_social">
-                                    <li><a href="#"><img src={telegram} alt="telegram" /></a></li>
-                                    <li><a href="#"><img src={twiter} alt="twiter" /></a></li>
-                                    <li><a href="#"><img src={discord} alt="discord" /></a></li>
-                                    <li><a href="#"><img src={github} alt="github" /></a></li>
+                                    <li><a href="https://t.me/Emmet_Finance"><img src={telegram} alt="telegram" /></a></li>
+                                    <li><a href="https://twitter.com/Emmet_Finance"><img src={twiter} alt="twiter" /></a></li>
+                                    <li><a href="https://discord.gg/MTcrqnDP"><img src={discord} alt="discord" /></a></li>
+                                    <li><a href="https://github.com/Emmet-Finance"><img src={github} alt="github" /></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import EmmetBridge from './EmmetBridge';
 
-
 import LinkLogo from '../assets/img/link.svg';
 import Telegram from '../assets/img/social/telegram.svg';
 import Twiter from '../assets/img/social/twiter.svg';
@@ -40,6 +39,8 @@ import Check from '../assets/img/check-bold.svg';
 
 import TypeScriptAccordion from './TypeScriptAccordion';
 import FAQAccordion from './FAQAccordion';
+import TypeWriter from './Typewriter';
+import IconSlider from './IconSlider';
 
 
 
@@ -53,7 +54,7 @@ function Homepage() {
                         <div className="banarContent_top">
                             <h1 className='page_title'>
                                 Secure ERC-20 Transfer <br />
-                                Between <span className='text_art'>Ethereum</span> <br />
+                                Between <span className='text_art'><TypeWriter/></span> <br />
                                 via a Decentralized Bridge.
                             </h1>
                             <p>A DAO-managed decentralized fungible token bridge for swift and secure cross-chain transactions from an intuitive user-friendly interface.</p>
@@ -61,9 +62,9 @@ function Homepage() {
                         </div>
                         <div className="banar_bottom">
                             <ul className="social">
-                                <li><a href="#"><img src={Telegram} alt="Telegram" /></a></li>
-                                <li><a href="#"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="#"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://t.me/Emmet_Finance"><img src={Telegram} alt="Telegram" /></a></li>
+                                <li><a href="https://twitter.com/Emmet_Finance"><img src={Twiter} alt="Twiter" /></a></li>
+                                <li><a href="https://discord.gg/MTcrqnDP"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
                             <a href="#" className='gitUrl'><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
@@ -73,48 +74,7 @@ function Homepage() {
 
             <section className="tokken_area">
                 <div className="tokken_list">
-                    <div className="tokken_item">
-                        <img src={Tokens1} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens2} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens3} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens4} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens5} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens6} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens7} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens8} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens9} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens10} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens11} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens12} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens13} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens14} alt="Tokken" />
-                    </div>
+                    <IconSlider/>
                 </div>
             </section>
 
@@ -195,6 +155,46 @@ function Homepage() {
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
+                                <h3>Trading (Swapping)</h3>
+                                <p>Securely swap your tokens or stablecoins with other peers. Tune and automate your trading strategy.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Bridging</h3>
+                                <p>Bridge your fungible tokens, stablecoins and native chain coins to the chains where you need them most.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Staking</h3>
+                                <p>Stake your tokens at generous APR & APY and incrementally grow your capital.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Farming</h3>
+                                <p>Earn by providing liquidity for the multi-token liquidity pools.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Lending / Borrowing</h3>
+                                <p>Lend your tokens to the other peers or borrow the ones you need right now.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Validator Delegation</h3>
+                                <p>Delegate your tokens to the professional validators and earn part of their revenue.</p>
+                            </div>
+                        </div>
+                    </div>
+
+{/*                     
+                    <div className="row">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
                                 <h3>Trade (Swap)</h3>
                                 <p>Swapping refers to the process
                                     of exchanging one cryptocurrency or token for another through a decentralized exchange (DEX). DEXs allow users to trade their tokens in a peer-to-peer manner.</p>
@@ -231,11 +231,11 @@ function Homepage() {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>validate</h3>
+                                <h3>Validate</h3>
                                 <p>Delegating tokens to validator owners refers to the process of giving permission to a validator to stake tokens on behalf of a token holder. Validators are typically responsible for validating.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
