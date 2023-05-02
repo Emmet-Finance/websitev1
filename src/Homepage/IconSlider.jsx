@@ -59,90 +59,48 @@ export default class IconSlider extends Component {
       return (
         <div>
           <Slider {...settings}>
-                    <div className="tokken_item">
-                        <img src={Tokens1} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens2} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens3} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens4} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens5} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens6} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens7} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens8} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens9} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens10} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens11} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens12} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens13} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens14} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens1} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens2} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens3} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens4} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens5} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens6} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens7} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens8} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens9} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens10} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens11} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens12} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens13} alt="Tokken" />
-                    </div>
-                    <div className="tokken_item">
-                        <img src={Tokens14} alt="Tokken" />
-                    </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens1} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens2} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens3} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens4} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens5} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens6} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens7} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens8} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens9} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens10} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens11} alt="Tokken" />
+                </div>
+                <div className="tokken_item transtion0">
+                    <img src={Tokens12} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens13} alt="Tokken" />
+                </div>
+                <div className="tokken_item">
+                    <img src={Tokens14} alt="Tokken item14" />
+                </div>
           </Slider>
         </div>
       );

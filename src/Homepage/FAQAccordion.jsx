@@ -24,18 +24,6 @@ function FAQAccordion() {
                     The token’s contract must comply with ERC-20 for EVM & the main Fungible token standard for Non-EVM chains. Its contract must be verified on the chain explorer. The contract must be void of malicious code.
                 </Accordion.Body>
             </Accordion.Item>
-            {/* <Accordion.Item eventKey="3">
-                <Accordion.Header>Another Very Long And Interesting Question?</Accordion.Header>
-                <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="4">
-                <Accordion.Header>Seriously, Everything So Easy. What’s More Do You Need?</Accordion.Header>
-                <Accordion.Body>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </Accordion.Body>
-            </Accordion.Item> */}
         </Accordion>
     </div>
   );

@@ -41,10 +41,10 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Contact</h3>
                                 <ul className="footer_social">
-                                    <li><a href="https://t.me/Emmet_Finance"><img src={telegram} alt="telegram" /></a></li>
-                                    <li><a href="https://twitter.com/Emmet_Finance"><img src={twiter} alt="twiter" /></a></li>
-                                    <li><a href="https://discord.gg/MTcrqnDP"><img src={discord} alt="discord" /></a></li>
-                                    <li><a href="https://github.com/Emmet-Finance"><img src={github} alt="github" /></a></li>
+                                    <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={telegram} alt="telegram" /></a></li>
+                                    <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={twiter} alt="twiter" /></a></li>
+                                    <li><a href="https://discord.gg/MTcrqnDP" target="_blank"><img src={discord} alt="discord" /></a></li>
+                                    <li><a href="https://github.com/Emmet-Finance" target="_blank"><img src={github} alt="github" /></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -52,13 +52,13 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#">Road Map</a></li>
-                                    <li><a href="#">White Paper</a></li>
-                                    <li><a href="#">GitHub</a></li>
-                                    <li><a href="#">Documentation</a></li>
-                                    <li><a href="#">Audit Report</a></li>
-                                    <li><a href="#">Bug Bounty</a></li>
-                                    <li><a href="#">Widget</a></li>
+                                    <li><a href="#" target="_blank">Road Map</a></li>
+                                    <li><a href="#" target="_blank">White Paper</a></li>
+                                    <li><a href="#" target="_blank">GitHub</a></li>
+                                    <li><a href="#" target="_blank">Documentation</a></li>
+                                    <li><a href="#" target="_blank">Audit Report</a></li>
+                                    <li><a href="#" target="_blank">Bug Bounty</a></li>
+                                    <li><a href="#" target="_blank">Widget</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -66,12 +66,12 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#">Governance</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                    <li><a href="#">Discord</a></li>
-                                    <li><a href="#">Telegram</a></li>
-                                    <li><a href="#">Brand Kit</a></li>
-                                    <li><a href="#">Careers</a></li>
+                                    <li><a href="#" target="_blank">Governance</a></li>
+                                    <li><a href="#" target="_blank">Twitter</a></li>
+                                    <li><a href="#" target="_blank">Discord</a></li>
+                                    <li><a href="#" target="_blank">Telegram</a></li>
+                                    <li><a href="#" target="_blank">Brand Kit</a></li>
+                                    <li><a href="#" target="_blank">Careers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -79,11 +79,11 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Ecosystem</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#">Explorer</a></li>
-                                    <li><a href="#">Bridge Contracts</a></li>
-                                    <li><a href="#">Token Contracts</a></li>
-                                    <li><a href="#">Token Listing</a></li>
-                                    <li><a href="#">Referrals</a></li>
+                                    <li><a href="#" target="_blank">Explorer</a></li>
+                                    <li><a href="#" target="_blank">Bridge Contracts</a></li>
+                                    <li><a href="#" target="_blank">Token Contracts</a></li>
+                                    <li><a href="#" target="_blank">Token Listing</a></li>
+                                    <li><a href="#" target="_blank">Referrals</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +94,7 @@ function Footer() {
                         <div className="copuright_logo">
                             <img src={FooterLogo} alt="Logo" />
                         </div>
-                        <p>© 2022 Emmet Finance. All Rights Reserved.</p>
+                        <p>© 2023 Emmet Finance. All Rights Reserved.</p>
                     </div>
                 </div>
             </div>

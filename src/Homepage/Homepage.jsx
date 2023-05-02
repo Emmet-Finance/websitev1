@@ -27,28 +27,30 @@ import BoxLogo2 from '../assets/img/boxlogo-2.svg';
 import BoxLogo3 from '../assets/img/boxlogo-3.svg';
 import BoxLogo4 from '../assets/img/boxlogo-4.svg';
 
-import Security1 from '../assets/img/Security-1.png';
-import Security2 from '../assets/img/Security-2.png';
-import Security3 from '../assets/img/Security-3.png';
-import Security4 from '../assets/img/Security-4.png';
-import Security5 from '../assets/img/Security-5.png';
-import Security6 from '../assets/img/Security-6.png';
+import Security1 from '../assets/img/Security-1.svg';
+import Security2 from '../assets/img/Security-2.svg';
+import Security3 from '../assets/img/Security-3.svg';
+import Security4 from '../assets/img/Security-4.svg';
+import Security5 from '../assets/img/Security-5.svg';
+import Security6 from '../assets/img/Security-6.svg';
 
-import APISVG from '../assets/img/api.svg';
+// import APISVG from '../assets/img/api.svg';
+import APISVG from '../assets/img/api.png';
 import Check from '../assets/img/check-bold.svg';
 
 import TypeScriptAccordion from './TypeScriptAccordion';
 import FAQAccordion from './FAQAccordion';
 import TypeWriter from './Typewriter';
 import IconSlider from './IconSlider';
-
-
+// import Video from '../assets/img/bg-video.mp4';
+import VideoAutoplay from './VideoAutoplay';
 
 function Homepage() {
     return (
         <div className="pageWrap">
 
             <section className="banar_area home_banar">
+                <VideoAutoplay/>
                 <div className="container">
                     <div className="banag_content">
                         <div className="banarContent_top">
@@ -58,15 +60,15 @@ function Homepage() {
                                 via a Decentralized Bridge.
                             </h1>
                             <p>A DAO-managed decentralized fungible token bridge for swift and secure cross-chain transactions from an intuitive user-friendly interface.</p>
-                            <a href="#" className='enterApp'>EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
+                            <a href="#" className='enterApp' target="_blank">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
                         </div>
                         <div className="banar_bottom">
                             <ul className="social">
-                                <li><a href="https://t.me/Emmet_Finance"><img src={Telegram} alt="Telegram" /></a></li>
-                                <li><a href="https://twitter.com/Emmet_Finance"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="https://discord.gg/MTcrqnDP"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={Telegram} alt="Telegram" /></a></li>
+                                <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={Twiter} alt="Twiter" /></a></li>
+                                <li><a href="https://discord.gg/MTcrqnDP" target="_blank"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
-                            <a href="#" className='gitUrl'><img src={Github} alt="Github" /> SOURCE CODE</a>
+                            <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank"><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
                     </div>
                 </div>
@@ -86,17 +88,17 @@ function Homepage() {
                                 <img src={BoxLogo1} alt="BoxLogo1" className="feature_img" />
                                 <h3>Unprecedented Security</h3>
                                 <p>Empowered with tools mitigating the previous and anticipated attacks.</p>
-                                <a href="#" className='readMore'>READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-12">
                             <div className="feature_box">
                                 <img src={BoxLogo2} alt="BoxLogo2" className="feature_img" />
-                                <h3>Intuitive UI & User Friendly API</h3>
+                                <h3>Intuitive UI & <br /> User Friendly API</h3>
                                 <p>Easy learning curve
                                     for non-coding users
                                     and seasoned developers.</p>
-                                <a href="#" className='readMore'>READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -105,7 +107,7 @@ function Homepage() {
                                 <h3>Efficient
                                     Architecture</h3>
                                 <p>Optimized storage and computational algorithms ensure reasonable costs.</p>
-                                <a href="#" className='readMore'>READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -114,7 +116,7 @@ function Homepage() {
                                 <h3>Latest cryptography
                                     Implementation</h3>
                                 <p>On-chain and off-chain signatures safely secure sensitive transactions.</p>
-                                <a href="#" className='readMore'>READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
                     </div>
@@ -155,37 +157,37 @@ function Homepage() {
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Trading (Swapping)</h3>
-                                <p>Securely swap your tokens or stablecoins with other peers. Tune and automate your trading strategy.</p>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
-                            <div className="oneStopBox">
-                                <h3>Bridging</h3>
+                                <h3>Bridge</h3>
                                 <p>Bridge your fungible tokens, stablecoins and native chain coins to the chains where you need them most.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Staking</h3>
+                                <h3>Trade</h3>
+                                <p>Securely swap your tokens or stablecoins with other peers. Tune and automate your trading strategy.</p>
+                            </div>
+                        </div>
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                            <div className="oneStopBox">
+                                <h3>Stake</h3>
                                 <p>Stake your tokens at generous APR & APY and incrementally grow your capital.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Farming</h3>
+                                <h3>Farm</h3>
                                 <p>Earn by providing liquidity for the multi-token liquidity pools.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Lending / Borrowing</h3>
+                                <h3>Lend & Borrow</h3>
                                 <p>Lend your tokens to the other peers or borrow the ones you need right now.</p>
                             </div>
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Validator Delegation</h3>
+                                <h3>Validate</h3>
                                 <p>Delegate your tokens to the professional validators and earn part of their revenue.</p>
                             </div>
                         </div>
@@ -313,7 +315,7 @@ function Homepage() {
                         <h2><span className="text_art">Road Map</span></h2>
                     </div>
                     <div className="roadMap_box">
-                        <div className="roadMap_item roadMap_item1">
+                        <div className="activemap roadMap_item roadMap_item1">
                             <div className="roadMap_item_content">
                                 <h3>Ideation</h3>
                                 <ul className='dotList'>
@@ -325,6 +327,7 @@ function Homepage() {
                             </div>
                             <div className="roadmapPosition">
                                 <img src={Check} alt="Check" />
+                                1
                             </div>
                         </div>
                         <div className="roadMap_item roadMap_item2">
@@ -339,9 +342,10 @@ function Homepage() {
                             </div>
                             <div className="roadmapPosition">
                                 <img src={Check} alt="Check" />
+                                2
                             </div>
                         </div>
-                        <div className="activemap roadMap_item roadMap_item3">
+                        <div className="roadMap_item roadMap_item3">
                             <div className="roadMap_item_content">
                                 <h3>MVP & Pre-Sale</h3>
                                 <ul className='dotList'>
@@ -349,9 +353,11 @@ function Homepage() {
                                     <li>Off-Chain MVP</li>
                                     <li>Fee Oracle MVP</li>
                                     <li>FT Bridge MVP</li>
+                                    <li>Private round</li>
                                 </ul>
                             </div>
                             <div className="roadmapPosition">
+                                <img src={Check} alt="Check" />
                                 3
                             </div>
                         </div>
@@ -362,9 +368,11 @@ function Homepage() {
                                     <li>Security Audit</li>
                                     <li>Pentesting</li>
                                     <li>Mainnet Testing</li>
+                                    <li>Public ICO</li>
                                 </ul>
                             </div>
                             <div className="roadmapPosition">
+                                <img src={Check} alt="Check" />
                                 4
                             </div>
                         </div>

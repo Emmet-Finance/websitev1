@@ -13,12 +13,12 @@ function Header() {
         <Navbar.Toggle aria-controls="emmetNav" />
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
-            <Nav.Link href="#link">BRIDGE</Nav.Link>
-            <Nav.Link href="#link">TRADE</Nav.Link>
-            <Nav.Link href="#link">STAKE</Nav.Link>
-            <Nav.Link href="#link">FARM</Nav.Link>
-            <Nav.Link href="#link">LIQUIDITY</Nav.Link>
-            <Nav.Link href="#link">VALIDATE</Nav.Link>
+            <Nav.Link href="#link" target="_blank">BRIDGE</Nav.Link>
+            <Nav.Link href="#link" target="_blank">TRADE</Nav.Link>
+            <Nav.Link href="#link" target="_blank">STAKE</Nav.Link>
+            <Nav.Link href="#link" target="_blank">FARM</Nav.Link>
+            <Nav.Link href="#link" target="_blank">LIQUIDITY</Nav.Link>
+            <Nav.Link href="#link" target="_blank">VALIDATE</Nav.Link>
           </Nav>
           <a href="#" className='enterApp'>Enter app <img src={LinkLogo} alt="LinkLogo" /></a>
         </Navbar.Collapse>
