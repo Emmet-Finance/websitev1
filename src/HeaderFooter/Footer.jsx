@@ -16,17 +16,17 @@ function Footer() {
             <div className="footer_top">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-4 col-sm-6 col-12">
+                        <div className="col-4">
                             <div className="footerTopWidget">
                                 <img src={DiscordY} alt="Discord" /> <p>Join <br /> The Discussion </p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-sm-6 col-12">
+                        <div className="col-4">
                             <div className="footerTopWidget">
                                 <img src={Note} alt="Note" /> <p>READ <br /> DOCUMENTATION </p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-sm-6 col-12">
+                        <div className="col-4">
                             <div className="footerTopWidget">
                                 <img src={LogoYellow} alt="LogoYellow" /> <p>EXPLORE <br /> EMMET FINANCE </p>
                             </div>
@@ -37,7 +37,7 @@ function Footer() {
             <div className="footer_bottom">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3 col-md-12 col-sm-12 col-12">
+                        <div className="col-lg-3 col-md-12 col-sm-6 col-6">
                             <div className="footerWdiget">
                                 <h3>Contact</h3>
                                 <ul className="footer_social">
@@ -48,7 +48,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-4 col-sm-6 col-6">
                             <div className="footerWdiget">
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
@@ -62,7 +62,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-4 col-sm-6 col-6">
                             <div className="footerWdiget">
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
@@ -75,7 +75,7 @@ function Footer() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-4 col-sm-6 col-6">
                             <div className="footerWdiget">
                                 <h3>Ecosystem</h3>
                                 <ul className="quickLinks">

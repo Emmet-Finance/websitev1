@@ -354,7 +354,8 @@ ul.dotList li:before {
   align-items: center;
   border-width: 2px;
   border-style: solid;
-  border-color: #35CE8D;
+  /* border-color: #35CE8D; */
+  border-color: transparent;
   border-radius: 8px;
 }
 
@@ -532,6 +533,7 @@ section.oneStop_area .container>.row>div {
 
 .oneStopBox:hover h3 {
   background-color: transparent;
+  transition-delay: .3s;
 }
 
 section.typeScriot_area {

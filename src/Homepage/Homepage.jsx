@@ -83,7 +83,7 @@ function Homepage() {
             <section className="feature_box_area">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div className="feature_box">
                                 <img src={BoxLogo1} alt="BoxLogo1" className="feature_img" />
                                 <h3>Unprecedented Security</h3>
@@ -91,7 +91,7 @@ function Homepage() {
                                 <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div className="feature_box">
                                 <img src={BoxLogo2} alt="BoxLogo2" className="feature_img" />
                                 <h3>Intuitive UI & <br /> User Friendly API</h3>
@@ -101,7 +101,7 @@ function Homepage() {
                                 <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div className="feature_box">
                                 <img src={BoxLogo3} alt="BoxLogo3" className="feature_img" />
                                 <h3>Efficient
@@ -110,7 +110,7 @@ function Homepage() {
                                 <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
                             </div>
                         </div>
-                        <div className="col-lg-3 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-3 col-md-6 col-sm-6 col-6">
                             <div className="feature_box">
                                 <img src={BoxLogo4} alt="BoxLogo4" className="feature_img" />
                                 <h3>Latest cryptography
@@ -263,42 +263,42 @@ function Homepage() {
                         <h2><span className="text_art">Security</span></h2>
                     </div>
                     <div className="row">
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security1} alt="" className="securityImg" />
                                 <h3>Security Audits</h3>
                                 <p>All the bridge components undergo security code reviews and audits. </p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security2} alt="" className="securityImg" />
                                 <h3>Red team Pentesting</h3>
                                 <p>WEB2 & WEB3 pentests are carries out by the leading whitehat hackers.</p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security3} alt="" className="securityImg" />
                                 <h3>Blue Team Honeypots</h3>
                                 <p>To spot and track our adversaries’ moves we arrange traps & honeypots.</p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security4} alt="" className="securityImg" />
                                 <h3>Secure Infrastructure</h3>
                                 <p>Role-based security settings on all involved endpoints. Minimal privileges required for the entity job.</p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security5} alt="" className="securityImg" />
                                 <h3>Bug Bounty Program</h3>
                                 <p>Responsible community members are rewarded for finding & reporting vulnerabilities.</p>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security6} alt="" className="securityImg" />
                                 <h3>AI/ML Security Alerts</h3>

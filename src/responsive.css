@@ -49,7 +49,7 @@
     }
 
     section.feature_box_area {
-        padding: 120px 0 15px;
+        padding: 120px 0 30px;
     }
 
     .feature_box {
@@ -90,13 +90,15 @@
 /*  (min-width: 768px) and (max-width: 991px) */
 
 @media only screen and (max-width: 991px) {
-    .EmmetBridge_Box {
+    /* .EmmetBridge_Box {
         margin: 0 auto -140px auto;
-    }
+    } */
 
     .emmetBridge_content_area {
-        padding-top: 50px;
-        padding-bottom: 50px;
+        padding-top: 0px;
+        padding-bottom: 30px;
+        padding-left: 0;
+        margin-top: 0;
     }
 
     section.oneStop_area {
@@ -116,13 +118,81 @@
         padding-top: 10px;
     }
 
-    .navbar-collapse {
-        background: #35CE8D;
-    }
-
     .navbar-collapse .enterApp {
         margin: 10px 0px 20px 20px;
     }
+
+    span.navbar-toggler-icon {
+        display: none;
+    }
+
+    .navbar-toggler {
+        background: transparent;
+        border: 0;
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        width: 25px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99;
+        background: url("assets/img/nav/bar.svg") no-repeat scroll center / contain;
+        border-radius: 0;
+        transition: .3s ease all;
+    }
+
+    button.navbar-toggler:not(.collapsed) {
+        background: url("assets/img/nav/close.svg") no-repeat scroll center / contain;
+    }
+
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+
+    .navbar>.container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        background: #fff;
+        height: 100vh;
+        /* display: block !important; */
+        /* opacity: 1 !important; */
+        max-height: 100vh;
+        overflow: auto;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        padding: 130px 45px 0px 0;
+    }
+
+    .navbar-nav a.nav-link {
+        max-width: fit-content;
+        margin-left: auto;
+        padding: 8px 15px !important;
+        margin-bottom: 20px;
+    }
+
+    .navbar-collapse .enterApp {
+        margin-left: auto;
+        margin-right: 62px;
+        display: flex;
+        max-width: fit-content;
+    }
+
+    section.emmetBridge_area>div>.row {
+        flex-direction: column-reverse;
+    }
+
 
 }
 
@@ -136,7 +206,7 @@
 
     .roadMap_item_content:before,
     .roadMap_item_content:after {
-        opacity: 0 !important;
+        /* opacity: 0 !important; */
     }
 
     .activemap .roadMap_item_content:before,
@@ -174,12 +244,19 @@
         display: none;
     }
 
+    section.oneStop_area .title_center {
+        margin-bottom: 28px;
+    }
 
 }
 
 /* and (max-width: 767px) */
 
 @media only screen and (max-width: 575px) {
+
+    img {
+        max-width: 100%;
+    }
 
     section.feature_box_area .container .col-lg-3.col-md-6.col-sm-6.col-12 {
         max-width: unset;
@@ -193,10 +270,6 @@
         width: 100%;
     }
 
-    .roadMap_item4 .roadMap_item_content {
-        margin-bottom: 20px !important;
-    }
-
     section.roadMap_area {
         padding: 70px 0 30px 0;
     }
@@ -208,15 +281,28 @@
     }
 
     section.home_banar {
-        padding: 195px 0 40px;
+        padding: 165px 0 40px;
     }
 
     h1.page_title {
-        font-size: 30px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .banarContent_top p {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .tokken_item img {
+        height: 27px;
     }
 
     section.tokken_area {
-        padding: 25px 15px;
+        padding: 14px 15px;
     }
 
     .feature_box {
@@ -224,20 +310,45 @@
     }
 
     img.feature_img {
+        height: 50px;
         margin-bottom: 24px;
     }
 
+    .feature_box h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+    }
+
     .feature_box p {
-        margin-top: 18px;
-        margin-bottom: 19px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
     }
 
     section.emmetBridge_area {
-        padding: 65px 0 35px 0;
+        padding: 20px 0 40px 0;
     }
 
     h2 {
-        font-size: 28px;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .accordion-body,
+    p {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .accordion-body {
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
     }
 
     .emmetBridge_content_area p br {
@@ -245,8 +356,10 @@
     }
 
     .oneStopBox h3 {
-        font-size: 22px;
-        top: -21px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        top: -23px;
     }
 
     .oneStopBox {
@@ -258,7 +371,281 @@
     }
 
     section.typeScriot_area {
-        padding: 80px 0 70px 0;
+        padding: 60px 0 75px 0;
+    }
+
+    nav.navbar {
+        border: 0;
+        padding: 42px 20px 20px;
+    }
+
+    .navbar-brand img {
+        width: 85px;
+    }
+
+    .banar_bottom {
+        margin-top: 60px;
+    }
+
+    .banar_area .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    ul.social li a {
+        width: 20px;
+    }
+
+    .gitUrl {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 24px;
+    }
+
+    .gitUrl img {
+        width: 24px;
+    }
+
+    a.readMore {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    a.readMore img {
+        width: 13px;
+    }
+
+    .feature_box {
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+    }
+
+    section.feature_box_area .col-lg-3.col-md-6.col-sm-6.col-6 {
+        margin-bottom: 50px;
+    }
+
+    section.feature_box_area a.readMore {
+        margin-top: auto;
+    }
+
+    .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .text_art:after {
+        left: -5px;
+        right: -5px;
+    }
+
+    ul.dotList li {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .EmmetBridge_title> img {
+        width: 150px;
+    }
+
+    .EmmetBridge_Box {
+        padding-top: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 30px;
+    }
+
+    img.updownCircle {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    .accordion-button {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 27px;
+    }
+
+    img.apiImg {
+        margin-top: 10px;
+    }
+
+    section.security_area {
+        padding-top: 50px;
+    }
+
+    section.security_area .title_center {
+        margin-bottom: 20px;
+    }
+
+    img.securityImg {
+        height: 50px;
+        margin-bottom: 15px;
+    }
+
+    section.security_area .row {
+        margin: 0 -10px;
+    }
+    
+    section.security_area .row> div {
+        padding: 0 10px;
+    }
+
+    .securityBox h3 {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .securityBox {
+        margin-bottom: 40px;
+    }
+
+    .toAccount h4 {
+        font-size: 14px;
+        line-height: 1;
+    }
+
+    .roadMap_box {
+        padding-left: 60px;
+        border-left: 2px solid #1C3144;
+        margin-left: 20px;
+    }
+    
+    .roadMap_item {
+        margin-bottom: 30px;
+        padding: 30px 10px;
+    }
+    
+    body div .roadMap_item_content, .activemap .roadMap_item_content {
+        margin-bottom: 0 !important;
+    }
+    
+    .roadmapPosition {
+        position: absolute;
+        left: -80px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    section.roadMap_area {
+        padding-bottom: 100px;
+    }
+    
+    .roadMap_item_content:after {
+        left: -15px !important;
+        top: -30px !important;
+        bottom: -30px !important;
+        right: auto !important;
+        width: 1px !important;
+        height: unset !important;
+    }
+    
+    .roadMap_item_content:before {
+        right: 100% !important;
+        left: auto !important;
+        width: 40px !important;
+        height: 1px !important;
+        margin: 0 !important;
+        top: 50% !important;
+        margin-right: 14px !important;
+    }
+    
+    section.roadMap_area .title_center {
+        margin-bottom: 50px;
+    }
+
+    .roadMap_box::before, .roadMap_box::after {
+        width: 2px;
+        height: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image: url("assets/img/border-2.png");
+        background-size: contain;
+        content: "";
+        display: block;
+        position: absolute;
+        top: auto;
+        left: -2px;
+        bottom: 100%;
+    }
+
+    .roadMap_box::before {
+        margin-bottom: 7px;
+    }
+    
+    .roadMap_box::after {
+        top: 100%;
+        bottom: auto;
+        margin-top: 7px;
+    }
+
+    .roadMap_item.roadMap_item4 {
+        margin-bottom: 0 !important;
+    }
+
+    section.faq_area {
+        padding-top: ;
+    }
+
+    section.faq_area {
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+    
+    section.faq_area .title_center {
+        margin-bottom: 30px;
+    }
+
+    .footerTopWidget {
+        display: block;
+    }
+    
+    .footerTopWidget p {
+        font-weight: 700;
+        font-size: 10px;
+        line-height: 18px;
+        margin: 10px 0 0 0;
+    }
+    
+    .footerTopWidget> img {
+        height: 24px;
+    }
+
+    .footer_bottom {
+        padding: 60px 0 3px 0;
+    }
+    
+    .footerWdiget h3 {
+        margin-bottom: 20px;
+    }
+    
+    ul.footer_social li a {
+        width: 24px;
+    }
+    
+    ul.footer_social li:not(:last-child) {
+        margin-right: 15px;
+    }
+    
+    .footerWdiget {
+        margin-bottom: 40px;
+    }
+    
+    .copuright {
+        padding: 20px 0 30px 0;
+    }
+    
+    .copuright_logo {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
     }
 
 }
