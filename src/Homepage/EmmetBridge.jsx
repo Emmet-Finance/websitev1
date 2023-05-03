@@ -31,7 +31,7 @@ function EmmetBridge() {
                         {/* <img src={DownArrow} alt="DownArrow" className="selectArrow" /> */}
                     </div>
                     <div className="originNetwork">
-                        <label htmlFor="">Origin Network</label>
+                        <label htmlFor="">Origin Chain</label>
                         <Dropdown>
                             <Dropdown.Toggle id="logoDropdown">
                             <img src={Ethereum} alt="Binance" className='coinLogo' />
@@ -58,7 +58,7 @@ function EmmetBridge() {
                         <Dropdown>
                             <Dropdown.Toggle id="logoDropdown">
                                 <img src={Binance} alt="Binance" className='coinLogo' />
-                                 BNB
+                                 BSC
                             </Dropdown.Toggle>
                         </Dropdown>
                         {/* <img src={DownArrow} alt="DownArrow" className="selectArrow" /> */}

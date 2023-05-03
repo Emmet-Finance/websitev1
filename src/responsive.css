@@ -172,7 +172,7 @@
     .navbar-nav {
         display: flex;
         flex-direction: column;
-        padding: 130px 45px 0px 0;
+        padding: 100px 45px 0px 0;
     }
 
     .navbar-nav a.nav-link {
@@ -246,6 +246,10 @@
 
     section.oneStop_area .title_center {
         margin-bottom: 28px;
+    }
+
+    .emmetFrom {
+        border-color: #35CE8D;
     }
 
 }
@@ -359,7 +363,7 @@
         font-weight: 700;
         font-size: 16px;
         line-height: 24px;
-        top: -23px;
+        top: -22px;
     }
 
     .oneStopBox {
@@ -458,6 +462,8 @@
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 30px;
+        box-shadow: 0px 0px 32px rgba(28, 49, 68, 0.25);
+        border-radius: 16px;
     }
 
     img.updownCircle {

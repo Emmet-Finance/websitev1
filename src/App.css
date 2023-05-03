@@ -354,8 +354,7 @@ ul.dotList li:before {
   align-items: center;
   border-width: 2px;
   border-style: solid;
-  /* border-color: #35CE8D; */
-  border-color: transparent;
+  border-color: #35CE8D;
   border-radius: 8px;
 }
 
@@ -524,17 +523,24 @@ section.oneStop_area .container>.row>div {
   font-weight: 700;
   font-size: 28px;
   line-height: 26px;
-  background: #fff;
   padding: 8px;
   top: -23px;
   position: absolute;
   left: 22px;
 }
 
-.oneStopBox:hover h3 {
-  background-color: transparent;
-  transition-delay: .3s;
+
+.oneStopBox h3:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 50%;
+  background: #fff;
+  height: 2px;
 }
+
 
 section.typeScriot_area {
   padding: 80px 0 180px 0;

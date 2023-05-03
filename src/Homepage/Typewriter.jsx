@@ -30,7 +30,7 @@ function TypeWriter() {
                     .typeString("Fantom")
                     .pauseFor(2000)
                     .deleteAll()
-                    .typeString("Arbitrum Nova")
+                    .typeString("Arbitrum")
                     .pauseFor(2000)
                     .deleteAll()
                     .typeString("Optimism")
