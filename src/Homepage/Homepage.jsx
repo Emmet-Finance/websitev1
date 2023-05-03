@@ -347,13 +347,12 @@ function Homepage() {
                         </div>
                         <div className="roadMap_item roadMap_item3">
                             <div className="roadMap_item_content">
-                                <h3>MVP & Pre-Sale</h3>
+                                <h3>MVP</h3>
                                 <ul className='dotList'>
                                     <li>On-Chain MVP</li>
                                     <li>Off-Chain MVP</li>
                                     <li>Fee Oracle MVP</li>
                                     <li>FT Bridge MVP</li>
-                                    <li>Private round</li>
                                 </ul>
                             </div>
                             <div className="roadmapPosition">
@@ -368,7 +367,6 @@ function Homepage() {
                                     <li>Security Audit</li>
                                     <li>Pentesting</li>
                                     <li>Mainnet Testing</li>
-                                    <li>Public ICO</li>
                                 </ul>
                             </div>
                             <div className="roadmapPosition">
