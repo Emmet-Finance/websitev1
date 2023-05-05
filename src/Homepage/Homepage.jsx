@@ -400,7 +400,7 @@ const MyComponent = () => (
   <div>
     <Helmet>
       <title>Emmet page</title>
-      <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more />
+      <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
       <meta name="keywords" content="swapping, staking" />
       {/* other meta names */}
     </Helmet>
