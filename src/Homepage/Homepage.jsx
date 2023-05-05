@@ -390,22 +390,19 @@ function Homepage() {
             </section>
 
         </div>
+            <div className="pageWrap">
+               <Helmet>
+                   <title>Emmet page</title>
+                   <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
+                   <meta name="keywords" content="swapping, staking" />
+                   {/* other meta names */}
+               </Helmet>
+            
+        </div>
     );
 }
+
 
 export default Homepage;
 
 
-const MyComponent = () => (
-  <div>
-    <Helmet>
-      <title>Emmet page</title>
-      <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
-      <meta name="keywords" content="swapping, staking" />
-      {/* other meta names */}
-    </Helmet>
-    {/* the content of your component */}
-  </div>
-);
-
-export default MyComponent;
