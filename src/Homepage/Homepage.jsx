@@ -49,8 +49,13 @@ import { Helmet } from "react-helmet";
 
 function Homepage() {
     return (
-        <div className="pageWrap">
-
+        <div className="pageWrap">       
+            <Helmet>
+                   <title>Emmet page</title>
+                   <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
+                   <meta name="keywords" content="swapping, staking" />
+                   {/* other meta names */}
+               </Helmet>
             <section className="banar_area home_banar">
                 <VideoAutoplay/>
                 <div className="container">
@@ -388,17 +393,8 @@ function Homepage() {
                     <FAQAccordion/>
                 </div>
             </section>
+        
 
-        </div>
-            <div className="pageWrap">
-               <Helmet>
-                   <title>Emmet page</title>
-                   <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
-                   <meta name="keywords" content="swapping, staking" />
-                   {/* other meta names */}
-               </Helmet>
-            
-        </div>
     );
 }
 
