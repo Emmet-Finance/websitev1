@@ -45,10 +45,10 @@ import IconSlider from './IconSlider';
 // import Video from '../assets/img/bg-video.mp4';
 import VideoAutoplay from './VideoAutoplay';
 
-
 function Homepage() {
     return (
-        <div className="pageWrap">       
+        <div className="pageWrap">
+
             <section className="banar_area home_banar">
                 <VideoAutoplay/>
                 <div className="container">
@@ -386,12 +386,9 @@ function Homepage() {
                     <FAQAccordion/>
                 </div>
             </section>
-        
 
+        </div>
     );
 }
 
-
 export default Homepage;
-
-
