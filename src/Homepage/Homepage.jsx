@@ -45,17 +45,10 @@ import IconSlider from './IconSlider';
 // import Video from '../assets/img/bg-video.mp4';
 import VideoAutoplay from './VideoAutoplay';
 
-import { Helmet } from "react-helmet";
 
 function Homepage() {
     return (
         <div className="pageWrap">       
-            <Helmet>
-                   <title>Emmet page</title>
-                   <meta name="description" content="Emmet Finance 🌐 | DeFi platform for cross-chain bridging, swapping, staking & more" />
-                   <meta name="keywords" content="swapping, staking" />
-                   {/* other meta names */}
-               </Helmet>
             <section className="banar_area home_banar">
                 <VideoAutoplay/>
                 <div className="container">
