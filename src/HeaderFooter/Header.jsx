@@ -17,7 +17,7 @@ function Header() {
             <Nav.Link href="#link" target="_blank">TRADE</Nav.Link>
             <Nav.Link href="#link" target="_blank">STAKE</Nav.Link>
             <Nav.Link href="#link" target="_blank">FARM</Nav.Link>
-            <Nav.Link href="#link" target="_blank">LIQUIDITY</Nav.Link>
+            <Nav.Link href="#link" target="_blank">LEND</Nav.Link>
             <Nav.Link href="#link" target="_blank">VALIDATE</Nav.Link>
           </Nav>
           <a href="#" className='enterApp'>Enter app <img src={LinkLogo} alt="LinkLogo" /></a>

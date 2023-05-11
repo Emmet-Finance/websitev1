@@ -14,21 +14,23 @@ function Footer() {
     return ( 
         <footer className="footer-area">
             <div className="footer_top">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-4">
-                            <div className="footerTopWidget">
-                                <img src={DiscordY} alt="Discord" /> <p>Join <br /> The Discussion </p>
+                <div className="footer_top_inner">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-4">
+                                <div className="footerTopWidget">
+                                    <img src={DiscordY} alt="Discord" /> <p>Join <br /> The Discussion </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-4">
-                            <div className="footerTopWidget">
-                                <img src={Note} alt="Note" /> <p>READ <br /> DOCUMENTATION </p>
+                            <div className="col-4">
+                                <div className="footerTopWidget">
+                                    <img src={Note} alt="Note" /> <p>READ <br /> DOCUMENTATION </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="col-4">
-                            <div className="footerTopWidget">
-                                <img src={LogoYellow} alt="LogoYellow" /> <p>EXPLORE <br /> EMMET FINANCE </p>
+                            <div className="col-4">
+                                <div className="footerTopWidget">
+                                    <img src={LogoYellow} alt="LogoYellow" /> <p>EXPLORE <br /> EMMET FINANCE </p>
+                                </div>
                             </div>
                         </div>
                     </div>

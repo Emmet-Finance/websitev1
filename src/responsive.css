@@ -18,6 +18,16 @@
 
 @media only screen and (max-width: 1199px) {
 
+    
+.footer_bottom .row> div:nth-child(2), 
+.footer_bottom .row> div:nth-child(3), 
+.footer_bottom .row> div:nth-child(4) {
+    max-width: unset;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
     .footer_bottom,
     section.tokken_a,
     section.home_banar,
@@ -302,11 +312,11 @@
     }
 
     .tokken_item img {
-        height: 27px;
+        height: 33px;
     }
 
     section.tokken_area {
-        padding: 14px 15px;
+        padding: 5px 15px;
     }
 
     .feature_box {
@@ -353,6 +363,7 @@
         padding-left: 15px;
         padding-right: 15px;
         padding-bottom: 10px;
+        font-size: 14px;
     }
 
     .emmetBridge_content_area p br {
@@ -380,11 +391,11 @@
 
     nav.navbar {
         border: 0;
-        padding: 42px 20px 20px;
+        padding: 20px 20px 20px;
     }
 
     .navbar-brand img {
-        width: 85px;
+        width: 125px;
     }
 
     .banar_bottom {
@@ -397,18 +408,19 @@
     }
 
     ul.social li a {
-        width: 20px;
+        width: 24px;
     }
 
     .gitUrl {
         font-style: normal;
         font-weight: 700;
-        font-size: 12px;
+        font-size: 0px;
         line-height: 24px;
     }
 
     .gitUrl img {
         width: 24px;
+        margin-right: 0;
     }
 
     a.readMore {
@@ -473,7 +485,7 @@
 
     .accordion-button {
         font-weight: 700;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 27px;
     }
 
@@ -501,6 +513,8 @@
     section.security_area .row> div {
         padding: 0 10px;
     }
+
+    section.security_area .row> div:first-child h3 {width: 50px;}
 
     .securityBox h3 {
         font-weight: 700;
@@ -653,6 +667,27 @@
         font-size: 12px;
         line-height: 16px;
     }
+
+    .footer_top> .container {
+        padding: 0 22px;
+    }
+    
+    .footer_top> .container> .row {
+        margin: 0 -10px;
+    }
+    
+    .footer_top> .container> .row> div {
+        padding: 0 10px;
+    }
+
+    ul.footer_social {
+        max-width: 80px;
+        flex-wrap: wrap;
+    }
+    
+    ul.footer_social li {
+        margin-bottom: 15px;
+    }    
 
 }
 

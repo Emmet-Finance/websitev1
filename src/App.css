@@ -569,7 +569,7 @@ img.apiImg {
   display: block;
   margin: 0 auto;
   margin-top: 50px;
-  max-width: 100%;
+  width: 106%;
 }
 
 .typeScript_content>h2 {
@@ -907,6 +907,7 @@ section.faq_area {
   color: #FFFFFF;
   opacity: 1;
   margin: 0 0 0 20px;
+  text-transform: uppercase;
 }
 
 .footer_bottom {
@@ -924,12 +925,13 @@ section.faq_area {
   font-size: 20px;
   line-height: 26px;
   color: #fff;
-  margin-bottom: 34px;
+  margin-bottom: 27px;
 }
 
 ul.footer_social {
   display: flex;
   align-items: center;
+  margin-top: 34px;
 }
 
 ul.footer_social li:not(:last-child) {
@@ -981,7 +983,7 @@ ul.quickLinks li {
 }
 
 .copuright {
-  padding: 23px 0 35px 0;
+  padding: 32px 0 29px 0;
 }
 
 .copuright p {
@@ -1084,4 +1086,24 @@ span.amountHeight {
   top: 15px;
   bottom: 15px;
   background: #D9D9D9;
+}
+
+.footer_bottom .row {
+  justify-content: space-between;
+}
+
+.footer_bottom .container {
+  max-width: 1140px;
+}
+
+.footer_bottom .row> div:nth-child(2), 
+.footer_bottom .row> div:nth-child(3), 
+.footer_bottom .row> div:nth-child(4) {
+    max-width: 222px;
+    margin-left: 53px;
+}
+
+.footer_bottom .row> div:nth-child(4) {
+    margin-right: auto;
+    margin-left: 60px;
 }

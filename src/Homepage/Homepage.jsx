@@ -66,7 +66,7 @@ function Homepage() {
                             <ul className="social">
                                 <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={Telegram} alt="Telegram" /></a></li>
                                 <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="https://discord.com/invite/nFhps6AbnQ" target="_blank"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://discord.gg/MTcrqnDP" target="_blank"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
                             <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank"><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
@@ -273,7 +273,7 @@ function Homepage() {
                         <div className="col-lg-4 col-md-6 col-sm-6 col-6">
                             <div className="securityBox">
                                 <img src={Security2} alt="" className="securityImg" />
-                                <h3>Red team Pentesting</h3>
+                                <h3>Red Team Pentesting</h3>
                                 <p>WEB2 & WEB3 pentests are carries out by the leading whitehat hackers.</p>
                             </div>
                         </div>
@@ -315,7 +315,7 @@ function Homepage() {
                         <h2><span className="text_art">Road Map</span></h2>
                     </div>
                     <div className="roadMap_box">
-                        <div className="activemap roadMap_item roadMap_item1">
+                        <div className="roadMap_item roadMap_item1">
                             <div className="roadMap_item_content">
                                 <h3>Ideation</h3>
                                 <ul className='dotList'>
@@ -345,7 +345,7 @@ function Homepage() {
                                 2
                             </div>
                         </div>
-                        <div className="roadMap_item roadMap_item3">
+                        <div className="activemap roadMap_item roadMap_item3">
                             <div className="roadMap_item_content">
                                 <h3>MVP</h3>
                                 <ul className='dotList'>
