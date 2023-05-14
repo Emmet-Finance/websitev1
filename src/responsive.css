@@ -295,7 +295,7 @@
     }
 
     section.home_banar {
-        padding: 165px 0 40px;
+        padding: 165px 0 20px;
     }
 
     h1.page_title {
@@ -701,6 +701,18 @@
 
 /* (max-width: 480px) */
 
-@media only screen and (max-width: 360px) {}
+@media only screen and (max-width: 375px) {
+    .footerTopWidget {
+        padding: 15px 0;
+    }
+    
+    .footer_top_inner .col-4 {
+        width: 100%;
+    }
+    
+    .footer_top {
+        padding: 15px 0;
+    }
+}
 
 /* (max-width: 360px)  */

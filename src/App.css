@@ -759,6 +759,10 @@ section.roadMap_area {
   border-color: #000;
 }
 
+.activemap.roadMap_item:hover .roadmapPosition {
+  border-color: #35CE8D;
+}
+
 .roadMap_item:hover .roadMap_item_content {
   opacity: 1;
 }

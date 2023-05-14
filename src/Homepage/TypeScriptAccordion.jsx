@@ -11,6 +11,12 @@ function TypeScriptAccordion() {
                         Well-documented API library is easy to navigate and understand even for non-experts in the field. Function and parameter names are self-explanatory and inline docstrings sufficiently explain the expected inputs and outputs. 
                     </Accordion.Body>
                 </Accordion.Item>
+                <Accordion.Item eventKey="4">
+                    <Accordion.Header>Regular updates & bug fixes</Accordion.Header>
+                    <Accordion.Body>
+                        Frequent updates and fixes help to enhance the performance and stability of the library, while also addressing any issues that may arise during its usage. The library is kept up-to-date with the latest technologies, standards, and best practices. Its dependencies are updated and improvements in performance and security are made with every opportunity.
+                    </Accordion.Body>
+                </Accordion.Item>
                 <Accordion.Item eventKey="1">
                     <Accordion.Header>Easy learning curve</Accordion.Header>
                     <Accordion.Body>
@@ -27,12 +33,6 @@ function TypeScriptAccordion() {
                     <Accordion.Header>Extensive documentation</Accordion.Header>
                     <Accordion.Body>
                         Concise easy to navigate documentation includes such sections as: Overview, Getting Started, API Reference, Tutorials and Troubleshooting which target users with different preparation and provide information relevant to each stage of library comprehension.
-                    </Accordion.Body>
-                </Accordion.Item>
-                <Accordion.Item eventKey="4">
-                    <Accordion.Header>Regular updates & bug fixes</Accordion.Header>
-                    <Accordion.Body>
-                        Frequent updates and fixes help to enhance the performance and stability of the library, while also addressing any issues that may arise during its usage. The library is kept up-to-date with the latest technologies, standards, and best practices. Its dependencies are updated and improvements in performance and security are made with every opportunity.
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

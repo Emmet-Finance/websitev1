@@ -50,7 +50,7 @@ export default class IconSlider extends Component {
           {
             breakpoint: 480,
             settings: {
-              slidesToShow: 3,
+              slidesToShow: 4,
               slidesToScroll: 1
             }
           }
