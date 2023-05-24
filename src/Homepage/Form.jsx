@@ -148,7 +148,9 @@ function Form() {
                                 </div>
 								<div className="col-12">
 									<div class="col-4"></div>
-									<div class="col-4"><input type="submit" name="submit" id="submit" value="Submit"></div>
+									<div className="col-4">
+  <input type="submit" name="submit" id="submit" value="Submit" />
+</div>
 									<div class="col-4"></div>
 								</div>
                             </div>
