@@ -44,11 +44,19 @@ import TypeWriter from './Typewriter';
 import IconSlider from './IconSlider';
 // import Video from '../assets/img/bg-video.mp4';
 import VideoAutoplay from './VideoAutoplay';
+import Form from './Form';
+import Header from '../HeaderFooter/Header';
+import Footer from '../HeaderFooter/Footer';
+
+
 
 function Homepage() {
     return (
-        <div className="pageWrap">
+        <>
 
+        <Header/>
+
+        <div className="pageWrap">
             <section className="banar_area home_banar">
                 <VideoAutoplay/>
                 <div className="container">
@@ -388,6 +396,9 @@ function Homepage() {
             </section>
 
         </div>
+       <Footer/>
+        </>
+
     );
 }
 

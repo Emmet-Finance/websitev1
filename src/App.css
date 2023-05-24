@@ -1111,3 +1111,71 @@ span.amountHeight {
     margin-right: auto;
     margin-left: 60px;
 }
+
+
+.colInput label {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 12px;
+  color: #1C3144;
+  opacity: 0.5;
+  margin: 0 0 9px 0;
+}
+
+.colInput input, .colInput textarea, .colInput select {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #35CE8D;
+  border-radius: 8px;
+  padding: 10px;
+  display: block;
+  width: 100%;
+  outline: none;
+  box-shadow: none;
+  height: 50px;
+}
+
+.colInput {
+  margin-bottom: 20px;
+}
+
+.colInput textarea {
+  height: 100px;
+}
+
+
+.form_waprer {
+  padding: 140px 0 80px 0;
+}
+
+.radioBox {
+  gap: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.radioBox input {
+  width: auto;
+  display: none;
+}
+
+.radioCheck label {
+  font-size: 18px;
+  border: 2px solid #35CE8D;
+  padding: 10px 15px;
+  text-align: center;
+  min-width: 80px;
+  border-radius: 5px;
+  transition: .3s ease all;
+  color: #1C3144;
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 0;
+}
+
+.radioCheck input:checked + label {
+  background: #35CE8D;
+  color: #fff;
+  border-color: #35CE8D;
+}
