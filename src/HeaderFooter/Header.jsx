@@ -4,6 +4,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Logo from '../assets/img/logo.svg';
 import LinkLogo from '../assets/img/link.svg';
+import React from 'react';
+
 
 function Header() {
   return (
