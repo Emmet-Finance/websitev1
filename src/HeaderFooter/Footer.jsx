@@ -45,7 +45,7 @@ function Footer() {
                                 <ul className="footer_social">
                                     <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={telegram} alt="telegram" /></a></li>
                                     <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={twiter} alt="twiter" /></a></li>
-                                    <li><a href="https://discord.com/invite/95uj5ynAfH" target="_blank"><img src={discord} alt="discord" /></a></li>
+                                    <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank"><img src={discord} alt="discord" /></a></li>
                                     <li><a href="https://github.com/Emmet-Finance" target="_blank"><img src={github} alt="github" /></a></li>
                                 </ul>
                             </div>
@@ -70,7 +70,7 @@ function Footer() {
                                 <ul className="quickLinks">
                                     <li><a href="#" target="_blank">Governance</a></li>
                                     <li><a href="#" target="_blank">Twitter</a></li>
-                                    <li><a href="#" target="_blank">Discord</a></li>
+                                    <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank">Discord</a></li>
                                     <li><a href="#" target="_blank">Telegram</a></li>
                                     <li><a href="#" target="_blank">Brand Kit</a></li>
                                     <li><a href="#" target="_blank">Careers</a></li>

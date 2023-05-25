@@ -74,7 +74,7 @@ function Homepage() {
                             <ul className="social">
                                 <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={Telegram} alt="Telegram" /></a></li>
                                 <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="https://discord.com/invite/95uj5ynAfH" target="_blank"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
                             <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank"><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
