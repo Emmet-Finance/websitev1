@@ -100,7 +100,17 @@ function Footer() {
                     </div>
                 </div>
             </div>
+			<div id="popup1" className="overlay">
+                <div className="popup">
+                    <h2></h2>
+                    <a className="close" href="#">&times;</a>
+                    <div className="content">
+                    Congratulations! We will contact with you very soon!
+                    </div>
+                </div>
+            </div>
         </footer>
+		
      );
 }
 
