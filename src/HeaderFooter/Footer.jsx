@@ -45,7 +45,7 @@ function Footer() {
                                 <ul className="footer_social">
                                     <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={telegram} alt="telegram" /></a></li>
                                     <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={twiter} alt="twiter" /></a></li>
-                                    <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank"><img src={discord} alt="discord" /></a></li>
+                                    <li><a href="https://discord.gg/yuXxDctC4W" target="_blank"><img src={discord} alt="discord" /></a></li>
                                     <li><a href="https://github.com/Emmet-Finance" target="_blank"><img src={github} alt="github" /></a></li>
                                 </ul>
                             </div>
@@ -54,7 +54,7 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#" target="_blank">Road Map</a></li>
+                                    <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank">Road Map</a></li>
                                     <li><a href="#" target="_blank">White Paper</a></li>
                                     <li><a href="#" target="_blank">GitHub</a></li>
                                     <li><a href="#" target="_blank">Documentation</a></li>
