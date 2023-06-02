@@ -96,7 +96,7 @@ function Homepage() {
                                 <img src={BoxLogo1} alt="BoxLogo1" className="feature_img" />
                                 <h3>Unprecedented Security</h3>
                                 <p>Empowered with tools mitigating the previous and anticipated attacks.</p>
-                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
+                               {/* <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a> */}
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-6">
@@ -115,7 +115,7 @@ function Homepage() {
                                 <h3>Efficient
                                     Architecture</h3>
                                 <p>Optimized storage and computational algorithms ensure reasonable costs.</p>
-                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                {/*<a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a> */}
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-6">
@@ -124,7 +124,7 @@ function Homepage() {
                                 <h3>Latest Cryptography
                                     Implementation</h3>
                                 <p>On-chain and off-chain signatures safely secure sensitive transactions.</p>
-                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                {/*<a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a> */}
                             </div>
                         </div>
                     </div>
