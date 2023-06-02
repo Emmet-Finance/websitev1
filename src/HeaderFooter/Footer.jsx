@@ -57,9 +57,9 @@ function Footer() {
                                     <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank">Road Map</a></li>
                                     <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">White Paper</a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
                                     <li><a href="https://docs.emmet.finance/" target="_blank">Documentation</a></li>
-                                    <li><a href="#" target="_blank">Audit Report</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Audit Report</a></li>
                                     <li><a href="https://docs.emmet.finance/security/bug-bounty" target="_blank">Bug Bounty</a></li>
-                                    <li><a href="#" target="_blank">Widget</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Widget</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,8 +67,8 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#" target="_blank">Governance</a></li>
-                                    <li><a href="#" target="_blank">Brand Kit</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Governance</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Brand Kit</a></li>
                                     <li><a href="https://docs.emmet.finance/team/join-us" target="_blank">Careers</a></li>
                                     <li><a href="https://docsend.com/view/rniuzwaj87m5idun" target="_blank">Pitch Deck</a></li>
                                     <li><a href="https://form.jotform.com/231456892158061" target="_blank">Investor Form</a></li>
@@ -79,10 +79,10 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Ecosystem</h3>
                                 <ul className="quickLinks">
-                                    {/*<li><a href="#" target="_blank">Explorer</a></li>
-                                    <li><a href="#" target="_blank">Bridge Contracts</a></li>
-                                    <li><a href="#" target="_blank">Token Contracts</a></li>
-    <li><a href="#" target="_blank">Token Listing</a></li> */}
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Explorer</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Bridge Contracts</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Token Contracts</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Token Listing</a></li>
                                     <li><a href="https://github.com/Emmet-Finance/token-faucet" target="_blank">Faucet</a></li>
                                 </ul>
                             </div>
