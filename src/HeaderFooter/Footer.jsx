@@ -56,10 +56,10 @@ function Footer() {
                                 <ul className="quickLinks">
                                     <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank">Road Map</a></li>
                                     <li><a href="#" target="_blank">White Paper</a></li>
-                                    <li><a href="#" target="_blank">GitHub</a></li>
-                                    <li><a href="#" target="_blank">Documentation</a></li>
+                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
+                                    <li><a href="https://docs.emmet.finance/" target="_blank">Documentation</a></li>
                                     <li><a href="#" target="_blank">Audit Report</a></li>
-                                    <li><a href="#" target="_blank">Bug Bounty</a></li>
+                                    <li><a href="https://docs.emmet.finance/security/bug-bounty" target="_blank">Bug Bounty</a></li>
                                     <li><a href="#" target="_blank">Widget</a></li>
                                 </ul>
                             </div>
@@ -69,11 +69,10 @@ function Footer() {
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
                                     <li><a href="#" target="_blank">Governance</a></li>
-                                    <li><a href="#" target="_blank">Twitter</a></li>
-                                    <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank">Discord</a></li>
-                                    <li><a href="#" target="_blank">Telegram</a></li>
                                     <li><a href="#" target="_blank">Brand Kit</a></li>
-                                    <li><a href="#" target="_blank">Careers</a></li>
+                                    <li><a href="https://docs.emmet.finance/team/join-us" target="_blank">Careers</a></li>
+                                    <li><a href="https://docsend.com/view/rniuzwaj87m5idun" target="_blank">Pitch Deck</a></li>
+                                    <li><a href="https://form.jotform.com/231456892158061" target="_blank">Investor Form</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -85,7 +84,7 @@ function Footer() {
                                     <li><a href="#" target="_blank">Bridge Contracts</a></li>
                                     <li><a href="#" target="_blank">Token Contracts</a></li>
                                     <li><a href="#" target="_blank">Token Listing</a></li>
-                                    <li><a href="#" target="_blank">Referrals</a></li>
+                                    <li><a href="https://github.com/Emmet-Finance/token-faucet" target="_blank">Faucet</a></li>
                                 </ul>
                             </div>
                         </div>
