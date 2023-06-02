@@ -15,12 +15,12 @@ function Header() {
         <Navbar.Toggle aria-controls="emmetNav" />
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">BRIDGE</Nav.Link>
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">TRADE</Nav.Link>
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">STAKE</Nav.Link>
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">FARM</Nav.Link>
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">LEND</Nav.Link>
-            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">VALIDATE</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">BRIDGE</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">TRADE</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">STAKE</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">FARM</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">LEND</Nav.Link>
+            <Nav.Link href="#link" title="Coming Soon" onClick={event => event.preventDefault()} onClick={() => { alert('Coming Soon'); return false; }} target="_blank">VALIDATE</Nav.Link>
           </Nav>
           <a href="#" className='enterApp'>Enter app <img src={LinkLogo} alt="LinkLogo" /></a>
         </Navbar.Collapse>
