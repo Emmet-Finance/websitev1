@@ -80,10 +80,10 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Ecosystem</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#" target="_blank">Explorer</a></li>
+                                    {/*<li><a href="#" target="_blank">Explorer</a></li>
                                     <li><a href="#" target="_blank">Bridge Contracts</a></li>
                                     <li><a href="#" target="_blank">Token Contracts</a></li>
-                                    <li><a href="#" target="_blank">Token Listing</a></li>
+    <li><a href="#" target="_blank">Token Listing</a></li> */}
                                     <li><a href="https://github.com/Emmet-Finance/token-faucet" target="_blank">Faucet</a></li>
                                 </ul>
                             </div>
