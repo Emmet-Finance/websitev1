@@ -68,7 +68,7 @@ function Footer() {
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
                                     <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Governance</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">Brand Kit</a></li>
+                                    <li><a href="https://docs.emmet.finance/ecosystem-and-partnerships/brand-and-logos" target="_blank">Brand Kit</a></li>
                                     <li><a href="https://docs.emmet.finance/team/join-us" target="_blank">Careers</a></li>
                                     <li><a href="https://docsend.com/view/rniuzwaj87m5idun" target="_blank">Pitch Deck</a></li>
                                     <li><a href="https://form.jotform.com/231456892158061" target="_blank">Investor Form</a></li>
