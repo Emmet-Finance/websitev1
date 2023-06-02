@@ -55,8 +55,7 @@ function Footer() {
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
                                     <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank">Road Map</a></li>
-                                    <li><a href="#" target="_blank">White Paper</a></li>
-                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
+                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">White Paper</a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
                                     <li><a href="https://docs.emmet.finance/" target="_blank">Documentation</a></li>
                                     <li><a href="#" target="_blank">Audit Report</a></li>
                                     <li><a href="https://docs.emmet.finance/security/bug-bounty" target="_blank">Bug Bounty</a></li>
