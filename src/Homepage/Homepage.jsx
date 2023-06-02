@@ -74,7 +74,7 @@ function Homepage() {
                             <ul className="social">
                                 <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={Telegram} alt="Telegram" /></a></li>
                                 <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="https://discord.com/invite/yuXxDctC4W" target="_blank"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://discord.gg/yuXxDctC4W" target="_blank"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
                             <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank"><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
@@ -106,7 +106,7 @@ function Homepage() {
                                 <p>Easy learning curve
                                     for non-coding users
                                     and seasoned developers.</p>
-                                <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a>
+                                {/* <a href="#" className='readMore' target="_blank">READ MORE <img src={LinkLogo} alt="Link" /></a> */}
                             </div>
                         </div>
                         <div className="col-lg-3 col-md-6 col-sm-6 col-6">
