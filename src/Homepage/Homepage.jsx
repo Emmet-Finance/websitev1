@@ -7,7 +7,7 @@ import Twiter from '../assets/img/social/twiter.svg';
 import Discord from '../assets/img/social/discord.svg';
 import Github from '../assets/img/social/github.svg';
 
-import Tokens1 from '../assets/img/tokken/Tokens.svg';
+{/*import Tokens1 from '../assets/img/tokken/Tokens.svg';
 import Tokens2 from '../assets/img/tokken/Tokens (1).svg';
 import Tokens3 from '../assets/img/tokken/Tokens (2).svg';
 import Tokens4 from '../assets/img/tokken/Tokens (3).svg';
@@ -20,7 +20,7 @@ import Tokens10 from '../assets/img/tokken/Tokens (9).svg';
 import Tokens11 from '../assets/img/tokken/Tokens (10).svg';
 import Tokens12 from '../assets/img/tokken/Tokens (11).svg';
 import Tokens13 from '../assets/img/tokken/Tokens (12).svg';
-import Tokens14 from '../assets/img/tokken/Tokens (13).svg';
+import Tokens14 from '../assets/img/tokken/Tokens (13).svg';*/}
 
 import BoxLogo1 from '../assets/img/boxlogo-1.svg';
 import BoxLogo2 from '../assets/img/boxlogo-2.svg';
@@ -44,7 +44,7 @@ import TypeWriter from './Typewriter';
 import IconSlider from './IconSlider';
 // import Video from '../assets/img/bg-video.mp4';
 import VideoAutoplay from './VideoAutoplay';
-import Form from './Form';
+// import Form from './Form';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
 
@@ -68,15 +68,15 @@ function Homepage() {
                                 via a Decentralized Bridge.
                             </h1>
                             <p>A DAO-managed decentralized fungible token bridge for swift and secure cross-chain transactions from an intuitive user-friendly interface.</p>
-                            <a href="#" className='enterApp' target="_blank">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
+                            <a href="#" className='enterApp' target="_blank" rel="noopener noreferrer">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
                         </div>
                         <div className="banar_bottom">
                             <ul className="social">
-                                <li><a href="https://t.me/Emmet_Finance" target="_blank"><img src={Telegram} alt="Telegram" /></a></li>
-                                <li><a href="https://twitter.com/Emmet_Finance" target="_blank"><img src={Twiter} alt="Twiter" /></a></li>
-                                <li><a href="https://discord.gg/yuXxDctC4W" target="_blank"><img src={Discord} alt="Discord" /></a></li>
+                                <li><a href="https://t.me/Emmet_Finance" target="_blank" rel="noopener noreferrer"><img src={Telegram} alt="Telegram" /></a></li>
+                                <li><a href="https://twitter.com/Emmet_Finance" target="_blank" rel="noopener noreferrer"><img src={Twiter} alt="Twiter" /></a></li>
+                                <li><a href="https://discord.gg/yuXxDctC4W" target="_blank" rel="noopener noreferrer"><img src={Discord} alt="Discord" /></a></li>
                             </ul>
-                            <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank"><img src={Github} alt="Github" /> SOURCE CODE</a>
+                            <a href="https://github.com/Emmet-Finance" className='gitUrl' target="_blank" rel="noopener noreferrer"><img src={Github} alt="Github" /> SOURCE CODE</a>
                         </div>
                     </div>
                 </div>
