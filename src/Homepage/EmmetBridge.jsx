@@ -2,7 +2,7 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import EmmetLogo from '../assets/img/logo-2.svg';
-import DownArrow from '../assets/img/chevron-down.svg';
+// import DownArrow from '../assets/img/chevron-down.svg';
 import UpDownCirlce from '../assets/img/up-down-circle.svg';
 import LinkLogo from '../assets/img/link.svg';
 import Binance from '../assets/img/coin-logo/Binance_logo.svg';
@@ -88,7 +88,7 @@ function EmmetBridge() {
                             <span>0.001 ETH</span>
                         </li>
                     </ul>
-                    <a href="#" className='enterApp'>cONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
+                    <a href="https://emmet.finance" className='enterApp'>cONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
                 </div>
             </div>
         </div>
