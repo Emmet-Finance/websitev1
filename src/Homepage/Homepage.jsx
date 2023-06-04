@@ -7,20 +7,20 @@ import Twiter from '../assets/img/social/twiter.svg';
 import Discord from '../assets/img/social/discord.svg';
 import Github from '../assets/img/social/github.svg';
 
-{/*import Tokens1 from '../assets/img/tokken/Tokens.svg';
-import Tokens2 from '../assets/img/tokken/Tokens (1).svg';
-import Tokens3 from '../assets/img/tokken/Tokens (2).svg';
-import Tokens4 from '../assets/img/tokken/Tokens (3).svg';
-import Tokens5 from '../assets/img/tokken/Tokens (4).svg';
-import Tokens6 from '../assets/img/tokken/Tokens (5).svg';
-import Tokens7 from '../assets/img/tokken/Tokens (6).svg';
-import Tokens8 from '../assets/img/tokken/Tokens (7).svg';
-import Tokens9 from '../assets/img/tokken/Tokens (8).svg';
-import Tokens10 from '../assets/img/tokken/Tokens (9).svg';
-import Tokens11 from '../assets/img/tokken/Tokens (10).svg';
-import Tokens12 from '../assets/img/tokken/Tokens (11).svg';
-import Tokens13 from '../assets/img/tokken/Tokens (12).svg';
-import Tokens14 from '../assets/img/tokken/Tokens (13).svg';*/}
+// import Tokens1 from '../assets/img/tokken/Tokens.svg';
+// import Tokens2 from '../assets/img/tokken/Tokens (1).svg';
+// import Tokens3 from '../assets/img/tokken/Tokens (2).svg';
+// import Tokens4 from '../assets/img/tokken/Tokens (3).svg';
+// import Tokens5 from '../assets/img/tokken/Tokens (4).svg';
+// import Tokens6 from '../assets/img/tokken/Tokens (5).svg';
+// import Tokens7 from '../assets/img/tokken/Tokens (6).svg';
+// import Tokens8 from '../assets/img/tokken/Tokens (7).svg';
+// import Tokens9 from '../assets/img/tokken/Tokens (8).svg';
+// import Tokens10 from '../assets/img/tokken/Tokens (9).svg';
+// import Tokens11 from '../assets/img/tokken/Tokens (10).svg';
+// import Tokens12 from '../assets/img/tokken/Tokens (11).svg';
+// import Tokens13 from '../assets/img/tokken/Tokens (12).svg';
+// import Tokens14 from '../assets/img/tokken/Tokens (13).svg';*
 
 import BoxLogo1 from '../assets/img/boxlogo-1.svg';
 import BoxLogo2 from '../assets/img/boxlogo-2.svg';
