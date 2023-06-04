@@ -55,11 +55,11 @@ function Footer() {
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
                                     <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank" rel="noopener noreferrer">Road Map</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">White Paper </a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">White Paper </a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
                                     <li><a href="https://docs.emmet.finance/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Audit Report</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Audit Report</a></li>
                                     <li><a href="https://docs.emmet.finance/security/bug-bounty" target="_blank" rel="noopener noreferrer">Bug Bounty</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Widget</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Widget</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -67,7 +67,7 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Community</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Governance</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Governance</a></li>
                                     <li><a href="https://docs.emmet.finance/ecosystem-and-partnerships/brand-and-logos" target="_blank" rel="noopener noreferrer">Brand Kit</a></li>
                                     <li><a href="https://docs.emmet.finance/team/join-us" target="_blank" rel="noopener noreferrer">Careers</a></li>
                                     <li><a href="https://docsend.com/view/rniuzwaj87m5idun" target="_blank" rel="noopener noreferrer">Pitch Deck</a></li>
@@ -79,10 +79,10 @@ function Footer() {
                             <div className="footerWdiget">
                                 <h3>Ecosystem</h3>
                                 <ul className="quickLinks">
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Explorer</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Bridge Contracts</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Contracts</a></li>
-                                    <li><a href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Listing</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Explorer</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Bridge Contracts</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Contracts</a></li>
+                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Listing</a></li>
                                     <li><a href="https://github.com/Emmet-Finance/token-faucet" target="_blank" rel="noopener noreferrer">Faucet</a></li>
                                 </ul>
                             </div>
@@ -100,7 +100,7 @@ function Footer() {
             </div>
 			<div id="popup1" className="overlay">
                 <div className="popup">
-                    <a className="close" href="#">&times;</a>
+                    <a className="close" href="https://emmet.finance">&times;</a>
                     <div className="content">
                     Congratulations! We will contact with you very soon!
                     </div>
