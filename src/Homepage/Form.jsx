@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+//import React,{useState} from 'react';
+import React from 'react';
 
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
@@ -190,7 +191,7 @@ function Form() {
 								<div className="col-12">
 									<div className="col-4"></div>
 									<div className="col-4">
-  <a href="" className="enterApp">Submit</a>
+  <a href="https://emmet.finance" className="enterApp">Submit</a>
 </div>
 									<div className="col-4"></div>
 								</div>
