@@ -11,10 +11,10 @@ function PrivacyPolicy() {
     <div>
       <Header />
       <h1>Privacy Policy</h1>
-      <p>Emmet Finance ("Emmet Finance") is committed to protecting and respecting your privacy. This Privacy Policy describes how your personal or behavioral data is collected, used, and stored when you access https://emmet.finance/ (the "Site").</p>
+           <p>Emmet Finance ("Emmet Finance") is committed to protecting and respecting your privacy. This Privacy Policy describes how your personal or behavioral data is collected, used, and stored when you access https://emmet.finance/ (the "Site").</p>
 
       <h2>2. What does this Privacy Policy cover?</h2>
-      <p>This Privacy Policy sets forth our policy for collecting or using personal or behavioral data in connection with users accessing and using the Site.</p>
+         <p>This Privacy Policy sets forth our policy for collecting or using personal or behavioral data in connection with users accessing and using the Site.</p>
 
       <h2>3. The Information We Collect</h2>
       <p>Emmet Finance does not collect your personal information and does not use any automatic tracking technologies. The Emmet Finance application leverages blockchain technologies that use only public information available on the blockchain. You are not required to provide any personal information to the Site. However, the transactions conducted from your wallets are publicly accessible on blockchain networks accessed through the Site.</p>
