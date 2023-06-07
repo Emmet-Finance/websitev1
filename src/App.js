@@ -5,7 +5,7 @@ import './responsive.css';
 import Homepage from './Homepage/Homepage';
 import Form from './Homepage/Form';
 import React from 'react';
-import Test1 from './Homepage/Test1';
+import PrivacyPolicy from './Homepage/PrivacyPolicy';
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/Form" element={<Form />} />
-          <Route path="/test1" element={<Test1 />} />
+          <Route path="/form" element={<Form />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </Router>
     </div>

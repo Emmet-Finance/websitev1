@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
 
-function test1() {
+function PrivacyPolicy() {
   return (
     <div>
       <h1>:Test12
@@ -12,4 +12,4 @@ function test1() {
   );
 }
 
-export default test1;
+export default PrivacyPolicy;
