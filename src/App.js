@@ -17,7 +17,7 @@ function App() {
           <Route path="/Form" element={<Form />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
-        <ScrollToTop smooth />
+        <ScrollToTop smooth color="#FFC914" />
       </Router>
     </div>
   );
