@@ -4,8 +4,9 @@ import './App.css';
 import './responsive.css';
 import Homepage from './Homepage/Homepage';
 import Form from './Homepage/Form';
-import React from 'react';
 import PrivacyPolicy from './Homepage/PrivacyPolicy';
+import ScrollToTop from "react-scroll-to-top";
+import React from 'react';
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/form" element={<Form />} />
+          <Route path="/Form" element={<Form />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
+        <ScrollToTop smooth />
       </Router>
     </div>
   );
