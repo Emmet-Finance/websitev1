@@ -1,7 +1,10 @@
 import React from 'react';
 
 import Header from '../HeaderFooter/Header';
+
 import Footer from '../HeaderFooter/Footer';
+
+
 
 function PrivacyPolicy() {
   return (
@@ -32,7 +35,7 @@ function PrivacyPolicy() {
       <p>We may use social and developer networks such as Discord, Twitter, and Github. When you use them, the operators of the respective social and developer networks may record that you are on such networks. This processing of your personal data lies in the responsibility of these networks and occurs according to their privacy policies. Emmet Finance is not responsible for data collected by these networks. We only use these platforms to inform our community of updates and answer user questions.</p>
       
       <p>If you have any questions about this page or our data practices generally, please contact info@emmet.finance.</p>
-      
+      <Footer />
 
     </div>
   );
