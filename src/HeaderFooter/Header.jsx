@@ -9,7 +9,7 @@ function Header() {
   return (
     <Navbar expand="lg">
       <Container>
-        <Navbar.Brand href="#home"><img src={Logo} alt="Logo" /></Navbar.Brand>
+        <Navbar.Brand href="https://emmet.finance"><img src={Logo} alt="Logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="emmetNav" />
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
