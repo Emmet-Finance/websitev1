@@ -73,6 +73,7 @@ function Footer() {
                                     <li><a href="https://docsend.com/view/rniuzwaj87m5idun" target="_blank" rel="noopener noreferrer">Pitch Deck</a></li>
                                     <li><a href="https://form.jotform.com/231456892158061" target="_blank" rel="noopener noreferrer">Investor Form</a></li>
                                     <li><a href="https://forms.gle/7vDUd725TowzSMu1A" target="_blank" rel="noopener noreferrer">Partner Application</a></li>
+                                    <li><a href="https://zealy.io/c/emmet-finance/invite/FNMunfvDcjAVnSQK6OLa6" target="_blank" rel="noopener noreferrer">Zealy</a></li>                           
                                 </ul>
                             </div>
                         </div>
