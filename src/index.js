@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga';
 
 // Инициализация Google Analytics
-ReactGA.initialize('UA-265686052-1');
+ReactGA.initialize('G-0DP30PHL61');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
