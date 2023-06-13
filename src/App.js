@@ -10,6 +10,11 @@ import PrivacyPolicy from './Homepage/PrivacyPolicy';
 import ScrollToTop from "react-scroll-to-top";
 import React from 'react';
 
+
+// Инициализация Google Analytics
+ReactGA.initialize('G-0DP30PHL61');
+
+
 function usePageViews() {
   let location = useLocation();
 
