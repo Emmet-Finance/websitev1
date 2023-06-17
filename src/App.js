@@ -1,13 +1,12 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import './responsive.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import BridgeRedirect from './BridgeRedirect';
 import Homepage from './Homepage/Homepage';
 import Form from './Homepage/Form';
 import PrivacyPolicy from './Homepage/PrivacyPolicy';
-import ScrollToTop from "react-scroll-to-top";
-import React from 'react';
+import ScrollToTop from 'react-scroll-to-top';
+import './App.css';
+import './responsive.css';
 
 function App() {
   return (
@@ -15,7 +14,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/Form" element={<Form />} />
+          <Route path="/bridge" element={<BridgeRedirect />} />
+          <Route path="/form" element={<Form />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <ScrollToTop smooth color="#35CE8D" />
