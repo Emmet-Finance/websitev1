@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import BridgeRedirect from './BridgeRedirect';
 import Homepage from './Homepage/Homepage';
 import Form from './Homepage/Form';
 import PrivacyPolicy from './Homepage/PrivacyPolicy';
@@ -14,7 +13,6 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/bridge" element={<BridgeRedirect />} />
           <Route path="/form" element={<Form />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
