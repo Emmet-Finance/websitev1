@@ -7,6 +7,7 @@ import Homepage from './Homepage/Homepage';
 import Form from './Homepage/Form';
 import PrivacyPolicy from './Homepage/PrivacyPolicy';
 import ScrollToTop from "react-scroll-to-top";
+import React from 'react';
 
 function App() {
   return (
