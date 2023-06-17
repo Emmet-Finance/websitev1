@@ -1,8 +1,14 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BridgeRedirect = () => {
-  return <Redirect to="https://master.d3rd013nklfbmi.amplifyapp.com/" />;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate('https://master.d3rd013nklfbmi.amplifyapp.com/', { replace: true });
+  }, [navigate]);
+
+  return null;
 };
 
 export default BridgeRedirect;
