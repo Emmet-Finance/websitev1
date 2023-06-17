@@ -9,7 +9,6 @@ import './responsive.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  usePageViews();
 
   return (
     <div className="App">
