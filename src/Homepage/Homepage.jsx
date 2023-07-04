@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import EmmetBridge from './EmmetBridge';
 
 import LinkLogo from '../assets/img/link.svg';
@@ -47,10 +47,13 @@ import VideoAutoplay from './VideoAutoplay';
 // import Form from './Form';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
-
+import EmmetBridge2 from './EmmetBridge2';
 
 
 function Homepage() {
+
+    
+
     return (
         <>
 
@@ -87,6 +90,8 @@ function Homepage() {
                     <IconSlider/>
                 </div>
             </section>
+
+            
 
             <section className="feature_box_area">
                 <div className="container">
@@ -135,7 +140,7 @@ function Homepage() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
-                            <EmmetBridge />
+                            <EmmetBridge2 />
                         </div>
                         <div className="col-lg-6">
                             <div className="emmetBridge_content_area">
