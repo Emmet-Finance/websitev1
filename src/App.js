@@ -7,8 +7,8 @@ import ScrollToTop from 'react-scroll-to-top';
 import './App.css';
 import './responsive.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import EmmetBridge2 from './Homepage/EmmetBridge2';
-import TransactionDetails from './Homepage/TransactionDetails';
+import EmmetBridgepage from './Homepage/EmmetBridgepage';
+
 
 
 function App() {
@@ -19,8 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/form" element={<Form />} />
-          <Route path="/emmetbridge2" element={<EmmetBridge2 />} />
-          <Route path="/transactiondetails" element={<TransactionDetails />} />
+          <Route path="/emmetbridge" element={<EmmetBridgepage/>} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <ScrollToTop smooth color="#35CE8D" />

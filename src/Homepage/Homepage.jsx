@@ -140,7 +140,7 @@ function Homepage() {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-6">
-                            <EmmetBridge2 />
+                            <EmmetBridge />
                         </div>
                         <div className="col-lg-6">
                             <div className="emmetBridge_content_area">

@@ -262,11 +262,148 @@
         border-color: #35CE8D;
     }
 
+    nav.header2.navbar button.navbar-toggler {
+        display: none;
+    }
+
+    .mobileMenu {
+        display: flex;
+    }
+
+    .navbar.header2>.container {
+        padding: 0;
+    }
+
+    button#dropdown-enterApp span {
+        display: none;
+    }
+
+    nav.header2.navbar {
+        padding: 20px 15px;
+    }
+
+    nav.header2.navbar a.navbar-brand img {
+        height: 30px;
+        width: 38px;
+        object-fit: cover;
+        object-position: left;
+    }
+    
+    nav.header2.navbar a.navbar-brand {
+        width: 38px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+    }
+
+    .navbar.header2>.container {
+        padding: 0 !important;
+    }
+
+    .emmetBridgeContainer {
+        padding: 86px 0 40px 0;
+    }
+
+    .mobFooter {
+        display: block;
+    }
+
+    .scroll-to-top,
+    .deskFooter {
+        display: none !important;
+    }
+
+    .SlipTolerModal .modal-content {
+        padding: 20px 10px;
+        border-radius: 0;
+    }
+    
+    .SlipTolerModal .modal-header {
+        padding: 0;
+    }
+    
+    .SlipTolerModal .modal-header .btn-close {
+        margin: 0;
+    }
+    
+    .SlipTolerModal .modal-dialog {
+        margin: 40px 0 0 0;
+    }
+    
+
 }
 
 /* and (max-width: 767px) */
 
 @media only screen and (max-width: 575px) {
+    
+
+    .emmetBridgeContainer .container {
+        padding: 0 !important;
+    }
+    
+    .emmetBridgeContainer .EmmetBridge_Box {
+        box-shadow: none;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    
+    .bridgeDrop.dropdown .dropdown-menu::before,
+    .tokkenDrop.dropdown .dropdown-menu::before {
+        display: none;
+    }
+    
+    .tokkenDrop.dropdown .dropdown-menu {
+        top: -56px !important;
+        border-radius: 8px;
+        box-shadow: 0 0 32px 0 rgba(28, 49, 68, 0.25);
+        background-color: #fff;
+        left: -23px !important;
+        width: calc(100vw - 29px);
+        transform: unset !important;
+        top: -30px !important;
+        overflow: hidden;
+    }
+    
+    
+    .bridgeDrop.dropdown .dropdown-menu {
+        left: auto !important;
+        right: -22px !important;
+        overflow: hidden;
+        transform: unset !important;
+        top: -30px !important;
+        width: calc(100vw - 30px);
+    }
+    
+    .dropSearch {
+        display: none;
+    }
+    
+    .hoverIcons {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .transactionDetails {
+        box-shadow: none;
+        padding: 0 15px;
+    }
+
+    .steepLine:after {
+        width: 35px;
+        margin-left: 15px;
+    }
+
+    .address_Dropdown.dropdown .dropdown-menu {
+        display: block !important;
+        width: auto;
+        left: 0 !important;
+        right: 0px !important;
+    }
 
     img {
         max-width: 100%;
@@ -688,6 +825,15 @@
     ul.footer_social li {
         margin-bottom: 15px;
     }    
+
+    .inofText>span {
+        left: -128px;
+        width: calc(100vw - 20px);
+    }
+    
+    .inofText>span:after {
+        left: 129px;
+    }
 
 }
 

@@ -15,8 +15,8 @@ a {
 }
 
 ul {
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   list-style: none;
 }
 
@@ -453,6 +453,7 @@ img.updownCircle {
   color: #8d98a1;
   font-family: Montserrat;
   margin-bottom: 4px;
+  white-space: nowrap;
 }
 
 .emmetFrom>div select {
@@ -520,6 +521,7 @@ button.copyBridge {
   box-shadow: none;
   appearance: none;
   height: 36px;
+  flex-grow: 1;
 }
 
 .emmetFrom.amountMax>input::-webkit-outer-spin-button,
@@ -1024,6 +1026,7 @@ ul.quickLinks li a {
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
+  text-decoration: none;
 }
 
 ul.quickLinks li {
@@ -1378,6 +1381,18 @@ span.amountHeight {
   margin-top: 35px;
 }
 
+.mobileMenu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  flex-grow: 1;
+  gap: 10px;
+}
+
+.moreDrop.dropdown .dropdown-menu,
+.address_Dropdown.dropdown .dropdown-menu,
+.mobileDropdown .dropdown-menu,
 .tokkenDrop .dropdown-menu,
 .bridgeDrop .dropdown-menu,
 .enterAppDropdown .dropdown-menu {
@@ -1393,6 +1408,9 @@ span.amountHeight {
   z-index: 99;
 }
 
+.moreDrop.dropdown .dropdown-menu .dropdown-item,
+.address_Dropdown.dropdown .dropdown-menu .dropdown-item,
+.mobileDropdown .dropdown-menu .dropdown-item,
 .tokkenDrop .dropdown-menu .dropdown-item,
 .bridgeDrop .dropdown-menu .dropdown-item,
 .enterAppDropdown .dropdown-menu .dropdown-item {
@@ -1413,6 +1431,13 @@ span.amountHeight {
   font-family: Montserrat;
 }
 
+.moreDrop.dropdown .dropdown-menu .dropdown-item:hover,
+.moreDrop.dropdown .dropdown-menu .dropdown-item:active,
+.mobileDropdown .dropdown-menu .dropdown-item:active,
+.tokkenDrop .dropdown-menu .dropdown-item:active,
+.bridgeDrop .dropdown-menu .dropdown-item:active,
+.enterAppDropdown .dropdown-menu .dropdown-item:active,
+.mobileDropdown .dropdown-menu .dropdown-item:hover,
 .tokkenDrop .dropdown-menu .dropdown-item:hover,
 .bridgeDrop .dropdown-menu .dropdown-item:hover,
 .enterAppDropdown .dropdown-menu .dropdown-item:hover,
@@ -1420,6 +1445,21 @@ span.amountHeight {
   background-color: #f4f5f6;
 }
 
+.dropdown-toggle::after {
+  border: 0 !important;
+  background-color: transparent;
+  background-image: url("assets/img/new/down.svg");
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.moreDrop.dropdown .dropdown-menu::before,
+.mobileDropdown .dropdown-menu::before,
 .tokkenDrop .dropdown-menu::before,
 .bridgeDrop .dropdown-menu::before,
 .enterAppDropdown .dropdown-menu::before {
@@ -1666,7 +1706,11 @@ p.warningText {
   text-align: left;
   color: #f25f5c;
   padding: 3px 0 0 0;
-  display: none;
+  /* display: none; */
+}
+
+.warningTextItem {
+  display: block;
 }
 
 .calculateBox {
@@ -2132,4 +2176,197 @@ button.copyAddress {
 
 .container {
   max-width: 1145px !important;
+}
+
+.navbar.header2>.container {
+  max-width: 100% !important;
+  padding: 0 30px;
+}
+
+.emmetBridgeContainer {
+  padding: 130px 0 40px 0;
+}
+
+.emmetBridgeContainer .EmmetBridge_Box {
+  margin: 0 auto;
+}
+
+.emmetBridgeContainer .transactionDetails {
+  margin: 0 auto;
+}
+
+.address_Dropdown.dropdown button#addressDropdown {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
+  border: 0;
+}
+
+.address_Dropdown.dropdown button#addressDropdown:after {
+  display: none;
+}
+
+.address_Dropdown.dropdown .dropdown-menu {
+  display: none !important;
+}
+
+button#coin_Drop {
+  background: transparent;
+  border: 0;
+  padding: 5px 25px 5px 5px;
+  border-radius: 8px;
+  background-color: #f4f5f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}
+
+img.BinanceIcon {
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #1c3144;
+}
+
+.mobileDropdown.coinDrop.dropdown .dropdown-toggle::after {
+  right: 0;
+}
+
+button#languageDrop {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  height: 40px;
+  padding: 0;
+  padding: 10px;
+}
+
+.mobileDropdown.languageDrop .dropdown-menu {
+  right: auto !important;
+  left: -77px !important;
+  width: 340px;
+  max-width: calc(100vw - 30px);
+}
+
+.mobileDropdown.languageDrop .dropdown-menu::before {
+  left: 87px;
+  right: auto;
+}
+
+.mobileDropdown.coinDrop .dropdown-menu {
+  left: auto;
+  right: -157px !important;
+  width: 344px;
+  max-width: calc(100vw - 30px);
+}
+
+.mobileDropdown.coinDrop .dropdown-menu::before {
+  right: 156px;
+}
+
+nav.header2.navbar button.navbar-toggler {
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+span.iconColor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+}
+
+span.iconColor.Goerli {
+  background-color: #62688f;
+}
+
+span.iconColor.Goerli img, span.iconColor.Polygon img {
+  filter: brightness(5);
+}
+
+span.iconColor.TBSC {
+  background-color: #1c3144;
+}
+
+span.iconColor.Polygon {
+  background-color: #9a3c8f;
+}
+
+.mobFooter {
+  display: none;
+}
+
+.mobileNavContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.mobileFooterLink, button#moreDrop-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #8d98a1;
+  text-decoration: none;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  transition: .3s ease all;
+}
+
+.mobileFooterLink img, button#moreDrop-menu img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+button#moreDrop-menu:after {
+  display: none;
+}
+
+.mobileFooterLink:hover, 
+button#moreDrop-menu:hover, 
+.show button#moreDrop-menu {
+  color: #000;
+}
+
+.mobileFooterLink:hover img, 
+.show button#moreDrop-menu img, 
+button#moreDrop-menu:hover img {
+  filter: brightness(0);
+}
+
+.moreDrop.dropdown .dropdown-menu {
+  right: -1px !important;
+  width: calc(100vw - 29px);
+  max-width: 575px;
+  margin-bottom: 10px;
+}
+
+.moreDrop.dropdown .dropdown-menu::before {
+  position: absolute;
+  bottom: auto;
+  top: 100%;
+  transform: rotate(180deg);
+  right: 4px;
 }

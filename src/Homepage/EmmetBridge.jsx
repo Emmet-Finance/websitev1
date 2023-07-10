@@ -88,7 +88,7 @@ function EmmetBridge() {
                             <span>0.001 ETH</span>
                         </li>
                     </ul>
-                    <a href="https://emmet.finance" className='enterApp'>cONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
+                    <a href="https://emmet.finance" className='enterApp'>CONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
                 </div>
             </div>
         </div>

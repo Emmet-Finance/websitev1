@@ -211,8 +211,12 @@ function EmmetBridge2() {
                         <div className="emmetFrom amountMax">
                             <input type="text" placeholder="Paste Here"  /> 
                             <p>SELF</p>
-                        </div>
-                        <p className="warningText">Not enough gas. <b>0.005 BNB</b> needed. </p>
+                        </div>       
+                        <p className="warningText">
+                            <span className='warningTextItem warningText1'>Not enough gas. <b>0.005 BNB</b> needed. </span>
+                            <span className='warningTextItem warningText2'>Insufficient balance. </span>
+                            <span className='warningTextItem warningText3'>Insufficient approval. </span>
+                        </p>
                     </div>
                     <div className="bridgeCalculation">
                         <div className="calculateBox">
