@@ -55,7 +55,7 @@ function Footer() {
                                 <h3>Developers</h3>
                                 <ul className="quickLinks">
                                     <li><a href="https://docs.emmet.finance/intro/roadmap" target="_blank" rel="noopener noreferrer">Road Map</a></li>
-                                    <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">White Paper </a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
+                                    <li><a href="https://github.com/Emmet-Finance/whitepaper-v1.0" target="_blank" rel="noopener noreferrer">White Paper </a></li>                                    <li><a href="https://github.com/Emmet-Finance" target="_blank">GitHub</a></li>
                                     <li><a href="https://docs.emmet.finance/" target="_blank" rel="noopener noreferrer">Documentation</a></li>
                                     <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Audit Report</a></li>
                                     <li><a href="https://docs.emmet.finance/security/bug-bounty" target="_blank" rel="noopener noreferrer">Bug Bounty</a></li>
