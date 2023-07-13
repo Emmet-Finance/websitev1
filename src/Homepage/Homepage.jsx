@@ -47,7 +47,7 @@ import VideoAutoplay from './VideoAutoplay';
 // import Form from './Form';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
-import EmmetBridge2 from './EmmetBridge2';
+import EmmetBridge2 from '../Bridge/EmmetBridge2';
 
 
 function Homepage() {

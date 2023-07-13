@@ -4,14 +4,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Logo from '../assets/img/logo.svg';
 import LinkLogo from '../assets/img/link.svg';
 
-import Metamask from '../assets/img/new/Metamask.svg';
-import Binance from '../assets/img/new/Binance.svg';
-import Trust from '../assets/img/new/Trust.svg';
-import Coinbase from '../assets/img/new/Coinbase.svg';
-import Down from '../assets/img/new/down.svg';
-
-
-import Dropdown from 'react-bootstrap/Dropdown';
 import React from 'react';
 
 function Header() {
@@ -22,7 +14,7 @@ function Header() {
         <Navbar.Toggle aria-controls="emmetNav" />
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
-            <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">BRIDGE</Nav.Link>
+            <Nav.Link href="/emmetbridge" title="Emmet.Bridge" >BRIDGE</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">TRADE</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">STAKE</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">FARM</Nav.Link>

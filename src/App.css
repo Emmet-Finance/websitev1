@@ -2178,7 +2178,7 @@ button.copyAddress {
   max-width: 1145px !important;
 }
 
-.navbar.header2>.container {
+.navbar.bridgeheader>.container {
   max-width: 100% !important;
   padding: 0 30px;
 }
@@ -2269,7 +2269,7 @@ button#languageDrop {
   right: 156px;
 }
 
-nav.header2.navbar button.navbar-toggler {
+nav.bridgeheader.navbar button.navbar-toggler {
   margin-left: auto;
   margin-right: 30px;
 }

@@ -262,7 +262,7 @@
         border-color: #35CE8D;
     }
 
-    nav.header2.navbar button.navbar-toggler {
+    nav.bridgeheader.navbar button.navbar-toggler {
         display: none;
     }
 
@@ -270,7 +270,7 @@
         display: flex;
     }
 
-    .navbar.header2>.container {
+    .navbar.bridgeheader>.container {
         padding: 0;
     }
 
@@ -278,18 +278,18 @@
         display: none;
     }
 
-    nav.header2.navbar {
+    nav.bridgeheader.navbar {
         padding: 20px 15px;
     }
 
-    nav.header2.navbar a.navbar-brand img {
+    nav.bridgeheader.navbar a.navbar-brand img {
         height: 30px;
         width: 38px;
         object-fit: cover;
         object-position: left;
     }
     
-    nav.header2.navbar a.navbar-brand {
+    nav.bridgeheader.navbar a.navbar-brand {
         width: 38px;
         margin: 0;
         padding: 0;
@@ -300,7 +300,7 @@
         padding-left: 15px !important;
     }
 
-    .navbar.header2>.container {
+    .navbar.bridgeheader>.container {
         padding: 0 !important;
     }
 

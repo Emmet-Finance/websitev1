@@ -2,15 +2,13 @@ import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 import EmmetLogo from '../assets/img/logo-2.svg';
-// import DownArrow from '../assets/img/chevron-down.svg';
 import UpDownCirlce from '../assets/img/up-down-circle.svg';
 import LinkLogo from '../assets/img/link.svg';
 import Binance from '../assets/img/coin-logo/Binance_logo.svg';
 import Ethereum from '../assets/img/coin-logo/ethereum-eth-logo.svg';
 import Busd from '../assets/img/binance-usd-busd-logo.svg';
 import Usdt from '../assets/img/tether-usdt-logo.svg';
-import MaxNumberSet from './MaxNumberSet';
-
+import MaxNumberSet from '../Bridge/MaxNumberSet';
 
 function EmmetBridge() {
     return ( 
@@ -88,7 +86,7 @@ function EmmetBridge() {
                             <span>0.001 ETH</span>
                         </li>
                     </ul>
-                    <a href="https://emmet.finance" className='enterApp'>CONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
+                    <a href="/emmetbridge" className='enterApp'>CONNECT WALLET <img src={LinkLogo} alt="LinkLogo" /></a>
                 </div>
             </div>
         </div>
