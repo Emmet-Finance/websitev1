@@ -28,8 +28,6 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 import SlippageTolerance from './SlippageToleranceModal';
 import TransactionDetails from './TransactionDetails';
 
-
-
 function EmmetBridge2() {
     const [isElementVisible, setIsElementVisible] = useState(true);
     const [isOtherElementVisible, setIsOtherElementVisible] = useState(false);
