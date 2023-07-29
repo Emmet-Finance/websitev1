@@ -1,6 +1,6 @@
 
 export * from 'emmet.sdk/utils';
-import {TCookie} from "./types";
+import { TCookie } from "./types";
 
 /*****************************************************
  *                                                   *
@@ -78,13 +78,9 @@ export const hasCookies = (): boolean => {
  */
 export const readCookieByKey = (key: string): string => {
     if (hasCookies() && cookieHasKey(key)) {
-        return document
-            .cookie
-            .split(';')
-            .find(item => {
-                return item.trim()
-                    .startsWith(`${key}=`)
-            })?.split('=')[1] as string;
+        const cookieValue = document.cookie.split(';')
+            .find(item => item.trim().startsWith(`${key}=`));
+        return cookieValue ? cookieValue.split('=')[1] : '';
     } else { return ''; }
 }
 
@@ -108,25 +104,25 @@ try {
 } catch (error) {
     console.error(error);
 }
-export {metamask};
+export { metamask };
 
 /**
  * Copies some text to clipboard
  * @param data a string to be copied to clipboard
  */
-export const copyAddressToClipboard = (account:string) => {
+export const copyAddressToClipboard = (account: string) => {
     navigator.clipboard.writeText(account);
 }
 
 
 /**
  * Sets the currentAccount to accounts[0]
- * @param accounts EVM accounts from Metamask
+ * @param accounts EVM accounts from a wallet
  */
 export const handleAccountsChanged = (accounts: any[]) => {
     if (accounts.length === 0) {
         // TODO: replace with a pop-up window:
-        console.log("Please, connect to Metamask")
+        console.log("Please, connect to a wallet")
     } else if (accounts[0] !== currentAccount) {
         currentAccount = accounts[0];
     }

@@ -7,7 +7,7 @@ import ScrollToTop from 'react-scroll-to-top';
 import './App.css';
 import './responsive.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import EmmetBridgepage from './Bridge/EmmetBridgepage';
+import EmmetBridgepage from './Bridge/components/EmmetBridgepage';
 
 
 

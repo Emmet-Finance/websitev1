@@ -2,9 +2,9 @@ import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import Close from '../assets/img/new/close.svg';
-import Info from '../assets/img/new/info.svg';
-import Check from '../assets/img/new/check.svg';
+
+import Info from '../../assets/img/new/info.svg';
+import Check from '../../assets/img/new/check.svg';
 
 function SlippageTolerance() {
   const [show, setShow] = useState(false);

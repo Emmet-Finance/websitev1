@@ -47,7 +47,7 @@ import VideoAutoplay from './VideoAutoplay';
 // import Form from './Form';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
-import EmmetBridge2 from '../Bridge/EmmetBridge2';
+import EmmetBridge2 from '../Bridge/components/EmmetBridge2';
 
 
 function Homepage() {
@@ -60,11 +60,11 @@ function Homepage() {
         <Header/>
 
         <div className="pageWrap">
-            <section className="banar_area home_banar">
+            <section className="banner_area home_banner">
                 <VideoAutoplay/>
                 <div className="container">
                     <div className="banag_content">
-                        <div className="banarContent_top">
+                        <div className="bannerContent_top">
                             <h1 className='page_title'>
                                 Secure ERC-20 Transfer <br />
                                 Between <span className='text_art'><TypeWriter/></span> <br />
@@ -73,7 +73,7 @@ function Homepage() {
                             <p>A DAO-managed decentralized fungible token bridge for swift and secure cross-chain transactions from an intuitive user-friendly interface.</p>
                             <a href="https://emmet.finance" className='enterApp' target="_blank" rel="noopener noreferrer">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
                         </div>
-                        <div className="banar_bottom">
+                        <div className="banner_bottom">
                             <ul className="social">
                                 <li><a href="https://t.me/Emmet_Finance" target="_blank" rel="noopener noreferrer"><img src={Telegram} alt="Telegram" /></a></li>
                                 <li><a href="https://twitter.com/Emmet_Finance" target="_blank" rel="noopener noreferrer"><img src={Twiter} alt="Twiter" /></a></li>

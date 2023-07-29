@@ -8,7 +8,7 @@ import Binance from '../assets/img/coin-logo/Binance_logo.svg';
 import Ethereum from '../assets/img/coin-logo/ethereum-eth-logo.svg';
 import Busd from '../assets/img/binance-usd-busd-logo.svg';
 import Usdt from '../assets/img/tether-usdt-logo.svg';
-import MaxNumberSet from '../Bridge/MaxNumberSet';
+import MaxNumberSet from '../Bridge/components/MaxNumberSet';
 
 function EmmetBridge() {
     return ( 

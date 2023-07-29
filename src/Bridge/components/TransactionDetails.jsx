@@ -1,36 +1,10 @@
 import React from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
 
-// import EmmetLogo from '../assets/img/logo-2.svg';
-import DownArrow from '../assets/img/chevron-down.svg';
-import UpDownCirlce from '../assets/img/up-down-circle.svg';
-import LinkLogo from '../assets/img/link.svg';
-import Binance from '../assets/img/coin-logo/Binance_logo.svg';
-import Ethereum from '../assets/img/coin-logo/ethereum-eth-logo.svg';
-import Busd from '../assets/img/binance-usd-busd-logo.svg';
-import Usdt from '../assets/img/tether-usdt-logo.svg';
-import CopyBridge from '../assets/img/new/copy.svg';
-import Goerli from '../assets/img/new/Goerli.svg';
-import BinanceIcon from '../assets/img/new/Binance.svg';
-import Polygon from '../assets/img/new/Polygon.svg';
-import SparkNet from '../assets/img/new/Goerli.svg';
-import Search from '../assets/img/new/search.svg';
-import Tether from '../assets/img/new/Tether.svg';
-import CopySmall from '../assets/img/new/copy2.svg';
-import Metamask from '../assets/img/new/Metamask.svg';
-import Star from '../assets/img/new/star.svg';
-import Starg from '../assets/img/new/starg.svg';
-import DAI from '../assets/img/new/DAI.svg';
-import Check from '../assets/img/new/check.svg';
-import Info from '../assets/img/new/info.svg';
-import Routing from '../assets/img/new/routing.svg';
-import Close from '../assets/img/new/close.svg';
-
-import MaxNumberSet from './MaxNumberSet';
-import ProgressBar from 'react-bootstrap/ProgressBar';
-import SlippageTolerance from './SlippageToleranceModal';
-
-
+import Goerli from '../../assets/img/new/Goerli.svg';
+import Polygon from '../../assets/img/new/Polygon.svg';
+import CopySmall from '../../assets/img/new/copy2.svg';
+import Metamask from '../../assets/img/new/Metamask.svg';
+import Close from '../../assets/img/new/close.svg';
 
 function TransactionDetails() {
 

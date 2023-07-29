@@ -30,12 +30,12 @@
 
     .footer_bottom,
     section.tokken_a,
-    section.home_banar,
+    section.home_banner,
     nav.navbar {
         max-height: unset;
     }
 
-    section.home_banar {
+    section.home_banner {
         padding: 235px 0 40px;
     }
 
@@ -44,13 +44,13 @@
         line-height: 1.2;
     }
 
-    .banarContent_top p {
+    .bannerContent_top p {
         font-size: 18px;
         line-height: 1.5;
         margin-bottom: 20px;
     }
 
-    .banar_bottom {
+    .banner_bottom {
         margin-top: 90px;
     }
 
@@ -431,7 +431,7 @@
         border-radius: 0;
     }
 
-    section.home_banar {
+    section.home_banner {
         padding: 165px 0 20px;
     }
 
@@ -442,7 +442,7 @@
         line-height: 36px;
     }
 
-    .banarContent_top p {
+    .bannerContent_top p {
         font-weight: 500;
         font-size: 12px;
         line-height: 18px;
@@ -535,11 +535,11 @@
         width: 125px;
     }
 
-    .banar_bottom {
+    .banner_bottom {
         margin-top: 60px;
     }
 
-    .banar_area .container {
+    .banner_area .container {
         padding-left: 20px;
         padding-right: 20px;
     }

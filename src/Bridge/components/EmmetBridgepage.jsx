@@ -1,10 +1,8 @@
 import React from 'react';
-import BridgeHeader from '../HeaderFooter/BridgeHeader';
+import BridgeHeader from './BridgeHeader';
 import EmmetBridge2 from './EmmetBridge2';
-import Footer from '../HeaderFooter/Footer';
-import MobileFooterNav from '../HeaderFooter/MobileFooter';
-
-
+import Footer from '../../HeaderFooter/Footer';
+import MobileFooterNav from '../../HeaderFooter/MobileFooter';
 
 function EmmetBridgepage() {
     return ( 

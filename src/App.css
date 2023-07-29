@@ -130,11 +130,11 @@ button#dropdown-enterApp:after {
   display: none;
 }
 
-section.home_banar {
+section.home_banner {
   position: relative;
   z-index: 1;
   padding: 235px 0 40px;
-  background-image: url("assets/img/banar.jpg");
+  background-image: url("assets/img/banner.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -148,21 +148,42 @@ h1.page_title {
   margin-bottom: 16px;
 }
 
-.banarContent_top {
+.bannerContent_top {
   max-width: 820px;
 }
 
-.banarContent_top p {
+.bannerContent_top p {
   font-size: 22px;
   line-height: 34px;
   margin-bottom: 30px;
 }
 
-.banar_bottom {
+.banner_bottom {
   margin-top: 132px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.Logo {
+  display: inline-flex;
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+  justify-self: center;
+  align-self: center;
+}
+
+.Caption{
+  display: inline-flex;
+  justify-self: center;
+  align-self: center;
+}
+
+.flexBox{
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 
 ul.social {
@@ -1127,8 +1148,8 @@ img.coinLogo {
   font-weight: 600;
 }
 
-.home_banar>video,
-video#banarVideo {
+.home_banner>video,
+video#bannerVideo {
   position: absolute;
   z-index: -1;
   left: 0;
