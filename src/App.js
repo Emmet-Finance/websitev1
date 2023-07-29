@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/form" element={<Form />} />
-          <Route path="/emmetbridge" element={<EmmetBridgepage/>} />
+          <Route path="/bridge" element={<EmmetBridgepage/>} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         <ScrollToTop smooth color="#35CE8D" />

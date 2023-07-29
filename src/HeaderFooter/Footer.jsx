@@ -86,6 +86,7 @@ function Footer() {
                                     <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Contracts</a></li>
                                     <li><a href="https://emmet.finance" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank" rel="noopener noreferrer">Token Listing</a></li>
                                     <li><a href="https://github.com/Emmet-Finance/token-faucet" target="_blank" rel="noopener noreferrer">Faucet</a></li>
+                                    <li><a href="https://www.npmjs.com/package/emmet.sdk" target="_blank" rel="noopener noreferrer">Emmet.SDK</a></li>
                                 </ul>
                             </div>
                         </div>
