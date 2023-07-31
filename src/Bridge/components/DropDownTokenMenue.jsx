@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useAppSelector } from '../state/store';
+import TokenItem from './TokenItem';
 
 import DownArrow from '../../assets/img/chevron-down.svg';
 import Usdt from '../../assets/img/tether-usdt-logo.svg';
@@ -12,12 +15,19 @@ import Star from '../../assets/img/new/star.svg';
 import DAI from '../../assets/img/new/DAI.svg';
 
 function DropDownTokenMenu(props) {
+
+    const dispatch = useDispatch();
+    const tokens = useAppSelector((state) => state.tokens);
+
     return (
         <div className="emmetTokken">
             <label htmlFor="">{props.name}</label>
             <Dropdown className='tokkenDrop'>
                 <Dropdown.Toggle id="">
-                    <img src={Usdt} alt="Binance" className='coinLogo' /> USDT
+                    <div className='flexBox'>
+                        {tokens && tokens.fromTokensLogo && <div className='Logo' dangerouslySetInnerHTML={{ __html: tokens.fromTokensLogo }}></div>}
+                        <div className='Caption'>{tokens.fromTokens}</div>
+                    </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     <div className="dropSearch">
@@ -26,33 +36,13 @@ function DropDownTokenMenu(props) {
                             <input type="search" placeholder='Search' name='Search' id='Search' />
                         </form>
                     </div>
-                    <Dropdown.Item href="#">
-                        <p className='tokenIconTit'><img src={Tether} alt="Tether" /> USDT</p>
-                        <p className='tokkenValue'><span>Tether:</span> 1,257.00</p>
-                        <div className="hoverIcons">
-                            <button type='button' className='copyLink'><img src={CopySmall} alt="CopySmall" /></button>
-                            <button type='button' className='copyLink'><img src={Metamask} alt="Metamask" /></button>
-                            <button type='button' className='copyLink'><img src={Star} alt="Star" /></button>
-                        </div>
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#">
-                        <p className='tokenIconTit'><img src={DAI} alt="DAI" /> DAI</p>
-                        <p className='tokkenValue'><span>DAI:</span> 121,256</p>
-                        <div className="hoverIcons">
-                            <button type='button' className='copyLink'><img src={CopySmall} alt="CopySmall" /></button>
-                            <button type='button' className='copyLink'><img src={Metamask} alt="Metamask" /></button>
-                            <button type='button' className='copyLink'><img src={Star} alt="Star" /></button>
-                        </div>
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#">
-                        <p className='tokenIconTit'><img src={BinanceIcon} alt="BinanceIcon" /> BUSD</p>
-                        <p className='tokkenValue'><span>Binance USD:</span> 87.09</p>
-                        <div className="hoverIcons">
-                            <button type='button' className='copyLink'><img src={CopySmall} alt="CopySmall" /></button>
-                            <button type='button' className='copyLink'><img src={Metamask} alt="Metamask" /></button>
-                            <button type='button' className='copyLink'><img src={Star} alt="Star" /></button>
-                        </div>
-                    </Dropdown.Item>
+                    {Object.keys(tokens.supportedTokens).map(key =>
+                        <TokenItem
+                            href="#"
+                            logo={tokens.supportedTokens[key].logo}
+                            name={key}
+                        />
+                    )}
                 </Dropdown.Menu>
             </Dropdown>
             <img src={DownArrow} alt="DownArrow" className="selectArrow" />
