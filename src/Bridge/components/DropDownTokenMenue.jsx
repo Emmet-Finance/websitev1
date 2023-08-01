@@ -5,14 +5,7 @@ import { useAppSelector } from '../state/store';
 import TokenItem from './TokenItem';
 
 import DownArrow from '../../assets/img/chevron-down.svg';
-import Usdt from '../../assets/img/tether-usdt-logo.svg';
-import BinanceIcon from '../../assets/img/new/Binance.svg';
 import Search from '../../assets/img/new/search.svg';
-import Tether from '../../assets/img/new/Tether.svg';
-import CopySmall from '../../assets/img/new/copy2.svg';
-import Metamask from '../../assets/img/new/Metamask.svg';
-import Star from '../../assets/img/new/star.svg';
-import DAI from '../../assets/img/new/DAI.svg';
 
 function DropDownTokenMenu(props) {
 
@@ -38,6 +31,7 @@ function DropDownTokenMenu(props) {
                     </div>
                     {Object.keys(tokens.supportedTokens).map(key =>
                         <TokenItem
+                            direction={props.direction}
                             href="#"
                             logo={tokens.supportedTokens[key].logo}
                             name={key}

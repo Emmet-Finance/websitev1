@@ -127,3 +127,26 @@ export const handleAccountsChanged = (accounts: any[]) => {
         currentAccount = accounts[0];
     }
 }
+
+/**
+ * Converts a (big) number to a string like 123,456.00
+ * @param balance - amount of tokens a user owns
+ * @param decimals - power of 10 to convert wei to ETH, defaults to 18
+ * @returns a formattted number with commas & dots or 0.00
+ */
+export const bnToHumanReadable = (
+    balance: bigint | number | string | undefined,
+    decimals: number = 18
+): string => {
+    if (!balance) {
+        return "0.00";
+    } else {
+        // Number.MAX_SAFE_INTEGER == 9007199254740991 2^53 − 1
+        const divisor = Math.pow(10, decimals);
+        return (BigInt(balance) / BigInt(divisor))
+            .toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            });
+    }
+}
