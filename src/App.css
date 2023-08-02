@@ -1342,7 +1342,7 @@ span.amountHeight {
 }
 
 @media screen and (max-width: 700px) {
-  .#popup1 .box {
+  #popup1 .box {
     width: 70%;
   }
 
@@ -1840,14 +1840,14 @@ p.viewHash a {
   justify-content: center;
 }
 
-a.disenable.enterApp {
+.disenable.enterApp {
   border: solid 2px #8d98a1;
   background-color: #f4f5f6;
   color: #8d98a1;
   pointer-events: none;
 }
 
-a.disenable.enterApp img {
+.disenable.enterApp img {
   opacity: .5;
 }
 
@@ -2160,7 +2160,7 @@ ul.transaction_box li:first-child .leftText {
   color: #8d98a100;
 }
 
-a.cancelBtn.enterApp {
+.cancelBtn.enterApp {
   justify-content: center;
   width: 90%;
   max-width: 230px;

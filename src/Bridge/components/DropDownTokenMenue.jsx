@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+// import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAppSelector } from '../state/store';
 import TokenItem from './TokenItem';
@@ -9,7 +9,7 @@ import Search from '../../assets/img/new/search.svg';
 
 function DropDownTokenMenu(props) {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const tokens = useAppSelector((state) => state.tokens);
 
     return (
@@ -33,6 +33,7 @@ function DropDownTokenMenu(props) {
                         <TokenItem
                             direction={props.direction}
                             href="#"
+                            key={key}
                             logo={tokens.supportedTokens[key].logo}
                             name={key}
                         />

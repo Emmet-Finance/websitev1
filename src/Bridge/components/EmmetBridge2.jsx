@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Dropdown from 'react-bootstrap/Dropdown';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
@@ -78,13 +77,13 @@ function EmmetBridge2() {
                     </div>
                     <div className="lineBox">
                         <div className='labelText'>
-                            <p className="label label1 infoLabel">
+                            <div className="label label1 infoLabel">
                                 <span>Target Address</span>
                                 <div className="inofText">
                                     <img src={Info} alt="Info" />
                                     <span> <b>Warning:</b> Not to loose the transfered tokens, make sure the destination address is correct. </span>
                                 </div>
-                            </p>
+                            </div>
                         </div>
                         <div className="emmetFrom amountMax">
                             <input type="text" placeholder="Paste Here"  /> 
@@ -120,11 +119,11 @@ function EmmetBridge2() {
                             <span className='color-red'>Failed!</span>
                             <span className='color-green'>Success!</span>
                         </p>
-                        <p className="viewHash">DAI 100.00 <a href="#">View Hash</a></p>
+                        <p className="viewHash">DAI 100.00 <a href="/bridge">View Hash</a></p>
                     </div>
                     <div className="dualBtns">
-                        <a href="javascript:void(0)" className='approveBtn' onClick={handleButtonClick} >APPROVE <img src={Check} alt="Check" /></a>
-                        <a href="https://emmet.finance" className='disenable enterApp'>TRANSFER <img src={LinkLogo} alt="LinkLogo" /></a>
+                        <div className='approveBtn' onClick={handleButtonClick} >APPROVE <img src={Check} alt="Check"/></div>
+                        <div className='disenable enterApp'>TRANSFER <img src={LinkLogo} alt="Arrow"/></div>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga';
 import store from './Bridge/state/store'
 
-// Инициализация Google Analytics
+// Google Analytics Initialisation
 ReactGA.initialize('G-0DP30PHL61');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -22,4 +22,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals(console.log);
+reportWebVitals();

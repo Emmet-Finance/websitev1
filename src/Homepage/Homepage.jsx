@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import EmmetBridge from './EmmetBridge';
 
 import LinkLogo from '../assets/img/link.svg';
@@ -6,21 +6,6 @@ import Telegram from '../assets/img/social/telegram.svg';
 import Twiter from '../assets/img/social/twiter.svg';
 import Discord from '../assets/img/social/discord.svg';
 import Github from '../assets/img/social/github.svg';
-
-// import Tokens1 from '../assets/img/tokken/Tokens.svg';
-// import Tokens2 from '../assets/img/tokken/Tokens (1).svg';
-// import Tokens3 from '../assets/img/tokken/Tokens (2).svg';
-// import Tokens4 from '../assets/img/tokken/Tokens (3).svg';
-// import Tokens5 from '../assets/img/tokken/Tokens (4).svg';
-// import Tokens6 from '../assets/img/tokken/Tokens (5).svg';
-// import Tokens7 from '../assets/img/tokken/Tokens (6).svg';
-// import Tokens8 from '../assets/img/tokken/Tokens (7).svg';
-// import Tokens9 from '../assets/img/tokken/Tokens (8).svg';
-// import Tokens10 from '../assets/img/tokken/Tokens (9).svg';
-// import Tokens11 from '../assets/img/tokken/Tokens (10).svg';
-// import Tokens12 from '../assets/img/tokken/Tokens (11).svg';
-// import Tokens13 from '../assets/img/tokken/Tokens (12).svg';
-// import Tokens14 from '../assets/img/tokken/Tokens (13).svg';*
 
 import BoxLogo1 from '../assets/img/boxlogo-1.svg';
 import BoxLogo2 from '../assets/img/boxlogo-2.svg';
@@ -34,7 +19,6 @@ import Security4 from '../assets/img/Security-4.svg';
 import Security5 from '../assets/img/Security-5.svg';
 import Security6 from '../assets/img/Security-6.svg';
 
-// import APISVG from '../assets/img/api.svg';
 import APISVG from '../assets/img/api.png';
 import Check from '../assets/img/check-bold.svg';
 
@@ -42,17 +26,11 @@ import TypeScriptAccordion from './TypeScriptAccordion';
 import FAQAccordion from './FAQAccordion';
 import TypeWriter from './Typewriter';
 import IconSlider from './IconSlider';
-// import Video from '../assets/img/bg-video.mp4';
 import VideoAutoplay from './VideoAutoplay';
-// import Form from './Form';
 import Header from '../HeaderFooter/Header';
 import Footer from '../HeaderFooter/Footer';
-import EmmetBridge2 from '../Bridge/components/EmmetBridge2';
-
 
 function Homepage() {
-
-    
 
     return (
         <>

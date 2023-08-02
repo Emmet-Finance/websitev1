@@ -13,9 +13,6 @@ const MaxNumberSet = () => {
     setValue(value);
   };
 
-  console.log(value);
-  console.log(typeof value);
-
   return (
     <>
         <input

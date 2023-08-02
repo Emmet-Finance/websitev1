@@ -81,7 +81,7 @@ function TransactionDetails() {
                     <div className="steepLine line3 current"><span>3</span> <label htmlFor="">Routing</label></div>
                     <div className="steepLine line4"><span>4</span> <label htmlFor="">Success</label></div>
                 </div>
-                <div className="transtionBtn text-center"><a href="" className='cancelBtn enterApp'>CANCEL <img src={Close} alt="Close" /></a></div>
+                <div className="transtionBtn text-center"><a href="/bridge" className='cancelBtn enterApp'>CANCEL <img src={Close} alt="Close" /></a></div>
             </div>
         </>
     );

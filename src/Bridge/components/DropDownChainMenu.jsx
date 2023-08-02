@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+// import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAppSelector } from '../state/store';
 import ListItem from './ListItem';
@@ -8,7 +8,7 @@ import DownArrow from '../../assets/img/chevron-down.svg';
 
 function DropDownChainMenu(props) {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const chains = useAppSelector((state) => state.chains);
 
     return (
@@ -19,13 +19,13 @@ function DropDownChainMenu(props) {
                     <div className='flexBox'>
                         <div className='Logo'
                             dangerouslySetInnerHTML={{
-                                __html: props.direction == "from"
+                                __html: props.direction === "from"
                                     ? chains.fromChainLogo
                                     : chains.toChainLogo
                             }}>
                         </div>
                         <div
-                            className='Caption'>{props.direction == "from"
+                            className='Caption'>{props.direction === "from"
                                 ? chains.fromChain
                                 : chains.toChain}
                         </div>
@@ -36,6 +36,7 @@ function DropDownChainMenu(props) {
                     {chains.supportedChains.map(chain =>
                         <ListItem
                             href="#"
+                            key={chain.name}
                             name={chain.name}
                             logo={chain.logo}
                         />

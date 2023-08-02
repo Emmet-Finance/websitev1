@@ -9,11 +9,15 @@ export const walletSlice = createSlice({
         balance: undefined,
         isMetamask: false,
         isConnected: false,
+        selectedWallet: '',
     },
     reducers:{
         setIsConnected: (state: any, action: { payload: any; }) => {
             state.isConnected = action.payload;
         },
+        setWallet: (state: any, action: { payload: string; }) => {
+            state.selectedWallet = action.payload;
+        }
     },
     extraReducers: (builder: any) => {
         builder
@@ -21,5 +25,6 @@ export const walletSlice = createSlice({
 });
 
 export const {
-    setIsConnected
+    setIsConnected,
+    setWallet
 } = walletSlice.actions;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -15,14 +16,24 @@ import {
   WalletLogos
 } from '../types';
 
+import {setWallet} from '../state/wallets'
+
 function BridgeHeader() {
+
+  const dispatch = useDispatch();
+
+  const onWalletClickHandler = (wallet) => {
+    dispatch(setWallet(wallet));
+    
+  }
+
   return (
     <Navbar className='BridgeHeader' expand="lg">
       <Container>
 
         <Navbar.Brand href="https://emmet.finance"><img src={Logo} alt="Logo" /></Navbar.Brand>
         <Navbar.Toggle aria-controls="emmetNav" />
-        
+
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
             <Nav.Link href="/" title="Home Page">HOME</Nav.Link>
@@ -43,6 +54,7 @@ function BridgeHeader() {
               {supportedLanguages.map(language =>
                 <ListItem
                   href="#"
+                  key={language}
                   name={language}
                 />)}
             </Dropdown.Menu>
@@ -56,10 +68,13 @@ function BridgeHeader() {
           <Dropdown.Menu>
             {supportedWallets.map(wallet =>
               <ListItem
+                onClick={() => onWalletClickHandler(wallet)}
                 href="#"
+                key={wallet}
                 logo={WalletLogos[wallet]}
                 name={wallet}
-              />)}
+              />
+            )}
           </Dropdown.Menu>
         </Dropdown>
 
