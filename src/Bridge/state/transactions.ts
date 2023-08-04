@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
 
 export const transactionSlice = createSlice({
@@ -7,6 +7,7 @@ export const transactionSlice = createSlice({
         approvedAmt: 0,
         approvedHash: '',
         transferHash: '',
+        approveSuccess: false,
         transferSuccess: false,
         destinationAddress:'',
         transferAmount:0,
@@ -22,9 +23,9 @@ export const transactionSlice = createSlice({
             addCookie({key:"transferAmount", value:action.payload, ...state.cookieExpires})
         }
     },
-    extraReducers: (builder: any) => {
-        builder
-    }
+    // extraReducers: (builder: any) => {
+    //     builder
+    // }
 });
 
 export const {
