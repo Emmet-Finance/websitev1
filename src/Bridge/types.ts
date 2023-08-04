@@ -1,7 +1,3 @@
-export * from 'emmet.sdk/enums/environment';
-export * from 'emmet.sdk/interfaces';
-export * from 'emmet.sdk/types';
-
 import * as WALLET_LOGOS from 'emmet.sdk/logos/wallets'
 
 /******************************************
