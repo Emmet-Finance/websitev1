@@ -1,12 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
-import {
-    // MainnetTokenNames,
-    TestnetTokenNames,
-    TEnvironment,
-    // mainnetTokens,
-    testnetTokens,
-} from 'emmet.sdk';
+import {TestnetTokenNames,testnetTokens} from 'emmet.sdk';
 
 export const tokenSlice = createSlice({
     name:'token',
@@ -34,9 +28,9 @@ export const tokenSlice = createSlice({
             addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
         },
     },
-    extraReducers: (builder: any) => {
-        builder
-    }
+    // extraReducers: (builder: any) => {
+    //     builder
+    // }
 });
 
 export const {
