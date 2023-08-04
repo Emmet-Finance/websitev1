@@ -1,9 +1,6 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
-import {
-    // mainnets,
-    testnets,
-} from 'emmet.sdk';
+import {testnets} from 'emmet.sdk';
 
 export const chainSlice = createSlice({
     name:'chain',
@@ -30,9 +27,9 @@ export const chainSlice = createSlice({
             addCookie({key:"toChain", value:state.toChain, ...state.cookieExpires});
         },
     },
-    extraReducers: (builder: any) => {
-        builder
-    }
+    // extraReducers: (builder: any) => {
+    //     builder
+    // }
 });
 
 export const {
