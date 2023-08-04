@@ -4,6 +4,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import {
+  detectEthereumProvider,
+  getEvmAccounts,
+  getEvmBalance,
+  getEvmChainId,
+} from 'emmet.sdk';
 // UI logos
 import Down from '../../assets/img/new/down.svg';
 import Logo from '../../assets/img/logo.svg';
@@ -16,15 +22,45 @@ import {
   WalletLogos
 } from '../types';
 
-import {setWallet} from '../state/wallets'
+import { setWallet, setAccounts, setBalance, setChainId } from '../state/wallets';
+import { useAppSelector } from '../state/store';
 
 function BridgeHeader() {
 
   const dispatch = useDispatch();
 
+  const wallets = useAppSelector((state) => state.wallets);
+
+  const handleConnect = async () => {
+
+    const provider = await detectEthereumProvider({ silent: true });
+
+    if (provider && typeof window.ethereum !== 'undefined') {
+
+      let accounts = [];
+      let balance = '';
+      let chainId = '';
+
+      accounts = await getEvmAccounts();
+
+      dispatch(setAccounts(accounts));
+
+      balance = await getEvmBalance(accounts[0]);
+
+      dispatch(setBalance(balance));
+
+      chainId = await getEvmChainId();
+
+      dispatch(setChainId(chainId));
+
+      console.log(wallets)
+    }
+
+  }
+
   const onWalletClickHandler = (wallet) => {
     dispatch(setWallet(wallet));
-    
+    handleConnect();
   }
 
   return (
@@ -63,7 +99,15 @@ function BridgeHeader() {
 
         <Dropdown className='enterAppDropdown'>
           <Dropdown.Toggle className='enterApp' id="dropdown-enterApp">
-            <span>CONNECT A WALLET</span> <img src={Down} alt="Down" />
+            <span>
+              {wallets && wallets.account
+                ? wallets.account.slice(0, 4)
+                  .concat("...")
+                  .concat(wallets.account.slice(38, 42))
+                : "CONNECT A WALLET"
+              }
+            </span>
+            <img src={Down} alt="Down" />
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {supportedWallets.map(wallet =>
