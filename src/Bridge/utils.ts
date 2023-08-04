@@ -1,5 +1,3 @@
-
-export * from 'emmet.sdk/utils';
 import { TCookie } from "./types";
 
 /*****************************************************
