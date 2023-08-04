@@ -25,6 +25,8 @@ import {
 import { setWallet, setAccounts, setBalance, setChainId } from '../state/wallets';
 import { useAppSelector } from '../state/store';
 
+import {shortenAddress} from '../utils'
+
 function BridgeHeader() {
 
   const dispatch = useDispatch();
@@ -38,22 +40,11 @@ function BridgeHeader() {
     if (provider && typeof window.ethereum !== 'undefined') {
 
       let accounts = [];
-      let balance = '';
-      let chainId = '';
-
       accounts = await getEvmAccounts();
-
       dispatch(setAccounts(accounts));
+      dispatch(setBalance(await getEvmBalance(accounts[0])));
+      dispatch(setChainId(await getEvmChainId()));
 
-      balance = await getEvmBalance(accounts[0]);
-
-      dispatch(setBalance(balance));
-
-      chainId = await getEvmChainId();
-
-      dispatch(setChainId(chainId));
-
-      console.log(wallets)
     }
 
   }
@@ -101,9 +92,7 @@ function BridgeHeader() {
           <Dropdown.Toggle className='enterApp' id="dropdown-enterApp">
             <span>
               {wallets && wallets.account
-                ? wallets.account.slice(0, 4)
-                  .concat("...")
-                  .concat(wallets.account.slice(38, 42))
+                ? shortenAddress(wallets.account)
                 : "CONNECT A WALLET"
               }
             </span>

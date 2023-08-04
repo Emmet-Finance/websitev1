@@ -148,3 +148,12 @@ export const bnToHumanReadable = (
             });
     }
 }
+
+/**
+ * Cuts an EVM address in the middle
+ * @param address an EVM address
+ * @returns a sliced version like 0xA12B...C345
+ */
+export function shortenAddress(address: string) {
+    return `${address.slice(0, 6)}…${address.slice(38, 42)}`
+}
