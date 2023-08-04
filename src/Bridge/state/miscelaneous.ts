@@ -1,8 +1,6 @@
-import {
-    TEnvironment,
-} from 'emmet.sdk';
+import {TEnvironment} from 'emmet.sdk';
 
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 
 export const miscelaneousSlice = createSlice({
     name:'state',
@@ -23,9 +21,9 @@ export const miscelaneousSlice = createSlice({
         },
 
     },
-    extraReducers: (builder) => {
-        builder
-    }
+    // extraReducers: (builder) => {
+    //     builder
+    // }
 });
 
 export const {
