@@ -1,3 +1,4 @@
+import { EVMChain } from "emmet.sdk";
 import { TCookie } from "./types";
 
 /*****************************************************
@@ -156,4 +157,26 @@ export const bnToHumanReadable = (
  */
 export function shortenAddress(address: string) {
     return `${address.slice(0, 6)}…${address.slice(38, 42)}`
+}
+
+/**
+ * Finds one chain by name
+ * @param chains an array of supported chains
+ * @param chainName the selected one
+ * @returns only the selected chain
+ */
+export function findChain(chains: EVMChain[], chainName: string): EVMChain {
+    return chains.filter(chain => 
+        chain.name.toLowerCase() === chainName.toLowerCase())[0];
+}
+
+/**
+ * Removes the selected chain from the list
+ * @param chains an array of supported chains
+ * @param chainName the selected one
+ * @returns the original list minus selected
+ */
+export function filterOneOut(chains: EVMChain[], chainName: string): EVMChain[] {
+    return chains.filter(chain => 
+        chain.name.toLowerCase() !== chainName.toLowerCase());
 }

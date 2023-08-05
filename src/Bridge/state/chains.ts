@@ -1,5 +1,5 @@
 import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
-import { addCookie } from '../utils';
+import { addCookie, findChain } from '../utils';
 import {testnets} from 'emmet.sdk';
 
 export const chainSlice = createSlice({
@@ -16,14 +16,12 @@ export const chainSlice = createSlice({
     reducers:{
         setFromChain:(state:any, action) => {
             state.fromChain = action.payload;
-            //@ts-ignore
-            state.fromChainLogo = ChainLogos[action.payload];
+            state.fromChainLogo = findChain(testnets, action.payload).logo;
             addCookie({key:"fromChain", value:state.fromChain, ...state.cookieExpires});
         },
         setToChain:(state:any, action) => {
             state.toChain = action.payload;
-            //@ts-ignore
-            state.toChainLogo = ChainLogos[action.payload];
+            state.toChainLogo = findChain(testnets, action.payload).logo;
             addCookie({key:"toChain", value:state.toChain, ...state.cookieExpires});
         },
     },

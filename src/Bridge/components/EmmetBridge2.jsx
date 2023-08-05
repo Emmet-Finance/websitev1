@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-
+import { useDispatch } from 'react-redux';
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
 import LinkLogo from '../../assets/img/link.svg';
 import CopyBridge from '../../assets/img/new/copy.svg';
@@ -14,11 +14,18 @@ import TransactionDetails from './TransactionDetails';
 import DropDownTokenMenu from './DropDownTokenMenue';
 import DropDownChainMenu from './DropDownChainMenu';
 import { useAppSelector } from '../state/store';
-import {copyAddressToClipboard} from '../utils';
+import { copyAddressToClipboard } from '../utils';
+import {setFromChain,
+    setFromChainLogo,
+    setToChain,
+    setToChainLogo,
+} from '../state/chains'
 
 function EmmetBridge2() {
 
-    const wallets = useAppSelector((state) => state.wallets);
+    const dispatch = useDispatch();
+    const wallets = useAppSelector(state => state.wallets);
+    const chains = useAppSelector(state => state.chains);
 
     const [isElementVisible, setIsElementVisible] = useState(true);
     const [isOtherElementVisible, setIsOtherElementVisible] = useState(false);
@@ -31,11 +38,19 @@ function EmmetBridge2() {
     const now = 100;
 
     const onCopyButtonClickHandle = () => {
-        if(wallets && wallets.account){
+        if (wallets && wallets.account) {
             copyAddressToClipboard(wallets.account)
-        }else{
+        } else {
             console.log("no account to copy")
         }
+    }
+
+    const onSwapChainsClickHandle = (e) => {
+        const fromChain = chains.fromChain;
+        const toChain = chains.toChain;
+
+        dispatch(setFromChain(toChain))
+        dispatch(setToChain(fromChain))
     }
 
     return (
@@ -64,7 +79,12 @@ function EmmetBridge2() {
                                 name="Network of Origin"
                             />
                         </div>
-                        <img src={UpDownCirlce} alt="UpDownCirlce" className="updownCircle" />
+                        <img
+                            src={UpDownCirlce}
+                            alt="UpDownCirlce"
+                            className="updownCircle"
+                            onClick={(e)=>onSwapChainsClickHandle(e)}
+                        />
                         <p>To</p>
                         <div className="emmetFrom">
                             <DropDownTokenMenu

@@ -1,15 +1,29 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAppSelector } from '../state/store';
 import ListItem from './ListItem';
+import {
+    setFromChain,
+    setToChain,
+} from '../state/chains'
 
 import DownArrow from '../../assets/img/chevron-down.svg';
+import { filterOneOut } from '../utils'
 
 function DropDownChainMenu(props) {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const chains = useAppSelector((state) => state.chains);
+
+    const onChainClickHandler = (e, chain, logo) => {
+        e.preventDefault()
+        if (props.direction === "from") {
+            dispatch(setFromChain(chain))
+        } else if (props.direction === "to") {
+            dispatch(setToChain(chain))
+        }
+    }
 
     return (
         <div className="originNetwork">
@@ -33,14 +47,18 @@ function DropDownChainMenu(props) {
 
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    {chains.supportedChains.map(chain =>
-                        <ListItem
-                            href="#"
-                            key={chain.name}
-                            name={chain.name}
-                            logo={chain.logo}
-                        />
-                    )}
+                    {filterOneOut(chains.supportedChains, props.direction === "from"
+                        ? chains.fromChain
+                        : chains.toChain)
+                        .map(chain =>
+                            <ListItem
+                                href="#"
+                                key={chain.name}
+                                name={chain.name}
+                                logo={chain.logo}
+                                onClick={(e) => onChainClickHandler(e, chain.name, chain.logo)}
+                            />
+                        )}
                 </Dropdown.Menu>
             </Dropdown>
             <img src={DownArrow} alt="DownArrow" className="selectArrow" />

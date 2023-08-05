@@ -460,6 +460,11 @@ p.label.label2 span {
 img.updownCircle {
   display: block;
   margin: 20px auto 0px auto;
+  cursor: pointer;
+}
+
+.updownCircle:hover{
+  transform: scale(110%);
 }
 
 .emmetFrom>div label {
@@ -514,6 +519,10 @@ button.copyBridge {
   outline: none;
   box-shadow: none;
   padding: 0;
+}
+
+.copyBridge:hover{
+  transform: scale(120%);
 }
 
 .EmmetBridge_Box {

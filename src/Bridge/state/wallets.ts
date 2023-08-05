@@ -1,4 +1,45 @@
-import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
+export type TChangeEVMChain = {
+    ethereum: any,
+    newChain: {
+        chainName: string,
+        chainId: number,
+        nativeCurrency: {
+            name: string,
+            decimals: number,
+            symbol: string
+        },
+        rpcUrls: string[]
+    }
+}
+
+/**
+ * Switches Metamask to another chain
+ * @param params \{ethereum,newChain{chainId,chainName,nativeCurrency, rpcUrls}}
+ * @returns params.newChain
+ */
+export const changeMetamaskAccount = createAsyncThunk('change-metamask-account', async (params:TChangeEVMChain):Promise<any> => {
+    if(params.ethereum.networkVersion !== params.newChain.chainId){
+        try {
+            // Try switching to another chain
+            await params.ethereum.request({
+                method:'wallet_switchEthereumChain',
+                params:[{chainId:params.newChain.chainId}]
+            })
+        } catch (err:any) {
+            // If chain not added
+            if(err.code === 4902){
+                // Add new chain to metamask:
+                await params.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params:[params.newChain]
+                })
+            }
+        }
+        return params.newChain
+    }
+});
 
 export const walletSlice = createSlice({
     name: 'wallets',
