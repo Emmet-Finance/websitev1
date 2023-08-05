@@ -23,7 +23,9 @@ import {
 } from '../types';
 
 import { setWallet, setAccounts, setBalance, setChainId } from '../state/wallets';
+import { setFromTokenBalances } from '../state/tokens'
 import { useAppSelector } from '../state/store';
+import {getEvmTokenBalances} from '../wallets/EVM'
 
 import {shortenAddress} from '../utils'
 
@@ -44,7 +46,8 @@ function BridgeHeader() {
       dispatch(setAccounts(accounts));
       dispatch(setBalance(await getEvmBalance(accounts[0])));
       dispatch(setChainId(await getEvmChainId()));
-
+      const fromBalances = await getEvmTokenBalances(accounts[0], "Goerly");
+      dispatch(setFromTokenBalances(fromBalances));
     }
 
   }

@@ -14,7 +14,7 @@ import TransactionDetails from './TransactionDetails';
 import DropDownTokenMenu from './DropDownTokenMenue';
 import DropDownChainMenu from './DropDownChainMenu';
 import { useAppSelector } from '../state/store';
-import {copyAddressToClipboard} from '../utils'
+import {copyAddressToClipboard} from '../utils';
 
 function EmmetBridge2() {
 

@@ -11,6 +11,16 @@ function DropDownTokenMenu(props) {
 
     // const dispatch = useDispatch();
     const tokens = useAppSelector((state) => state.tokens);
+    let tokenBalances;
+
+    if (tokens.fromTokenBalances && props.direction === 'from') {
+        tokenBalances = tokens.fromTokenBalances;
+    }
+
+    if (tokens.toTokenBalances && props.direction === 'to') {
+        tokenBalances = tokens.toTokenBalances;
+    }
+
 
     return (
         <div className="emmetTokken">
@@ -36,6 +46,7 @@ function DropDownTokenMenu(props) {
                             key={key}
                             logo={tokens.supportedTokens[key].logo}
                             name={key}
+                            balance={tokenBalances && tokenBalances[key]}
                         />
                     )}
                 </Dropdown.Menu>
