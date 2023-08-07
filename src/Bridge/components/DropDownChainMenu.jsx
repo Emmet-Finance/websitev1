@@ -16,7 +16,7 @@ function DropDownChainMenu(props) {
     const dispatch = useDispatch();
     const chains = useAppSelector((state) => state.chains);
 
-    const onChainClickHandler = (e, chain, logo) => {
+    const onChainClickHandler = (e, chain) => {
         e.preventDefault()
         if (props.direction === "from") {
             dispatch(setFromChain(chain))
@@ -56,7 +56,7 @@ function DropDownChainMenu(props) {
                                 key={chain.name}
                                 name={chain.name}
                                 logo={chain.logo}
-                                onClick={(e) => onChainClickHandler(e, chain.name, chain.logo)}
+                                onClick={(e) => onChainClickHandler(e, chain.name)}
                             />
                         )}
                 </Dropdown.Menu>

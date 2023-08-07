@@ -129,7 +129,7 @@ export const handleAccountsChanged = (accounts: any[]) => {
 
 /**
  * Converts a (big) number to a string like 123,456.00
- * @param balance - amount of tokens a user owns
+ * @param balance - processed amount of tokens
  * @param decimals - power of 10 to convert wei to ETH, defaults to 18
  * @returns a formattted number with commas & dots or 0.00
  */
@@ -137,17 +137,47 @@ export const bnToHumanReadable = (
     balance: bigint | number | string | undefined,
     decimals: number = 18
 ): string => {
-    if (!balance) {
-        return "0.00";
-    } else {
-        // Number.MAX_SAFE_INTEGER == 9007199254740991 2^53 − 1
-        const divisor = Math.pow(10, decimals);
-        return (BigInt(balance) / BigInt(divisor))
-            .toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-            });
+    if (balance) {
+        const divisor = BigInt(10) ** BigInt(decimals);
+        const cleaned = balance.toString().replace('.', '').replace(',', '')
+        if (/^[0-9]+$/.test(cleaned)) {
+            const balanceBigInt = BigInt(balance);
+            const integerPart = (balanceBigInt / divisor).toString();
+            const decimalPart = balanceBigInt % divisor;
+
+            const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+            const formattedDecimal = decimalPart
+                .toString()
+                .padStart(decimals, "0")
+                .slice(0, 2);
+
+            const formatted = `${formattedInteger}.${formattedDecimal}`;
+
+            return formatted;
+        }
     }
+    return '0.00';
+}
+
+/**
+ * Converts a human readable number 123,456.00 to 123456n * 10n ^ decimals
+ * @param amount a potential big number
+ * @param decimals power of 10 to convert wei to ETH, defaults to 18
+ * @returns 0n or an actual BigInt
+ */
+export const stringToBigNum = (
+    amount: string,
+    decimals: number = 18
+): bigint => {
+    if (amount && typeof amount === 'string') {
+        const cleaned = amount.replace(',', '').replace('.', '');
+        if (/^[0-9]+$/.test(cleaned)) {
+            const multiplier = Math.pow(10, decimals);
+            return (BigInt(cleaned) * BigInt(multiplier));
+        }
+    }
+    return 0n
 }
 
 /**
@@ -166,7 +196,7 @@ export function shortenAddress(address: string) {
  * @returns only the selected chain
  */
 export function findChain(chains: EVMChain[], chainName: string): EVMChain {
-    return chains.filter(chain => 
+    return chains.filter(chain =>
         chain.name.toLowerCase() === chainName.toLowerCase())[0];
 }
 
@@ -177,6 +207,22 @@ export function findChain(chains: EVMChain[], chainName: string): EVMChain {
  * @returns the original list minus selected
  */
 export function filterOneOut(chains: EVMChain[], chainName: string): EVMChain[] {
-    return chains.filter(chain => 
+    return chains.filter(chain =>
         chain.name.toLowerCase() !== chainName.toLowerCase());
+}
+
+/**
+ * Checks whether a >= b
+ * @param a 
+ * @param b 
+ * @returns true | false
+ */
+export const isGreaterOrEqual = (
+    a: string | number | bigint, 
+    b:  string | number | bigint
+): boolean => {
+    if( a && b){
+        return (BigInt(a) >= BigInt(b))
+    }
+    return false;
 }

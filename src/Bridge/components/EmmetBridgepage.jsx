@@ -9,6 +9,10 @@ import {
     setFromChain,
     setToChain,
 } from '../state/chains'
+import {
+    setFromTokens,
+    setToTokens,
+} from '../state/tokens'
 import { metamask } from '../utils'
 
 
@@ -16,13 +20,27 @@ function onWindowReload(dispatch) {
     if (hasCookies) {
         // FROM CHAIN
         const fromChain = readCookieByKey('fromChain');
-        dispatch(setFromChain(fromChain));
+        if(fromChain){
+            dispatch(setFromChain(fromChain));
+        }
         // TO CHAIN
         const toChain = readCookieByKey('toChain');
-        dispatch(setToChain(toChain));
+        if(toChain){
+            dispatch(setToChain(toChain));
+        }
+        
         // FROM TOKENS
-
+        const fromTokens = readCookieByKey('fromTokens');
+        if(fromTokens){
+            dispatch(setFromTokens(fromTokens))
+        }
+        
         // TO TOKENS
+        const toTokens = readCookieByKey('toTokens');
+        if(toTokens){
+            dispatch(setToTokens(toTokens))
+        }
+        
     }
 }
 

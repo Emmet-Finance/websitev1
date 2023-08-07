@@ -1,6 +1,6 @@
 import { getContract, createPublicClient, custom } from 'viem'
 // import { goerli, bscTestnet, polygonMumbai } from 'viem/chains'
-import { testnetTokens, TTestnetTokenNames, TestnetTokenNames } from 'emmet.sdk';
+import { testnetTokens, TTestnetTokenNames, TestnetTokenNames, EVMChain } from 'emmet.sdk';
 import { testnets } from 'emmet.sdk';
 
 // const sparknet = testnets.filter(chain => {
@@ -67,5 +67,51 @@ export async function getEvmTokenBalances(
         }
 
         return balances;
+    }
+}
+
+/**
+ * Loops through Token contracts & extracts user allowances
+ * @param account checked account
+ * @returns an empty or filled `allowances` Object
+ */
+export async function getEvmTokenAllowances(
+    account: string,
+    chainName: string
+): Promise<TokenBalanceObject | undefined> {
+
+    let allowances: { [key: TTestnetTokenNames | string]: string } = {};
+
+    if (isEvmAddress(account) && chainName) {
+
+        const testnet = testnets.filter(net =>
+            net.name === chainName)[0];
+        console.log(chainName,testnets, testnet)
+
+        const publicClient = createPublicClient({
+            chain: testnet,
+            transport: custom(window?.ethereum!),
+        });
+
+        for await (const tokenName of TestnetTokenNames) {
+            const token = testnetTokens[tokenName]
+
+            const address: string = token.address["goerly"];
+
+            if(address){
+
+                const contract = getContract({
+                    address: `0x${address.slice(2)}`,
+                    abi: token.abi,
+                    publicClient,
+                });
+    
+                const allow_: string = (await contract.read.allowance([account, testnet.bridge.toString()])).toString();
+                allowances[tokenName] = allow_;
+            }
+
+        }
+
+        return allowances;
     }
 }

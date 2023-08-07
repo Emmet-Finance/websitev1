@@ -1,15 +1,19 @@
 import React from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { useAppSelector } from '../state/store';
 import TokenItem from './TokenItem';
+import {
+    setFromTokens,
+    setToTokens,
+} from '../state/tokens'
 
 import DownArrow from '../../assets/img/chevron-down.svg';
 import Search from '../../assets/img/new/search.svg';
 
 function DropDownTokenMenu(props) {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const tokens = useAppSelector((state) => state.tokens);
     let tokenBalances;
 
@@ -19,6 +23,15 @@ function DropDownTokenMenu(props) {
 
     if (tokens.toTokenBalances && props.direction === 'to') {
         tokenBalances = tokens.toTokenBalances;
+    }
+
+    const onTokenSelectClickHandler = (e, token) => {
+        e.preventDefault();
+        if(props.direction === 'from'){
+            dispatch(setFromTokens(token))
+        }else{
+            dispatch(setToTokens(token))
+        }
     }
 
 
@@ -47,6 +60,7 @@ function DropDownTokenMenu(props) {
                             logo={tokens.supportedTokens[key].logo}
                             name={key}
                             balance={tokenBalances && tokenBalances[key]}
+                            onClick={e=>onTokenSelectClickHandler(e, key)}
                         />
                     )}
                 </Dropdown.Menu>

@@ -3,7 +3,7 @@ import React from 'react';
 
 
 const MaxNumberSet = () => {
-  const min = 1;
+  const min = 0;
   const max = 2000;
 
   const [value, setValue] = useState();

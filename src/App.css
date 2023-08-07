@@ -513,6 +513,24 @@ img.selectArrow {
   margin: 0;
 }
 
+.max-button {
+  cursor: pointer;
+}
+
+.max-button:hover{
+  transform: scale(120%);
+}
+
+.coming-soon{
+  background-color: #20c997;
+  color: white;
+  font-size: x-small;
+  border-radius: 5px;
+  align-content: center;
+  margin-left: 5px;
+  padding: 5px;
+}
+
 button.copyBridge {
   border: 0;
   background: transparent;

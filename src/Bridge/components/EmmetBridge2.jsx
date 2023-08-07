@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useDispatch } from 'react-redux';
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
@@ -15,20 +15,33 @@ import DropDownTokenMenu from './DropDownTokenMenue';
 import DropDownChainMenu from './DropDownChainMenu';
 import { useAppSelector } from '../state/store';
 import { copyAddressToClipboard } from '../utils';
-import {setFromChain,
-    setFromChainLogo,
+import {
+    setFromChain,
     setToChain,
-    setToChainLogo,
 } from '../state/chains'
+import { bnToHumanReadable, stringToBigNum, isGreaterOrEqual } from '../utils'
 
 function EmmetBridge2() {
 
     const dispatch = useDispatch();
     const wallets = useAppSelector(state => state.wallets);
     const chains = useAppSelector(state => state.chains);
+    const tokens = useAppSelector(state => state.tokens);
 
     const [isElementVisible, setIsElementVisible] = useState(true);
     const [isOtherElementVisible, setIsOtherElementVisible] = useState(false);
+
+    const [amount, setAmount] = useState('');
+    const [receiver, setReceiver] = useState('');
+    const [recieved, setReceived] = useState('');
+    const [errorMessage, setError] = useState('');
+
+    useEffect(() => {
+        if(amount){
+            setReceived((stringToBigNum(amount)));
+        }
+        
+    }, [amount]);
 
     const handleButtonClick = () => {
         setIsElementVisible(false);
@@ -53,6 +66,30 @@ function EmmetBridge2() {
         dispatch(setToChain(fromChain))
     }
 
+    const onMaxClickHandle = (e) => {
+        e.preventDefault()
+        setAmount(tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()])
+    }
+
+    const onSelfClickHandler = (e) => {
+        e.preventDefault()
+        setReceiver(wallets.account)
+    }
+
+    const handleAmountChange = (e) => {
+        e.preventDefault()
+
+        const a = tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()];
+        const b = e.target.value;
+
+        if(isGreaterOrEqual(a, b)){
+            setAmount(e.target.value)
+        }else{
+            setError(`Balance is not enough for this transaction`)
+        }
+
+    }
+
     return (
         <>
             {isElementVisible &&
@@ -61,7 +98,7 @@ function EmmetBridge2() {
                         <h2>Emmet.Bridge</h2>
                         <button
                             className='copyBridge'
-                            title="Click to copy the address"
+                            title="Copy the address"
                             onClick={onCopyButtonClickHandle}
                         >
                             <img src={CopyBridge} alt="CopyBridge" />
@@ -83,7 +120,8 @@ function EmmetBridge2() {
                             src={UpDownCirlce}
                             alt="UpDownCirlce"
                             className="updownCircle"
-                            onClick={(e)=>onSwapChainsClickHandle(e)}
+                            onClick={(e) => onSwapChainsClickHandle(e)}
+                            title='Swap chains'
                         />
                         <p>To</p>
                         <div className="emmetFrom">
@@ -99,11 +137,24 @@ function EmmetBridge2() {
                         <div className="lineBox">
                             <div className='labelText'>
                                 <p className="label label1">Amount to Transfer</p>
-                                <p className="label label2"><span>Balance:</span> 2200.00 USDT</p>
+                                <p className="label label2">
+                                    <span>Balance:</span>
+                                    {tokens && tokens.fromTokenBalances
+                                        ? ' ' + bnToHumanReadable(tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]) + ` ${tokens.fromTokens}`
+                                        : " 0.00 " + tokens.fromTokens}
+                                </p>
                             </div>
                             <div className="emmetFrom amountMax">
-                                {/* <input type="number" placeholder="2000" min="1" max="2000" />  */}
-                                <MaxNumberSet /> <p>MAX</p>
+                                <input
+                                    type="number"
+                                    placeholder="Amount"
+                                    value={amount ? amount : ''}
+                                    onChange={handleAmountChange}
+                                />
+                                <p
+                                    onClick={e => onMaxClickHandle(e)}
+                                    className='max-button'
+                                >MAX</p>
                             </div>
                         </div>
                         <div className="lineBox">
@@ -111,7 +162,13 @@ function EmmetBridge2() {
                                 <p className="label label1">Amount to Receive</p>
                             </div>
                             <div className="emmetFrom amountMax">
-                                <input type="number" placeholder="" value="1968" />
+                                <input
+                                    type="text"
+                                    placeholder="Amount"
+                                    value={recieved ? bnToHumanReadable(recieved) : ''}
+                                    readOnly
+                                //onChange={e => setReceived(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="lineBox">
@@ -125,8 +182,15 @@ function EmmetBridge2() {
                                 </div>
                             </div>
                             <div className="emmetFrom amountMax">
-                                <input type="text" placeholder="Paste Here" />
-                                <p>SELF</p>
+                                <input
+                                    type="text"
+                                    placeholder="Receiver's Address"
+                                    value={receiver}
+                                />
+                                <p
+                                    onClick={e => onSelfClickHandler(e)}
+                                    className='max-button'
+                                >SELF</p>
                             </div>
                             <p className="warningText">
                                 <span className='warningTextItem warningText1'>Not enough gas. <b>0.005 BNB</b> required. </span>
@@ -137,7 +201,10 @@ function EmmetBridge2() {
                         <div className="bridgeCalculation">
                             <div className="calculateBox">
                                 <span>Allowance:</span>
-                                1,256.00 DAI
+                                {tokens.tokenAllowances
+                                    ? `${bnToHumanReadable(tokens.tokenAllowances[tokens.fromTokens.toUpperCase()])} ${tokens.fromTokens}`
+                                    : '0.00'
+                                }
                             </div>
                             <div className="calculateBox">
                                 <span>Gas Fee:</span>

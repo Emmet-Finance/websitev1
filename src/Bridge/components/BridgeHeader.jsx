@@ -23,16 +23,16 @@ import {
 } from '../types';
 
 import { setWallet, setAccounts, setBalance, setChainId } from '../state/wallets';
-import { setFromTokenBalances } from '../state/tokens'
+import { setFromTokenBalances, setFromTokenAllowances } from '../state/tokens'
 import { useAppSelector } from '../state/store';
-import {getEvmTokenBalances} from '../wallets/EVM'
+import {getEvmTokenBalances, getEvmTokenAllowances} from '../wallets/EVM'
 
 import {shortenAddress} from '../utils'
 
 function BridgeHeader() {
 
   const dispatch = useDispatch();
-
+  const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
 
   const handleConnect = async () => {
@@ -46,8 +46,11 @@ function BridgeHeader() {
       dispatch(setAccounts(accounts));
       dispatch(setBalance(await getEvmBalance(accounts[0])));
       dispatch(setChainId(await getEvmChainId()));
-      const fromBalances = await getEvmTokenBalances(accounts[0], "Goerly");
+      const fromBalances = await getEvmTokenBalances(accounts[0], "Goerly"); // chains.fromChain
       dispatch(setFromTokenBalances(fromBalances));
+      const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
+      dispatch(setFromTokenAllowances(alowances));
+      console.log(alowances)
     }
 
   }
@@ -109,6 +112,7 @@ function BridgeHeader() {
                 key={wallet}
                 logo={WalletLogos[wallet]}
                 name={wallet}
+                disabled={wallet !== 'Metamask'}
               />
             )}
           </Dropdown.Menu>

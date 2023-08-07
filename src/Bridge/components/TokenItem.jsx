@@ -9,13 +9,17 @@ import Star from '../../assets/img/new/star.svg';
 function TokenItem(props) {
 
     return (
-        <div>
+        <div onClick={props.onClick}>
             <Dropdown.Item href={props.href}>
                 <div className='flexBox'>
                     {props && props.logo && <div className='Logo' dangerouslySetInnerHTML={{ __html: props.logo }}></div>}
                     <div className='Caption'>{props.name}</div>
                 </div>
-                <p className='tokkenValue'><span>{props.name}:</span> {bnToHumanReadable(props.balance)}</p>
+                {props.direction == "from"
+                    ? <p className='tokkenValue'>
+                        <span>{props.name}:</span> {bnToHumanReadable(props.balance)}
+                    </p>
+                    : ''}
                 <div className="hoverIcons">
                     <button type='button' className='copyLink'><img src={CopySmall} alt="CopySmall" /></button>
                     <button type='button' className='copyLink'><img src={Metamask} alt="Metamask" /></button>

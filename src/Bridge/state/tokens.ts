@@ -9,7 +9,7 @@ export const tokenSlice = createSlice({
         fromTokensLogo:testnetTokens[TestnetTokenNames[0]].logo,
         isApproved:false,
         supportedTokens: testnetTokens,
-        tokenAllowance: 0,
+        tokenAllowances: undefined,
         fromTokenBalances:undefined,
         toTokenBalances:undefined,
         toTokens:TestnetTokenNames[0],
@@ -18,23 +18,35 @@ export const tokenSlice = createSlice({
     reducers:{
         setFromTokens:(state:any, action) => {
             state.fromTokens = action.payload;
+            state.toTokens = action.payload;
             // @ts-ignore
-            state.fromTokensLogo = TokenLogos[action.payload];
+            state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+            // @ts-ignore
+            state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
             addCookie({key:"fromTokens", value:state.fromTokens, ...state.cookieExpires});
         },
         setToTokens:(state:any, action) => {
+            state.fromTokens = action.payload;
             state.toTokens = action.payload;
             // @ts-ignore
-            state.toTokensLogo = TokenLogos[action.payload];
+            state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+            // @ts-ignore
+            state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
             addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
         },
         setFromTokenBalances:(state:any, action) => {
             state.fromTokenBalances = action.payload;
+            console.log("Balances:", action.payload)
+        },
+        setFromTokenAllowances:(state:any, action) => {
+            state.tokenAllowances = action.payload;
+            console.log("allowances:", action.payload)
         },
     },
 });
 
 export const {
+    setFromTokenAllowances,
     setFromTokens,
     setFromTokenBalances,
     setToTokens,
