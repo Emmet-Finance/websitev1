@@ -36,11 +36,9 @@ export const tokenSlice = createSlice({
         },
         setFromTokenBalances:(state:any, action) => {
             state.fromTokenBalances = action.payload;
-            console.log("Balances:", action.payload)
         },
         setFromTokenAllowances:(state:any, action) => {
             state.tokenAllowances = action.payload;
-            console.log("allowances:", action.payload)
         },
     },
 });

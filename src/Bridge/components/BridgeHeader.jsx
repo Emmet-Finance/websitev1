@@ -9,25 +9,32 @@ import {
   getEvmAccounts,
   getEvmBalance,
   getEvmChainId,
+  getEvmTokenAllowances,
+  getEvmTokenBalances, 
 } from 'emmet.sdk';
+// Local imports
+import ListItem from './ListItem';
 // UI logos
 import Down from '../../assets/img/new/down.svg';
 import Logo from '../../assets/img/logo.svg';
 import Earth from '../../assets/img/new/earth.svg';
-import ListItem from './ListItem';
-
+import { useAppSelector } from '../state/store';
+import {
+  setFromTokenBalances, 
+  setFromTokenAllowances
+} from '../state/tokens';
+import {
+  setWallet, 
+  setAccounts, 
+  setBalance, 
+  setChainId,
+} from '../state/wallets';
 import {
   supportedLanguages,
   supportedWallets,
   WalletLogos
 } from '../types';
-
-import { setWallet, setAccounts, setBalance, setChainId } from '../state/wallets';
-import { setFromTokenBalances, setFromTokenAllowances } from '../state/tokens'
-import { useAppSelector } from '../state/store';
-import {getEvmTokenBalances, getEvmTokenAllowances} from '../wallets/EVM'
-
-import {shortenAddress} from '../utils'
+import {shortenAddress} from '../utils';
 
 function BridgeHeader() {
 
@@ -46,11 +53,10 @@ function BridgeHeader() {
       dispatch(setAccounts(accounts));
       dispatch(setBalance(await getEvmBalance(accounts[0])));
       dispatch(setChainId(await getEvmChainId()));
-      const fromBalances = await getEvmTokenBalances(accounts[0], "Goerly"); // chains.fromChain
+      const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
       dispatch(setFromTokenBalances(fromBalances));
       const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
       dispatch(setFromTokenAllowances(alowances));
-      console.log(alowances)
     }
 
   }

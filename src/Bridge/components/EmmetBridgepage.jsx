@@ -67,7 +67,7 @@ function EmmetBridgepage() {
         return () => {
             window.removeEventListener('load', onWindowReload);
         };
-    }, []);
+    }, [dispatch]);
 
     return (
         <div className="emmentBridgePage">

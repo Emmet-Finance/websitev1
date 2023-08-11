@@ -1681,6 +1681,14 @@ span.amountHeight {
   opacity: .5;
 }
 
+.inline {
+  display: inline;
+}
+
+.m-l-5 {
+  margin-left: 5px;
+}
+
 .inofText {
   position: relative;
   z-index: 1;

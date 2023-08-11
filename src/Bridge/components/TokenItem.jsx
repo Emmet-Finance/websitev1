@@ -15,7 +15,7 @@ function TokenItem(props) {
                     {props && props.logo && <div className='Logo' dangerouslySetInnerHTML={{ __html: props.logo }}></div>}
                     <div className='Caption'>{props.name}</div>
                 </div>
-                {props.direction == "from"
+                {props.direction === "from"
                     ? <p className='tokkenValue'>
                         <span>{props.name}:</span> {bnToHumanReadable(props.balance)}
                     </p>

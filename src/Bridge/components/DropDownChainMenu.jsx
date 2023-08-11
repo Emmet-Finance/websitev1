@@ -1,15 +1,18 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useAppSelector } from '../state/store';
+import { switchEvmChain } from 'emmet.sdk';
+
+// Local imports
 import ListItem from './ListItem';
+import { filterOneOut } from '../utils';
+import { useAppSelector } from '../state/store';
+import DownArrow from '../../assets/img/chevron-down.svg';
 import {
     setFromChain,
     setToChain,
-} from '../state/chains'
+} from '../state/chains';
 
-import DownArrow from '../../assets/img/chevron-down.svg';
-import { filterOneOut } from '../utils'
 
 function DropDownChainMenu(props) {
 
@@ -19,9 +22,10 @@ function DropDownChainMenu(props) {
     const onChainClickHandler = (e, chain) => {
         e.preventDefault()
         if (props.direction === "from") {
-            dispatch(setFromChain(chain))
+            switchEvmChain(chain)
+            dispatch(setFromChain(chain));
         } else if (props.direction === "to") {
-            dispatch(setToChain(chain))
+            dispatch(setToChain(chain));
         }
     }
 

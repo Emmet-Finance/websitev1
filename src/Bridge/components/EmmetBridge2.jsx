@@ -7,7 +7,6 @@ import CopyBridge from '../../assets/img/new/copy.svg';
 import Check from '../../assets/img/new/check.svg';
 import Info from '../../assets/img/new/info.svg';
 
-import MaxNumberSet from './MaxNumberSet';
 import SlippageTolerance from './SlippageToleranceModal';
 import TransactionDetails from './TransactionDetails';
 
@@ -37,10 +36,10 @@ function EmmetBridge2() {
     const [errorMessage, setError] = useState('');
 
     useEffect(() => {
-        if(amount){
+        if (amount) {
             setReceived((stringToBigNum(amount)));
         }
-        
+
     }, [amount]);
 
     const handleButtonClick = () => {
@@ -82,9 +81,9 @@ function EmmetBridge2() {
         const a = tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()];
         const b = e.target.value;
 
-        if(isGreaterOrEqual(a, b)){
+        if (isGreaterOrEqual(a, b)) {
             setAmount(e.target.value)
-        }else{
+        } else {
             setError(`Balance is not enough for this transaction`)
         }
 
@@ -173,13 +172,13 @@ function EmmetBridge2() {
                         </div>
                         <div className="lineBox">
                             <div className='labelText'>
-                                <div className="label label1 infoLabel">
-                                    <span>Target Address</span>
-                                    <div className="inofText">
+                                <span className="label label1 infoLabel">
+                                    <span><p className='inline'>Target Address</p></span>
+                                    <span className="inofText m-l-5">
                                         <img src={Info} alt="Info" />
                                         <span> <b>Warning:</b> Not to loose the transfered tokens, make sure the destination address is correct. </span>
-                                    </div>
-                                </div>
+                                    </span>
+                                </span>
                             </div>
                             <div className="emmetFrom amountMax">
                                 <input
@@ -193,9 +192,9 @@ function EmmetBridge2() {
                                 >SELF</p>
                             </div>
                             <p className="warningText">
-                                <span className='warningTextItem warningText1'>Not enough gas. <b>0.005 BNB</b> required. </span>
-                                <span className='warningTextItem warningText2'>Insufficient balance. </span>
-                                <span className='warningTextItem warningText3'>Insufficient approval. </span>
+                                <span className='warningTextItem warningText2'> 
+                                    {errorMessage ? errorMessage : ''} 
+                                </span>
                             </p>
                         </div>
                         <div className="bridgeCalculation">
