@@ -1,4 +1,4 @@
-import { EVMChain } from "emmet.sdk";
+import { EVMChain } from "emmet.sdk/types";
 import { TCookie } from "./types";
 
 /*****************************************************

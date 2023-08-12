@@ -10,7 +10,8 @@ import {
   getEvmBalance,
   getEvmChainId,
   getEvmTokenAllowances,
-  getEvmTokenBalances, 
+  getEvmTokenBalances,
+  switchEvmChain,
 } from 'emmet.sdk';
 // Local imports
 import ListItem from './ListItem';
@@ -44,17 +45,27 @@ function BridgeHeader() {
 
   const handleConnect = async () => {
 
+    // Get the info about the browser wallet
     const provider = await detectEthereumProvider({ silent: true });
 
     if (provider && typeof window.ethereum !== 'undefined') {
 
+      // If the selected chain is different from the one in the wallet
+      if (chains.chainId !== provider.networkVersion){
+        switchEvmChain(chains.fromChain);
+      }
+
+      // Inject the wallet account
       let accounts = [];
       accounts = await getEvmAccounts();
       dispatch(setAccounts(accounts));
+      // Inject the native coin balance
       dispatch(setBalance(await getEvmBalance(accounts[0])));
       dispatch(setChainId(await getEvmChainId()));
+      // Collect the token balances of the account
       const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
       dispatch(setFromTokenBalances(fromBalances));
+      // Collect the token allowances of the account
       const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
       dispatch(setFromTokenAllowances(alowances));
     }

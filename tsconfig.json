@@ -21,5 +21,8 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "paths": {
+    "emmet.sdk": ["./node_modules/emmet.sdk/"]
+  }
 }

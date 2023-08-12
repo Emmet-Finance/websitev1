@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
-import {TestnetTokenNames,testnetTokens} from 'emmet.sdk';
+import {testnetTokens} from 'emmet.sdk/tokens';
+import {TestnetTokenNames} from 'emmet.sdk/types';
 
 export const tokenSlice = createSlice({
     name:'token',
