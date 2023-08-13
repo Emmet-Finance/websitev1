@@ -2,50 +2,60 @@ import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
 
 export const transactionSlice = createSlice({
-    name:'transaction',
-    initialState:{
+    name: 'transaction',
+    initialState: {
         approvedAmt: 0,
         approvedHash: '',
         approveSuccess: false,
-        destinationAddress:'',
-        destinationHash:'',
+        destinationAddress: '',
+        destinationHash: '',
+        estimationDestination: "",
+        estimationNative: "",
         originalHash: '',
         pending: false,
-        slippage:0.5,
-        transferAmount:0,
+        slippage: 0.5,
+        transferAmount: 0,
         transferSuccess: false,
     },
-    reducers:{
-        setApprovedAmount:(state:any, action) => {
+    reducers: {
+        setApprovedAmount: (state: any, action) => {
             state.approvedAmt = action.payload;
         },
-        setApprovedHash:(state:any, action) => {
+        setApprovedHash: (state: any, action) => {
             state.approvedHash = action.payload;
         },
-        setApprovedSuccess:(state:any, action) => {
+        setApprovedSuccess: (state: any, action) => {
             state.approveSuccess = action.payload;
         },
-        setDestinationAccount:(state:any, action) => {
+        setDestinationAccount: (state: any, action) => {
             state.destinationAddress = action.payload;
-            addCookie({key:"toAddress", value:action.payload, ...state.cookieExpires})
+            addCookie({
+                key: "toAddress",
+                value: action.payload,
+                ...state.cookieExpires
+            })
         },
-        setDestinationHash:(state:any, action) => {
+        setDestinationHash: (state: any, action) => {
             state.destinationHash = action.payload;
         },
-        setOriginalHash:(state:any, action) => {
+        setOriginalHash: (state: any, action) => {
             state.originalHash = action.payload;
         },
-        setPending:(state:any, action) => {
+        setPending: (state: any, action) => {
             state.pending = action.payload;
         },
-        setSlippage:(state:any, action) => {
+        setSlippage: (state: any, action) => {
             state.slippage = action.payload;
-            addCookie({key:"slippage", value:action.payload, ...state.cookieExpires})
+            addCookie({
+                key: "slippage",
+                value: action.payload,
+                ...state.cookieExpires
+            })
         },
-        setTransferAmount:(state:any, action) => {
+        setTransferAmount: (state: any, action) => {
             state.transferAmount = action.payload;
         },
-        setTransferSuccess:(state:any, action) => {
+        setTransferSuccess: (state: any, action) => {
             state.transferSuccess = action.payload;
         }
     },
@@ -55,6 +65,13 @@ export const transactionSlice = createSlice({
 });
 
 export const {
+    setApprovedAmount,
+    setApprovedHash,
+    setApprovedSuccess,
     setDestinationAccount,
+    setDestinationHash,
+    setPending,
+    setSlippage,
     setTransferAmount,
+    setTransferSuccess,
 } = transactionSlice.actions;

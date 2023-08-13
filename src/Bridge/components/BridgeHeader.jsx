@@ -6,6 +6,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {
   detectEthereumProvider,
+  estimateReceive,
+  // estimateSend,
   getEvmAccounts,
   getEvmBalance,
   getEvmChainId,
@@ -21,13 +23,13 @@ import Logo from '../../assets/img/logo.svg';
 import Earth from '../../assets/img/new/earth.svg';
 import { useAppSelector } from '../state/store';
 import {
-  setFromTokenBalances, 
+  setFromTokenBalances,
   setFromTokenAllowances
 } from '../state/tokens';
 import {
-  setWallet, 
-  setAccounts, 
-  setBalance, 
+  setWallet,
+  setAccounts,
+  setBalance,
   setChainId,
 } from '../state/wallets';
 import {
@@ -35,40 +37,80 @@ import {
   supportedWallets,
   WalletLogos
 } from '../types';
-import {shortenAddress} from '../utils';
+import { shortenAddress } from '../utils';
+import { estimateSend, formatEther, contractCallFeeestimate } from '../wallets/EVM'
 
 function BridgeHeader() {
 
   const dispatch = useDispatch();
   const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
+  const tokens = useAppSelector((state) => state.tokens);
 
   const handleConnect = async () => {
 
-    // Get the info about the browser wallet
-    const provider = await detectEthereumProvider({ silent: true });
+    try {
 
-    if (provider && typeof window.ethereum !== 'undefined') {
+      // Get the info about the browser wallet
+      const provider = await detectEthereumProvider({ silent: true });
 
-      // If the selected chain is different from the one in the wallet
-      if (chains.chainId !== provider.networkVersion){
-        switchEvmChain(chains.fromChain);
+      if (provider && typeof window.ethereum !== 'undefined') {
+
+        // If the selected chain is different from the one in the wallet
+        if (chains.chainId !== provider.networkVersion) {
+          switchEvmChain(chains.fromChain);
+        }
+
+        // Inject the wallet account
+        let accounts = [];
+        accounts = await getEvmAccounts();
+        dispatch(setAccounts(accounts));
+        // Inject the native coin balance
+        dispatch(setBalance(await getEvmBalance(accounts[0])));
+        dispatch(setChainId(await getEvmChainId()));
+        // Collect the token balances of the account
+        const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
+        dispatch(setFromTokenBalances(fromBalances));
+        // Collect the token allowances of the account
+        const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
+        dispatch(setFromTokenAllowances(alowances));
+
+        // Native fee
+        const nativeFee = await estimateSend(
+          "100000000000000000",
+          accounts[0],
+          chains.fromChain,
+          chains.toChain,
+          tokens.fromTokens
+        );
+        console.log("nativeFee", formatEther(nativeFee));
+
+        const nativePureEstimate = await contractCallFeeestimate(
+          chains.fromChain,
+          chains.toChain,
+          'sendInstallment',
+          "100000000000000000",
+          tokens.fromTokens,
+          accounts[0]
+        );
+        console.log("nativePureEstimate", nativePureEstimate);
+
+        // Destination fee
+        const destFee = await estimateReceive(
+          "100000000000000000",
+          accounts[0],
+          accounts[0],
+          chains.toChain,
+          chains.fromChain,
+          tokens.fromTokens
+        );
+        console.log("destFee", formatEther(destFee));
       }
 
-      // Inject the wallet account
-      let accounts = [];
-      accounts = await getEvmAccounts();
-      dispatch(setAccounts(accounts));
-      // Inject the native coin balance
-      dispatch(setBalance(await getEvmBalance(accounts[0])));
-      dispatch(setChainId(await getEvmChainId()));
-      // Collect the token balances of the account
-      const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
-      dispatch(setFromTokenBalances(fromBalances));
-      // Collect the token allowances of the account
-      const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
-      dispatch(setFromTokenAllowances(alowances));
+    } catch (error) {
+      console.error("BridgeHeader:handleConnect: ERROR:", error)
     }
+
 
   }
 

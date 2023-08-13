@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useDispatch } from 'react-redux';
+
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
 import LinkLogo from '../../assets/img/link.svg';
 import CopyBridge from '../../assets/img/new/copy.svg';
@@ -18,7 +19,8 @@ import {
     setFromChain,
     setToChain,
 } from '../state/chains'
-import { bnToHumanReadable, stringToBigNum, isGreaterOrEqual } from '../utils'
+import { bnToHumanReadable, stringToBigNum, isGreaterOrEqual } from '../utils';
+import { disconnect } from '../state/wallets';
 
 function EmmetBridge2() {
 
@@ -60,7 +62,7 @@ function EmmetBridge2() {
     const onSwapChainsClickHandle = (e) => {
         const fromChain = chains.fromChain;
         const toChain = chains.toChain;
-
+        dispatch(disconnect());
         dispatch(setFromChain(toChain))
         dispatch(setToChain(fromChain))
     }
@@ -207,7 +209,7 @@ function EmmetBridge2() {
                             </div>
                             <div className="calculateBox">
                                 <span>Gas Fee:</span>
-                                0.001 BNB
+                                0.001 {chains.nativeCurrency}
                             </div>
                             <div className="calculateBox">
                                 <span>Slippage:</span>

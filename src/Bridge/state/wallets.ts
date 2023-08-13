@@ -53,6 +53,13 @@ export const walletSlice = createSlice({
         selectedWallet: '',
     },
     reducers: {
+        disconnect: (state:any) => {
+            state.accounts = [];
+            state.account = "";
+            state.balance = undefined;
+            state.isConnected = false;
+            state.selectedWallet = '';
+        },
         setAccounts: (state: any, action: { payload: []; }) => {
             state.accounts = action.payload;
             state.account = state.accounts[0];
@@ -79,6 +86,7 @@ export const walletSlice = createSlice({
 });
 
 export const {
+    disconnect,
     setAccounts,
     setBalance,
     setChainId,

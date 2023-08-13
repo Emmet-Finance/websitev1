@@ -20,12 +20,18 @@ function DropDownChainMenu(props) {
     const chains = useAppSelector((state) => state.chains);
 
     const onChainClickHandler = (e, chain) => {
-        e.preventDefault()
-        if (props.direction === "from") {
-            switchEvmChain(chain)
-            dispatch(setFromChain(chain));
-        } else if (props.direction === "to") {
-            dispatch(setToChain(chain));
+        try {
+
+            e.preventDefault()
+            if (props.direction === "from") {
+                switchEvmChain(chain)
+                dispatch(setFromChain(chain));
+            } else if (props.direction === "to") {
+                dispatch(setToChain(chain));
+            }
+
+        } catch (error) {
+            console.error("DropDownChainMenu:onChainClickHandler ERROR:", error)
         }
     }
 
