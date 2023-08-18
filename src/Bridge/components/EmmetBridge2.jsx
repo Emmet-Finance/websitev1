@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useDispatch } from 'react-redux';
 
@@ -19,8 +19,15 @@ import {
     setFromChain,
     setToChain,
 } from '../state/chains'
-import { bnToHumanReadable, stringToBigNum, isGreaterOrEqual } from '../utils';
+import { bnToHumanReadable, isGreaterOrEqual } from '../utils';
 import { disconnect } from '../state/wallets';
+
+import {
+    convertToBigIntWithScaling,
+} from '../wallets/EVM';
+import { isEvmAddress } from 'emmet.sdk';
+
+import { setDestinationAccount, setTransactionName } from '../state/transactions'
 
 function EmmetBridge2() {
 
@@ -28,6 +35,7 @@ function EmmetBridge2() {
     const wallets = useAppSelector(state => state.wallets);
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
+    const transaction = useAppSelector(state => state.transaction);
 
     const [isElementVisible, setIsElementVisible] = useState(true);
     const [isOtherElementVisible, setIsOtherElementVisible] = useState(false);
@@ -37,17 +45,17 @@ function EmmetBridge2() {
     const [recieved, setReceived] = useState('');
     const [errorMessage, setError] = useState('');
 
-    useEffect(() => {
-        if (amount) {
-            setReceived((stringToBigNum(amount)));
-        }
-
-    }, [amount]);
-
-    const handleButtonClick = () => {
+    const handleApproveClick = () => {
+        console.log("Approve");
         setIsElementVisible(false);
         setIsOtherElementVisible(true);
+        dispatch(setTransactionName("Approving:"));
     };
+
+    const handleTransferClick = () => {
+        console.log("Transfer");
+        dispatch(setTransactionName("Transferring:"));
+    }
 
     const now = 100;
 
@@ -80,15 +88,47 @@ function EmmetBridge2() {
     const handleAmountChange = (e) => {
         e.preventDefault()
 
-        const a = tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()];
-        const b = e.target.value;
+        const b = tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()];
+        const a = parseFloat(e.target.value);
+        if (a) {
+            const aToDec = convertToBigIntWithScaling(a);
 
-        if (isGreaterOrEqual(a, b)) {
-            setAmount(e.target.value)
+            // Check whether balance (b) is > than transfer amount (aToDec)
+            if (isGreaterOrEqual(b, aToDec)) {
+                setAmount(a);
+                const slippage = a * transaction.slippage / 100;
+                const _received = a - slippage
+                setReceived(_received);
+                setError('');
+            } else {
+                setError(`Balance is not enough for this transaction`)
+            }
         } else {
-            setError(`Balance is not enough for this transaction`)
+            setAmount('');
+            setReceived('');
         }
 
+    }
+
+    const handleReceivedOnChange = (e) => {
+        e.preventDefault();
+        const _received = parseFloat(e.target.value);
+        const _amount = (_received / transaction.slippage / 100) + _received
+        setReceived(_received);
+        setAmount(_amount);
+    }
+
+    const handleDestAddressChange = (e) => {
+        e.preventDefault();
+        const inputValue = e.target.value;
+        const pattern = /^[0x]{0,2}[0-9a-fA-F]{0,40}$/;
+
+        if (pattern.test(inputValue)) {
+            setReceiver(inputValue);
+            if (isEvmAddress(inputValue)) {
+                dispatch(setDestinationAccount(inputValue))
+            }
+        }
     }
 
     return (
@@ -141,14 +181,17 @@ function EmmetBridge2() {
                                 <p className="label label2">
                                     <span>Balance:</span>
                                     {tokens && tokens.fromTokenBalances
-                                        ? ' ' + bnToHumanReadable(tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]) + ` ${tokens.fromTokens}`
+                                        ? ' '
+                                        + bnToHumanReadable(tokens
+                                            .fromTokenBalances[tokens.fromTokens.toUpperCase()])
+                                        + ` ${tokens.fromTokens}`
                                         : " 0.00 " + tokens.fromTokens}
                                 </p>
                             </div>
                             <div className="emmetFrom amountMax">
                                 <input
                                     type="number"
-                                    placeholder="Amount"
+                                    placeholder="To be sent"
                                     value={amount ? amount : ''}
                                     onChange={handleAmountChange}
                                 />
@@ -165,10 +208,9 @@ function EmmetBridge2() {
                             <div className="emmetFrom amountMax">
                                 <input
                                     type="text"
-                                    placeholder="Amount"
-                                    value={recieved ? bnToHumanReadable(recieved) : ''}
-                                    readOnly
-                                //onChange={e => setReceived(e.target.value)}
+                                    placeholder="To be received"
+                                    value={recieved ? recieved : ''}
+                                    onChange={handleReceivedOnChange}
                                 />
                             </div>
                         </div>
@@ -187,18 +229,21 @@ function EmmetBridge2() {
                                     type="text"
                                     placeholder="Receiver's Address"
                                     value={receiver}
+                                    onChange={handleDestAddressChange}
                                 />
                                 <p
                                     onClick={e => onSelfClickHandler(e)}
                                     className='max-button'
                                 >SELF</p>
                             </div>
+                            {/* *************** Error Block *************** */}
                             <p className="warningText">
-                                <span className='warningTextItem warningText2'> 
-                                    {errorMessage ? errorMessage : ''} 
+                                <span className='warningTextItem warningText2'>
+                                    {errorMessage ? errorMessage : ''}
                                 </span>
                             </p>
                         </div>
+                        {/* *************** Informational Block *************** */}
                         <div className="bridgeCalculation">
                             <div className="calculateBox">
                                 <span>Allowance:</span>
@@ -209,28 +254,65 @@ function EmmetBridge2() {
                             </div>
                             <div className="calculateBox">
                                 <span>Gas Fee:</span>
-                                0.001 {chains.nativeCurrency}
+                                {bnToHumanReadable((transaction.nativeFee + transaction.destinationFee), 18, 6)}
+                                {chains.nativeCurrency}
                             </div>
                             <div className="calculateBox">
                                 <span>Slippage:</span>
-                                0.5%  <SlippageTolerance />
+                                {transaction.slippage}%  <SlippageTolerance />
                             </div>
                         </div>
-                        <div className="approvingLoading">
-                            Approving
-                            <ProgressBar striped variant="success" now={now} label={`${now}%`} visuallyHidden />
-                        </div>
-                        <div className="approveBox">
-                            <p className='approveText'>
-                                Approval:
-                                <span className='color-red'>Failed!</span>
-                                <span className='color-green'>Success!</span>
-                            </p>
-                            <p className="viewHash">DAI 100.00 <a href="/bridge">View Hash</a></p>
-                        </div>
+                        {transaction.pending
+                            ? (<div className="approvingLoading">
+                                {transaction.name}:
+                                <ProgressBar striped variant="success" now={100} label={`${now}%`} visuallyHidden />
+                            </div>)
+                            : ''}
+                        {/* *************** Transaction hashes *************** */}
+                        {transaction.approvedHash
+                            ? (<div className="approveBox">
+                                <p className='approveText'>
+                                    {transaction.name}
+                                    {transaction.approveSuccess
+                                        ? (<span className='color-green'>Success!</span>)
+                                        : (<span className='color-red'>Failed!</span>)}
+                                </p>
+                                <p
+                                    className="viewHash"
+                                >
+                                    {tokens.fromTokens}
+                                    {transaction.approvedAmt}
+                                    <a href={transaction.approvedHash}>View Hash</a>
+                                </p>
+                            </div>)
+                            : ''}
+                        {transaction.originalHash
+                            ? (<div className="approveBox">
+                                <p className='approveText'>
+                                    {transaction.name}
+                                    {transaction.transferSuccess
+                                        ? (<span className='color-green'>Success!</span>)
+                                        : (<span className='color-red'>Failed!</span>)}
+                                </p>
+                                <p
+                                    className="viewHash"
+                                >
+                                    {tokens.fromTokens}
+                                    {transaction.transferAmount}
+                                    <a href={transaction.originalHash}>View Hash</a>
+                                </p>
+                            </div>)
+                            : ''}
+                        {/* *************** BUTTONS *************** */}
                         <div className="dualBtns">
-                            <div className='approveBtn' onClick={handleButtonClick} >APPROVE <img src={Check} alt="Check" /></div>
-                            <div className='disenable enterApp'>TRANSFER <img src={LinkLogo} alt="Arrow" /></div>
+                            <div
+                                className='approveBtn'
+                                onClick={handleApproveClick}
+                            >APPROVE <img src={Check} alt="Check" /></div>
+                            <div
+                                className='disenable enterApp'
+                                onClick={handleTransferClick}
+                            >TRANSFER <img src={LinkLogo} alt="Arrow" /></div>
                         </div>
                     </div>
                 </div>
