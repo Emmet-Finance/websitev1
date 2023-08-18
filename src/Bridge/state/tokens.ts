@@ -6,12 +6,14 @@ import {TestnetTokenNames} from 'emmet.sdk/types';
 export const tokenSlice = createSlice({
     name:'token',
     initialState:{
+        fromDecimals:testnetTokens[TestnetTokenNames[0]].decimals,
         fromTokens:TestnetTokenNames[0],
         fromTokensLogo:testnetTokens[TestnetTokenNames[0]].logo,
         isApproved:false,
         supportedTokens: testnetTokens,
         tokenAllowances: undefined,
         fromTokenBalances:undefined,
+        toDecimals:testnetTokens[TestnetTokenNames[0]].decimals,
         toTokenBalances:undefined,
         toTokens:TestnetTokenNames[0],
         toTokensLogo:testnetTokens[TestnetTokenNames[0]].logo,
@@ -24,6 +26,10 @@ export const tokenSlice = createSlice({
             state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
             // @ts-ignore
             state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+            // @ts-ignore
+            state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+            // @ts-ignore
+            state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
             addCookie({key:"fromTokens", value:state.fromTokens, ...state.cookieExpires});
         },
         setToTokens:(state:any, action) => {
@@ -33,6 +39,10 @@ export const tokenSlice = createSlice({
             state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
             // @ts-ignore
             state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+            // @ts-ignore
+            state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+            // @ts-ignore
+            state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
             addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
         },
         setFromTokenBalances:(state:any, action) => {
