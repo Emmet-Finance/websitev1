@@ -135,14 +135,16 @@ export const handleAccountsChanged = (accounts: any[]) => {
  */
 export const bnToHumanReadable = (
     balance: bigint | number | string | undefined,
-    decimals: number = 18
+    decimals: number = 18,
+    digits: number = 2
 ): string => {
     if (balance) {
-        const divisor = BigInt(10) ** BigInt(decimals);
+        const divisor = 10n ** BigInt(decimals);
+
         const cleaned = balance.toString().replace('.', '').replace(',', '')
         if (/^[0-9]+$/.test(cleaned)) {
-            const balanceBigInt = BigInt(balance);
-            const integerPart = (balanceBigInt / divisor).toString();
+            const balanceBigInt = BigInt(cleaned);
+            const integerPart = Math.floor(Number(balanceBigInt / divisor)).toString();
             const decimalPart = balanceBigInt % divisor;
 
             const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -150,7 +152,7 @@ export const bnToHumanReadable = (
             const formattedDecimal = decimalPart
                 .toString()
                 .padStart(decimals, "0")
-                .slice(0, 2);
+                .slice(0, digits);
 
             const formatted = `${formattedInteger}.${formattedDecimal}`;
 
@@ -218,10 +220,10 @@ export function filterOneOut(chains: EVMChain[], chainName: string): EVMChain[] 
  * @returns true | false
  */
 export const isGreaterOrEqual = (
-    a: string | number | bigint, 
-    b:  string | number | bigint
+    a: string | number | bigint,
+    b: string | number | bigint
 ): boolean => {
-    if( a && b){
+    if (a && b) {
         return (BigInt(a) >= BigInt(b))
     }
     return false;
