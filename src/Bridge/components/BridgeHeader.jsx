@@ -37,6 +37,10 @@ import {
   supportedWallets,
   WalletLogos
 } from '../types';
+import {
+  setDestinationFee,
+  setNativeFee,
+} from '../state/transactions';
 import { shortenAddress } from '../utils';
 import { estimateSend, formatEther, contractCallFeeestimate } from '../wallets/EVM'
 
@@ -93,7 +97,8 @@ function BridgeHeader() {
           tokens.fromTokens,
           accounts[0]
         );
-        console.log("nativePureEstimate", nativePureEstimate);
+        console.log("nativePureEstimate", formatEther(nativePureEstimate));
+        dispatch(setNativeFee(nativePureEstimate/100000));
 
         // Destination fee
         const destFee = await estimateReceive(
@@ -105,6 +110,7 @@ function BridgeHeader() {
           tokens.fromTokens
         );
         console.log("destFee", formatEther(destFee));
+        dispatch(setDestinationFee((destFee / 1000000n).toString()));
       }
 
     } catch (error) {
