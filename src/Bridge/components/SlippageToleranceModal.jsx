@@ -2,15 +2,36 @@ import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import { useDispatch } from 'react-redux';
 import Info from '../../assets/img/new/info.svg';
 import Check from '../../assets/img/new/check.svg';
 
-function SlippageTolerance() {
-  const [show, setShow] = useState(false);
+import { setSlippage } from '../state/transactions';
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function SlippageTolerance() {
+
+  const dispatch = useDispatch();
+
+  const [show, setShow] = useState(false);
+  const [slippageAmt, setSlippageAmt] = useState(0);
+
+  const handleClose = () => {
+    setShow(false);
+  }
+
+  const handleShow = () => {
+    setShow(true);
+  }
+
+  const handleOnToleranceChange = (e) => {
+    e.preventDefault();
+    setSlippageAmt(e.target.value);
+    dispatch(setSlippage(e.target.value));
+  }
+
+  const onSlippageClick = (data) => {
+    dispatch(setSlippage(data));
+  }
 
   return (
     <>
@@ -27,30 +48,59 @@ function SlippageTolerance() {
 
         <Modal.Body>
           <div className="toleranceBtns">
-            <input type="radio" name='toleranceBox' id='toleranceBox1' />
-            <label htmlFor="toleranceBox1">0.1%</label>
-            <input type="radio" name='toleranceBox' id='toleranceBox2' />
-            <label htmlFor="toleranceBox2">0.5%</label>
-            <input type="radio" name='toleranceBox' id='toleranceBox3' />
-            <label htmlFor="toleranceBox3">0.10%</label>
-            <input type="radio" name='toleranceBox' id='toleranceBox4' />
-            <label htmlFor="toleranceBox4">0.15%</label>
+            <input
+              type="radio"
+              name='toleranceBox'
+              id='toleranceBox1'
+              onClick={() => onSlippageClick(0.01)}
+            />
+            <label htmlFor="toleranceBox1">0.01%</label>
+            <input
+              type="radio"
+              name='toleranceBox'
+              id='toleranceBox2'
+              onClick={() => onSlippageClick(0.02)}
+            />
+            <label htmlFor="toleranceBox2">0.2%</label>
+            <input
+              type="radio"
+              name='toleranceBox'
+              id='toleranceBox3'
+              onClick={() => onSlippageClick(0.5)}
+            />
+            <label htmlFor="toleranceBox3">0.5%</label>
+            <input
+              type="radio"
+              name='toleranceBox'
+              id='toleranceBox4'
+              onClick={() => onSlippageClick(1.0)}
+            />
+            <label htmlFor="toleranceBox4">1.0%</label>
             <div className="toleranceBox">
-              <input type="number" placeholder='0.5' />
+              <input
+                type="number"
+                placeholder='0.5'
+                value={slippageAmt ? slippageAmt : ''}
+                onChange={handleOnToleranceChange}
+              />
               <span>%</span>
             </div>
           </div>
           <div className="modalFooter">
-            <Button className='cancelModal' onClick={handleClose}>
-                CANCEL
-            </Button> 
-            <Button className="SaveModal" onClick={handleClose}>
-                Save <img src={Check} alt="Check" />
+            <Button
+              className='cancelModal'
+              onClick={handleClose}>
+              CANCEL
+            </Button>
+            <Button
+              className="SaveModal"
+              onClick={handleClose}>
+              Save <img src={Check} alt="Check" />
             </Button>
           </div>
         </Modal.Body>
-       
-        
+
+
       </Modal>
     </>
   );
