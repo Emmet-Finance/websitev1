@@ -8,12 +8,15 @@ export const transactionSlice = createSlice({
         approvedHash: '',
         approveSuccess: false,
         destinationAddress: '',
+        destinationFee: 0,
         destinationHash: '',
         estimationDestination: "",
         estimationNative: "",
+        nativeFee: 0,
+        name:'',
         originalHash: '',
         pending: false,
-        slippage: 0.5,
+        slippage: 0,
         transferAmount: 0,
         transferSuccess: false,
     },
@@ -35,8 +38,14 @@ export const transactionSlice = createSlice({
                 ...state.cookieExpires
             })
         },
+        setDestinationFee: (state: any, action) => {
+            state.destinationFee = action.payload;
+        },
         setDestinationHash: (state: any, action) => {
             state.destinationHash = action.payload;
+        },
+        setNativeFee: (state: any, action) => {
+            state.nativeFee = action.payload;
         },
         setOriginalHash: (state: any, action) => {
             state.originalHash = action.payload;
@@ -51,6 +60,9 @@ export const transactionSlice = createSlice({
                 value: action.payload,
                 ...state.cookieExpires
             })
+        },
+        setTransactionName: (state: any, action) => {
+            state.name = action.payload;
         },
         setTransferAmount: (state: any, action) => {
             state.transferAmount = action.payload;
@@ -69,9 +81,12 @@ export const {
     setApprovedHash,
     setApprovedSuccess,
     setDestinationAccount,
+    setDestinationFee,
     setDestinationHash,
+    setNativeFee,
     setPending,
     setSlippage,
+    setTransactionName,
     setTransferAmount,
     setTransferSuccess,
 } = transactionSlice.actions;
