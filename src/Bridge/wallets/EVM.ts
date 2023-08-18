@@ -24,8 +24,6 @@ export async function estimateSend(
 
     try {
 
-        console.log('amount', amount, 'account', account, 'fromChainName', fromChainName, 'toChainName', toChainName, 'tokenName', tokenName)
-
         const selectedChain = testnets.filter(net =>
             net.name === fromChainName)[0];
 
@@ -39,8 +37,6 @@ export async function estimateSend(
             tokenName,
             account
         ];
-
-        console.log('selectedChain', selectedChain, 'publicClient', publicClient, 'populatedArgs', populatedArgs)
 
         const estimation = await publicClient?.estimateContractGas({
             address: `0x${selectedChain.bridge.slice(2)}`,
@@ -101,7 +97,6 @@ export async function contractCallFeeestimate(
             tokenName,
             account
         ];
-        console.log("functionArgs:[amount,chainId,tokenName,account]", functionArgs);
 
         const encodedParameters = encodeFunctionData({
             abi: FTBridge, functionName, args: [functionArgs]
@@ -123,8 +118,6 @@ export async function contractCallFeeestimate(
             method: 'eth_gasPrice'
           });
 
-          console.log("gasEstimate", gasEstimate.toString(16), "gasPriceWei", gasPriceWei.toString(16))
-
         return (gasEstimate * gasPriceWei).toString();
     } catch (error) {
         console.error("contractCallFeeestimate Error:", error);
@@ -132,4 +125,10 @@ export async function contractCallFeeestimate(
 
     return functionName === 'sendInstallment' ? (83889n * 11n).toString() : (22868n * 11n).toString();
 
+}
+
+
+export function convertToBigIntWithScaling(value: number, scalingFactor: number = 10**18): bigint {
+    const result = Math.round(value * scalingFactor)
+    return BigInt(result);
 }
