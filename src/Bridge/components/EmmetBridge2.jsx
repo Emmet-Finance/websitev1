@@ -37,8 +37,8 @@ function EmmetBridge2() {
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
 
-    const [isElementVisible, setIsElementVisible] = useState(true);
-    const [isOtherElementVisible, setIsOtherElementVisible] = useState(false);
+    const [isBridgeFormVisible, setIsBridgeFormVisible] = useState(true);
+    const [isTxDetailWindowVisible, setIsTxDetailWindowVisible] = useState(false);
 
     const [amount, setAmount] = useState('');
     const [receiver, setReceiver] = useState('');
@@ -47,13 +47,13 @@ function EmmetBridge2() {
 
     const handleApproveClick = () => {
         console.log("Approve");
-        setIsElementVisible(false);
-        setIsOtherElementVisible(true);
+        setIsBridgeFormVisible(false);
         dispatch(setTransactionName("Approving:"));
     };
 
     const handleTransferClick = () => {
         console.log("Transfer");
+        setIsTxDetailWindowVisible(true);
         dispatch(setTransactionName("Transferring:"));
     }
 
@@ -133,7 +133,7 @@ function EmmetBridge2() {
 
     return (
         <>
-            {isElementVisible &&
+            {isBridgeFormVisible &&
                 <div className="EmmetBridge_Box">
                     <div className="EmmetBridge_title">
                         <h2>Emmet.Bridge</h2>
@@ -262,14 +262,14 @@ function EmmetBridge2() {
                                 {transaction.slippage}%  <SlippageTolerance />
                             </div>
                         </div>
-                        {transaction.pending
+                        {transaction && transaction.pending
                             ? (<div className="approvingLoading">
                                 {transaction.name}:
                                 <ProgressBar striped variant="success" now={100} label={`${now}%`} visuallyHidden />
                             </div>)
                             : ''}
                         {/* *************** Transaction hashes *************** */}
-                        {transaction.approvedHash
+                        {transaction && transaction.approvedHash
                             ? (<div className="approveBox">
                                 <p className='approveText'>
                                     {transaction.name}
@@ -286,7 +286,7 @@ function EmmetBridge2() {
                                 </p>
                             </div>)
                             : ''}
-                        {transaction.originalHash
+                        {transaction && transaction.originalHash
                             ? (<div className="approveBox">
                                 <p className='approveText'>
                                     {transaction.name}
@@ -317,7 +317,7 @@ function EmmetBridge2() {
                     </div>
                 </div>
             }
-            {isOtherElementVisible && <TransactionDetails />}
+            {isTxDetailWindowVisible && <TransactionDetails />}
         </>
     );
 }
