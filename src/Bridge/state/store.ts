@@ -5,6 +5,7 @@ import { chainSlice } from './chains';
 import { miscelaneousSlice } from './miscelaneous';
 import { tokenSlice } from './tokens'
 import { transactionSlice } from './transactions';
+import { uiSlice } from './ui';
 import { walletSlice } from './wallets';
 
 // GLOBAL STORE:
@@ -15,6 +16,7 @@ const store = configureStore({
         miscelaneous: miscelaneousSlice.reducer,
         tokens: tokenSlice.reducer,
         transaction: transactionSlice.reducer,
+        ui: uiSlice.reducer,
         wallets: walletSlice.reducer,
     },
 })
