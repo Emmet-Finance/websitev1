@@ -1,17 +1,30 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../state/store';
-import { copyAddressToClipboard } from '../utils';
+import { copyAddressToClipboard, chainNameToKey } from '../utils';
 
 import CopySmall from '../../assets/img/new/copy2.svg';
 import Metamask from '../../assets/img/new/Metamask.svg';
 import Close from '../../assets/img/new/close.svg';
+import HashLink from './HashLink';
+
+import {setIsBridgeFormVisible} from '../state/ui'
 
 function TransactionDetails() {
 
+    const dispatch = useDispatch();
     const wallets = useAppSelector(state => state.wallets);
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
+
+    const fromExplorer = chains.supportedChains[chainNameToKey(chains.fromChain)].blockExplorers.default.url;
+    const toExplorer = chains.supportedChains[chainNameToKey(chains.toChain)].blockExplorers.default.url;
+
+    function onClickHandle() {
+        console.log("TransactionDetails:onClickHandle")
+        dispatch(setIsBridgeFormVisible())
+    }
 
     return (
         <>
@@ -19,7 +32,12 @@ function TransactionDetails() {
                 <div className="EmmetBridge_title">
                     <h2>Emmet.Bridge</h2>
                 </div>
-                <div className="detailsTitle"><span className="text_art">Transaction</span> Details</div>
+                <div className="detailsTitle">
+                    <span className="text_art">
+                        Transaction
+                    </span>
+                    Details
+                </div>
                 <div className="transtionAre">
                     <div className="transactionContainer">
                         <label htmlFor="">From</label>
@@ -45,8 +63,14 @@ function TransactionDetails() {
                                 </div>
                                 <div className="rightText">
                                     {transaction
+                                        && fromExplorer
                                         && transaction.originalHash
-                                        && `${transaction.originalHash.slice(0, 6)}...${transaction.originalHash.slice(60, 64)}`}
+                                        && <HashLink
+                                            explorer={fromExplorer}
+                                            extension="/tx/"
+                                            hash={transaction.originalHash}
+                                            linkText={`${transaction.originalHash.slice(0, 10)}...${transaction.originalHash.slice(60, 66)}`}
+                                        />}
                                     <button
                                         className='copyAddress'
                                         type='button'
@@ -63,7 +87,12 @@ function TransactionDetails() {
                                 <div className="rightText">
                                     {wallets
                                         && wallets.account
-                                        && `${wallets.account.slice(0, 6)}...${wallets.account.slice(38, 42)}`}
+                                        && <HashLink
+                                            explorer={fromExplorer}
+                                            extension={"/address/"}
+                                            hash={wallets.account}
+                                            linkText={`${wallets.account.slice(0, 10)}...${wallets.account.slice(36, 42)}`}
+                                        />}
                                     <button
                                         className='copyAddress'
                                         type='button'
@@ -100,12 +129,18 @@ function TransactionDetails() {
                                 <div className="rightText">
                                     {transaction
                                         && transaction.destinationHash
-                                        && `${transaction.destinationHash.slice(0, 6)}...${transaction.destinationHash.slice(60, 64)}`}
+                                        && <HashLink
+                                            explorer={toExplorer}
+                                            extension={"/tx/"}
+                                            hash={transaction.destinationHash}
+                                            linkText={`${transaction.destinationHash.slice(0, 10)}...${transaction.destinationHash.slice(60, 66)}`}
+                                        />
+                                    }
                                     <button
                                         className='copyAddress'
                                         type='button'
                                         onClick={() => copyAddressToClipboard(transaction.destinationHash)}
-                                        >
+                                    >
                                         <img src={CopySmall} alt="CopySmall" />
                                     </button>
                                 </div>
@@ -117,14 +152,20 @@ function TransactionDetails() {
                                 <div className="rightText">
                                     {
                                         transaction
+                                        && toExplorer
                                         && transaction.destinationAddress
-                                        && `${transaction.destinationAddress.slice(0,6)}...${transaction.destinationAddress.slice(38,42)}`
+                                        && <HashLink
+                                            explorer={toExplorer}
+                                            extension={"/address/"}
+                                            hash={transaction.destinationAddress}
+                                            linkText={`${transaction.destinationAddress.slice(0, 10)}...${transaction.destinationAddress.slice(36, 42)}`}
+                                        />
                                     }
                                     <button
                                         className='copyAddress'
                                         type='button'
                                         onClick={() => copyAddressToClipboard(transaction.destinationAddress)}
-                                        >
+                                    >
                                         <img src={CopySmall} alt="CopySmall" />
                                     </button>
                                 </div>
@@ -139,7 +180,18 @@ function TransactionDetails() {
                     <div className="steepLine line3 current"><span>3</span> <label htmlFor="">Routing</label></div>
                     <div className="steepLine line4"><span>4</span> <label htmlFor="">Success</label></div>
                 </div> */}
-                <div className="transtionBtn text-center"><a href="/bridge" className='cancelBtn enterApp'>Close <img src={Close} alt="Close" /></a></div>
+                <div
+                    className="transtionBtn text-center"
+                    onClick={onClickHandle}
+                >
+                    <a
+                        href="/bridge"
+                        className='cancelBtn enterApp'
+                    >
+                        Close
+                        <img src={Close} alt="Close" />
+                    </a>
+                </div>
             </div>
         </>
     );
