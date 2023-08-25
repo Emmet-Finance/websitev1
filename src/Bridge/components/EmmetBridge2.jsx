@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
-import ProgressBar from 'react-bootstrap/ProgressBar';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { isEvmAddress } from 'emmet.sdk';
+import { useAppSelector } from '../state/store';
 
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
-import LinkLogo from '../../assets/img/link.svg';
 import CopyBridge from '../../assets/img/new/copy.svg';
-import Check from '../../assets/img/new/check.svg';
 import Info from '../../assets/img/new/info.svg';
 
-import SlippageTolerance from './SlippageToleranceModal';
-import TransactionDetails from './TransactionDetails';
-
+import AmountBox from './AmountBox';
+import AmountReceived from './AmountReceived';
+import ApprovalReport from './ApprovalReport';
+import Commands from './Commands';
 import DropDownTokenMenu from './DropDownTokenMenue';
 import DropDownChainMenu from './DropDownChainMenu';
-import { useAppSelector } from '../state/store';
+import ErrorBlock from './ErrorBlock';
+import InformationalBlock from './InformationalBlock';
+import TransactionDetails from './TransactionDetails';
+import TransactionProgress from './TransactionProgress';
+
 import { copyAddressToClipboard } from '../utils';
-import {
-    setFromChain,
-    setToChain,
-} from '../state/chains'
-import { bnToHumanReadable, isGreaterOrEqual } from '../utils';
+import { setFromChain, setToChain } from '../state/chains'
+import { bnToHumanReadable } from '../utils';
 import { disconnect } from '../state/wallets';
-
-import {
-    convertToBigIntWithScaling,
-} from '../wallets/EVM';
-import { isEvmAddress } from 'emmet.sdk';
-
-import { setDestinationAccount, setTransactionName } from '../state/transactions'
+import { setDestinationAccount } from '../state/transactions'
 
 function EmmetBridge2() {
 
@@ -35,29 +30,9 @@ function EmmetBridge2() {
     const wallets = useAppSelector(state => state.wallets);
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
-    const transaction = useAppSelector(state => state.transaction);
+    const ui = useAppSelector(state => state.ui);
 
-    const [isBridgeFormVisible, setIsBridgeFormVisible] = useState(true);
-    const [isTxDetailWindowVisible, setIsTxDetailWindowVisible] = useState(false);
-
-    const [amount, setAmount] = useState('');
     const [receiver, setReceiver] = useState('');
-    const [recieved, setReceived] = useState('');
-    const [errorMessage, setError] = useState('');
-
-    const handleApproveClick = () => {
-        console.log("Approve");
-        setIsBridgeFormVisible(false);
-        dispatch(setTransactionName("Approving:"));
-    };
-
-    const handleTransferClick = () => {
-        console.log("Transfer");
-        setIsTxDetailWindowVisible(true);
-        dispatch(setTransactionName("Transferring:"));
-    }
-
-    const now = 100;
 
     const onCopyButtonClickHandle = () => {
         if (wallets && wallets.account) {
@@ -75,47 +50,10 @@ function EmmetBridge2() {
         dispatch(setToChain(fromChain))
     }
 
-    const onMaxClickHandle = (e) => {
-        e.preventDefault()
-        setAmount(tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()])
-    }
-
     const onSelfClickHandler = (e) => {
         e.preventDefault()
         setReceiver(wallets.account)
-    }
-
-    const handleAmountChange = (e) => {
-        e.preventDefault()
-
-        const b = tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()];
-        const a = parseFloat(e.target.value);
-        if (a) {
-            const aToDec = convertToBigIntWithScaling(a);
-
-            // Check whether balance (b) is > than transfer amount (aToDec)
-            if (isGreaterOrEqual(b, aToDec)) {
-                setAmount(a);
-                const slippage = a * transaction.slippage / 100;
-                const _received = a - slippage
-                setReceived(_received);
-                setError('');
-            } else {
-                setError(`Balance is not enough for this transaction`)
-            }
-        } else {
-            setAmount('');
-            setReceived('');
-        }
-
-    }
-
-    const handleReceivedOnChange = (e) => {
-        e.preventDefault();
-        const _received = parseFloat(e.target.value);
-        const _amount = (_received / transaction.slippage / 100) + _received
-        setReceived(_received);
-        setAmount(_amount);
+        dispatch(setDestinationAccount(wallets.account))
     }
 
     const handleDestAddressChange = (e) => {
@@ -125,15 +63,18 @@ function EmmetBridge2() {
 
         if (pattern.test(inputValue)) {
             setReceiver(inputValue);
+            
             if (isEvmAddress(inputValue)) {
                 dispatch(setDestinationAccount(inputValue))
             }
+        }else{
+            dispatch(setDestinationAccount(''))
         }
     }
 
     return (
         <>
-            {isBridgeFormVisible &&
+            {ui.isBridgeFormVisible &&
                 <div className="EmmetBridge_Box">
                     <div className="EmmetBridge_title">
                         <h2>Emmet.Bridge</h2>
@@ -189,16 +130,7 @@ function EmmetBridge2() {
                                 </p>
                             </div>
                             <div className="emmetFrom amountMax">
-                                <input
-                                    type="number"
-                                    placeholder="To be sent"
-                                    value={amount ? amount : ''}
-                                    onChange={handleAmountChange}
-                                />
-                                <p
-                                    onClick={e => onMaxClickHandle(e)}
-                                    className='max-button'
-                                >MAX</p>
+                                <AmountBox />
                             </div>
                         </div>
                         <div className="lineBox">
@@ -206,12 +138,7 @@ function EmmetBridge2() {
                                 <p className="label label1">Amount to Receive</p>
                             </div>
                             <div className="emmetFrom amountMax">
-                                <input
-                                    type="text"
-                                    placeholder="To be received"
-                                    value={recieved ? recieved : ''}
-                                    onChange={handleReceivedOnChange}
-                                />
+                                <AmountReceived />
                             </div>
                         </div>
                         <div className="lineBox">
@@ -220,7 +147,10 @@ function EmmetBridge2() {
                                     <span><p className='inline'>Target Address</p></span>
                                     <span className="inofText m-l-5">
                                         <img src={Info} alt="Info" />
-                                        <span> <b>Warning:</b> Not to loose the transfered tokens, make sure the destination address is correct. </span>
+                                        <span>
+                                            <b>Warning:</b>
+                                            Not to loose the transfered tokens, make sure the destination address is correct.
+                                        </span>
                                     </span>
                                 </span>
                             </div>
@@ -237,87 +167,20 @@ function EmmetBridge2() {
                                 >SELF</p>
                             </div>
                             {/* *************** Error Block *************** */}
-                            <p className="warningText">
-                                <span className='warningTextItem warningText2'>
-                                    {errorMessage ? errorMessage : ''}
-                                </span>
-                            </p>
+                            <ErrorBlock />
                         </div>
                         {/* *************** Informational Block *************** */}
-                        <div className="bridgeCalculation">
-                            <div className="calculateBox">
-                                <span>Allowance:</span>
-                                {tokens.tokenAllowances
-                                    ? `${bnToHumanReadable(tokens.tokenAllowances[tokens.fromTokens.toUpperCase()])} ${tokens.fromTokens}`
-                                    : '0.00'
-                                }
-                            </div>
-                            <div className="calculateBox">
-                                <span>Gas Fee:</span>
-                                {bnToHumanReadable((transaction.nativeFee + transaction.destinationFee), 18, 6)}
-                                {chains.nativeCurrency}
-                            </div>
-                            <div className="calculateBox">
-                                <span>Slippage:</span>
-                                {transaction.slippage}%  <SlippageTolerance />
-                            </div>
-                        </div>
-                        {transaction && transaction.pending
-                            ? (<div className="approvingLoading">
-                                {transaction.name}:
-                                <ProgressBar striped variant="success" now={100} label={`${now}%`} visuallyHidden />
-                            </div>)
-                            : ''}
-                        {/* *************** Transaction hashes *************** */}
-                        {transaction && transaction.approvedHash
-                            ? (<div className="approveBox">
-                                <p className='approveText'>
-                                    {transaction.name}
-                                    {transaction.approveSuccess
-                                        ? (<span className='color-green'>Success!</span>)
-                                        : (<span className='color-red'>Failed!</span>)}
-                                </p>
-                                <p
-                                    className="viewHash"
-                                >
-                                    {tokens.fromTokens}
-                                    {transaction.approvedAmt}
-                                    <a href={transaction.approvedHash}>View Hash</a>
-                                </p>
-                            </div>)
-                            : ''}
-                        {transaction && transaction.originalHash
-                            ? (<div className="approveBox">
-                                <p className='approveText'>
-                                    {transaction.name}
-                                    {transaction.transferSuccess
-                                        ? (<span className='color-green'>Success!</span>)
-                                        : (<span className='color-red'>Failed!</span>)}
-                                </p>
-                                <p
-                                    className="viewHash"
-                                >
-                                    {tokens.fromTokens}
-                                    {transaction.transferAmount}
-                                    <a href={transaction.originalHash}>View Hash</a>
-                                </p>
-                            </div>)
-                            : ''}
+                        <InformationalBlock />
+                        {/* ***************** Progress Bar ***************** */}
+                        <TransactionProgress />
+                        {/* *************** Approval Report *************** */}
+                        <ApprovalReport />
                         {/* *************** BUTTONS *************** */}
-                        <div className="dualBtns">
-                            <div
-                                className='approveBtn'
-                                onClick={handleApproveClick}
-                            >APPROVE <img src={Check} alt="Check" /></div>
-                            <div
-                                className='disenable enterApp'
-                                onClick={handleTransferClick}
-                            >TRANSFER <img src={LinkLogo} alt="Arrow" /></div>
-                        </div>
+                        <Commands />
                     </div>
                 </div>
             }
-            {isTxDetailWindowVisible && <TransactionDetails />}
+            {ui.isTxDetailVisible && <TransactionDetails />}
         </>
     );
 }
