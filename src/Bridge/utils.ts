@@ -134,32 +134,52 @@ export const handleAccountsChanged = (accounts: any[]) => {
  * @returns a formattted number with commas & dots or 0.00
  */
 export const bnToHumanReadable = (
-    balance: bigint | number | string | undefined,
-    decimals: number = 18,
-    digits: number = 2
+    bi: bigint | number | string | undefined,
+    decimals: number = 18
 ): string => {
-    if (balance) {
-        const divisor = 10n ** BigInt(decimals);
+    if (!bi) return '';
 
-        const cleaned = balance.toString().replace('.', '').replace(',', '')
-        if (/^[0-9]+$/.test(cleaned)) {
-            const balanceBigInt = BigInt(cleaned);
-            const integerPart = Math.floor(Number(balanceBigInt / divisor)).toString();
-            const decimalPart = balanceBigInt % divisor;
+    const cleaned: string = replaceAll(bi.toString(), ",", '')
+    let value: bigint = BigInt(cleaned.replace('.', ''));
+    const dividend = BigInt(10 ** decimals);
 
-            const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    let whole = value / dividend;
+    let formattedWhole: string;
+    if (!whole) { whole = 0n }
+    formattedWhole = whole.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-            const formattedDecimal = decimalPart
-                .toString()
-                .padStart(decimals, "0")
-                .slice(0, digits);
+    let fraction = value % dividend;
+    if (!fraction) { fraction = 0n }
+    let digits: number = !fraction
+        ? 0
+        : significantDigits(fraction.toString());
 
-            const formatted = `${formattedInteger}.${formattedDecimal}`;
+    const factor = BigInt(10 ** digits);
+    const roundedFraction = fraction * factor / dividend;
+    let formattedFraction = roundedFraction.toString().padStart(digits, '0');
 
-            return formatted;
+    return `${formattedWhole}.${formattedFraction}`
+}
+
+
+function significantDigits(value: string): number {
+    let _value = value;
+    let decimals: number = 0;
+    for (const char of _value) {
+        if (char === '0') {
+            return decimals;
         }
+        decimals += 1;
     }
-    return '0.00';
+    return 0;
+}
+
+
+export function getSlippage(
+    amount: bigint | string | number,
+    slippage: bigint | string | number
+): bigint {
+    return BigInt(amount) * BigInt(slippage) / 100n;
 }
 
 /**
@@ -172,14 +192,37 @@ export const stringToBigNum = (
     amount: string,
     decimals: number = 18
 ): bigint => {
+    let result: bigint = 0n
     if (amount && typeof amount === 'string') {
         const cleaned = amount.replace(',', '').replace('.', '');
         if (/^[0-9]+$/.test(cleaned)) {
-            const multiplier = Math.pow(10, decimals);
-            return (BigInt(cleaned) * BigInt(multiplier));
+            const multiplier = 10n ** BigInt(decimals);
+            result = (BigInt(cleaned) * multiplier);
         }
     }
-    return 0n
+    return result;
+}
+
+export function replaceAll(s: string, search: string, replace: string) {
+    return s.split(search).join(replace);
+}
+
+export function humanToBigInt(
+    n: string | undefined,
+    decimals: number | string = 18
+): bigint {
+    console.log("humanToBigInt:n", n, typeof n)
+    if (!n || (typeof n === 'string' && n.includes('NaN'))) { return 0n }
+    let value: string, whole: string, fraction: string;
+
+    value = replaceAll(n, ",", '');
+    [whole, fraction] = value.split('.');
+
+    if (!fraction) { fraction = '' }
+    const _dec = typeof decimals === 'string' ? parseInt(decimals) : decimals;
+    while (fraction.length < _dec) { fraction += '0' }
+    console.log("whole", whole, "fraction", fraction)
+    return BigInt(whole + fraction);
 }
 
 /**
@@ -213,6 +256,18 @@ export function filterOneOut(chains: EVMChain[], chainName: string): EVMChain[] 
         chain.name.toLowerCase() !== chainName.toLowerCase());
 }
 
+export function format2BigInt(
+    a: string | number | bigint,
+    b: string | number | bigint
+): { _a: bigint, _b: bigint } {
+    let _a, _b;
+    if (typeof a === 'string') { _a = a.replace(/[^0-9]/g, '') }
+    else { _a = a }
+    if (typeof b === 'string') { _b = b.replace(/[^0-9]/g, '') }
+    else { _b = b }
+    return { _a: BigInt(_a), _b: BigInt(_b) }
+}
+
 /**
  * Checks whether a >= b
  * @param a 
@@ -223,8 +278,32 @@ export const isGreaterOrEqual = (
     a: string | number | bigint,
     b: string | number | bigint
 ): boolean => {
+    const { _a, _b } = format2BigInt(a, b);
+    return (BigInt(_a) >= BigInt(_b));
+}
+
+/**
+ * Returns unsigned integer difference
+ * @param a dividend x decimals
+ * @param b divider x decimals
+ * @returns uint256 difference
+ */
+export const getUintDiff = (
+    a: string | number | bigint,
+    b: string | number | bigint
+): bigint => {
+    const { _a, _b } = format2BigInt(a, b);
     if (a && b) {
-        return (BigInt(a) >= BigInt(b))
+        return BigInt(_a) - BigInt(_b);
     }
-    return false;
+    return 0n;
+}
+
+
+export function chainNameToKey<T>(chainName: string): T {
+
+        return (chainName
+            .toLowerCase()
+            .replace(/[^a-zA-Z]/g, '') as unknown) as T;
+
 }
