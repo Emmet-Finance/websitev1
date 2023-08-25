@@ -124,6 +124,7 @@ button#dropdown-enterApp:hover,
 .enterApp:hover {
   color: #1C3144;
   border-color: #FFC914;
+  cursor: pointer;
 }
 
 button#dropdown-enterApp:after {
@@ -1872,14 +1873,14 @@ p.viewHash a {
   flex-grow: 1;
 }
 
-.disenable.enterApp {
+.disabled {
   border: solid 2px #8d98a1;
   background-color: #f4f5f6;
   color: #8d98a1;
   pointer-events: none;
 }
 
-.disenable.enterApp img {
+.disabled img {
   opacity: .5;
 }
 

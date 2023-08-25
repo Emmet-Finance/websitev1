@@ -17,7 +17,7 @@ function TokenItem(props) {
                 </div>
                 {props.direction === "from"
                     ? <p className='tokkenValue'>
-                        <span>{props.name}:</span> {bnToHumanReadable(props.balance)}
+                        <span>{props.name}:</span> {props.balance ? bnToHumanReadable(props.balance) : '0.00'}
                     </p>
                     : ''}
                 <div className="hoverIcons">

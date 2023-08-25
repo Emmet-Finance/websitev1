@@ -11,13 +11,11 @@ import LinkLogo from '../../assets/img/link.svg';
 // Local imports
 import {
     setApprovedHash,
-    setOriginalHash,
     setPending,
     setTransferSuccess,
 } from '../state/transactions'
 import {
     getTransaction,
-    transferERC20,
 } from '../wallets/EVM';
 
 import {
@@ -85,7 +83,7 @@ function Commands() {
             transferAmount: transaction.transferAmount,
             destinationAddress: transaction.destinationAddress
         }));
-        
+
         dispatch(setIsTxDetailVisible(true));
 
     }
