@@ -1,4 +1,4 @@
-import { ethers } from './ethers';
+import { ethers } from 'ethers';
 import { chainNameToKey } from '../utils';
 import { 
     ALL_CHAINS, 
