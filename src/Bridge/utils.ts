@@ -211,7 +211,7 @@ export function humanToBigInt(
     n: string | undefined,
     decimals: number | string = 18
 ): bigint {
-    console.log("humanToBigInt:n", n, typeof n)
+
     if (!n || (typeof n === 'string' && n.includes('NaN'))) { return 0n }
     let value: string, whole: string, fraction: string;
 
@@ -221,7 +221,7 @@ export function humanToBigInt(
     if (!fraction) { fraction = '' }
     const _dec = typeof decimals === 'string' ? parseInt(decimals) : decimals;
     while (fraction.length < _dec) { fraction += '0' }
-    console.log("whole", whole, "fraction", fraction)
+
     return BigInt(whole + fraction);
 }
 

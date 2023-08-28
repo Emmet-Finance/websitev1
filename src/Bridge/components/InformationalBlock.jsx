@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../state/store';
 import SlippageTolerance from './SlippageToleranceModal';
-import { bnToHumanReadable } from '../utils';
+import { bigIntToHuman } from '../utils';
 
 function InformationalBlock() {
 
@@ -14,13 +14,15 @@ function InformationalBlock() {
             <div className="calculateBox">
                 <span>Allowance:</span>
                 {tokens.tokenAllowances
-                    ? `${bnToHumanReadable(tokens.tokenAllowances[tokens.fromTokens.toUpperCase()])} ${tokens.fromTokens}`
+                    ? `${bigIntToHuman(tokens.tokenAllowances[tokens.fromTokens.toUpperCase()])} ${tokens.fromTokens}`
                     : `0.00 ${tokens.fromTokens}`
                 }
             </div>
             <div className="calculateBox">
-                <span>Gas Fee:</span>
-                {bnToHumanReadable((transaction.nativeFee + transaction.destinationFee), 18, 6)}
+                <span>Gas Estimation:</span>
+                {transaction.nativeFee
+                    ? bigIntToHuman((transaction.nativeFee), 18, 6)
+                    : '0.001'}
                 {" "}
                 {chains.nativeCurrency}
             </div>

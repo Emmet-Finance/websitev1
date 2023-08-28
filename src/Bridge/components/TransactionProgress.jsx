@@ -9,18 +9,11 @@ function TransactionProgress() {
 
     const [now, setNow] = useState(0);
 
-    if(transaction && transaction.pending){
-        while(now < 101){
-            setNow(now + 1);
-        }
-        setNow(0);
-    }
-
     return (
         <>
             {transaction && transaction.pending
                 ? (<div className="approvingLoading">
-                    {transaction.name}:
+                    Approving in progress
                     <ProgressBar
                         striped
                         variant="success"

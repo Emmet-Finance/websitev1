@@ -5,8 +5,8 @@ export const uiSlice = createSlice({
     initialState:{
         errorMessage: '',
         isTransferReady: false,
-        isBridgeFormVisible: false,
-        isTxDetailVisible:true,
+        isBridgeFormVisible: true,
+        isTxDetailVisible:false,
         needApproval: false,
     },
     reducers: {

@@ -1,28 +1,18 @@
 // External imports
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../state/store';
-import { approveERC20 } from 'emmet.sdk';
+import { useAppSelector, useAppDispatch } from '../state/store';
 
 // SVGs
 import Check from '../../assets/img/new/check.svg';
 import LinkLogo from '../../assets/img/link.svg';
 
 // Local imports
+import {setIsTxDetailVisible} from '../state/ui'
 import {
-    setApprovedHash,
-    setPending,
-    setTransferSuccess,
-} from '../state/transactions'
-import {
-    getTransaction,
-} from '../wallets/EVM';
-
-import {
-    setIsTxDetailVisible,
-} from '../state/ui'
-
-import { sendInstallment } from '../state/transactions';
+    approveAmount,
+    sendInstallment
+} from '../state/transactions';
 
 function Commands() {
 
@@ -30,11 +20,12 @@ function Commands() {
 
 
     const dispatch = useDispatch();
-    const asyncDispatch = useDispatch();
+    const asyncDispatch = useAppDispatch();
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
     const ui = useAppSelector(state => state.ui);
+    const wallets = useAppSelector(state => state.wallets);
 
 
     useEffect(()=> {
@@ -53,30 +44,20 @@ function Commands() {
 
 
     const handleApproveClick = async () => {
-        dispatch(setPending(true));
-        const txHash = await approveERC20(
-            chains.fromChain,
-            tokens.fromTokens,
-            transaction.approvedAmt
-        );
-        console.log("Approve hash:", txHash);
-        dispatch(setApprovedHash(txHash));
-        const TX = await getTransaction(
-            chains.fromChain,
-            `0x${txHash.slice(2)}`
-        );
-        dispatch(setPending(false));
-        if (TX.status === "success") {
-            dispatch(setTransferSuccess(true));
-        } else {
-            dispatch(setTransferSuccess(false));
-        }
+
+        await asyncDispatch(approveAmount({
+            fromChain: chains.fromChain,
+            approvedAmt: transaction.approvedAmt,
+            fromTokens: tokens.fromTokens,
+            sender: wallets.account
+        }));
+
     };
 
 
     const handleTransferClick = async () => {
 
-        asyncDispatch(sendInstallment({
+        await asyncDispatch(sendInstallment({
             fromChain: chains.fromChain,
             toChain: chains.toChain,
             fromTokens: tokens.fromTokens,
@@ -85,7 +66,6 @@ function Commands() {
         }));
 
         dispatch(setIsTxDetailVisible(true));
-
     }
 
     return (

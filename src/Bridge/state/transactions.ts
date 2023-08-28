@@ -1,8 +1,22 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
 import { getTransaction, transferERC20 } from '../wallets/EVM';
+import { approveERC20 } from '../wallets/ethers'
+
+export const approveAmount = createAsyncThunk('approve-amount', async (params: any) => {
+    console.log("params", params)
+    const { hash, status, amount } = await approveERC20(
+        params.fromChain,
+        params.approvedAmt,
+        params.fromTokens,
+        params.sender
+    );
+    console.log(hash, status, amount)
+    return { hash, status, amount }
+});
 
 export const sendInstallment = createAsyncThunk('send-installment', async (params: any) => {
+    console.log("params", params)
     const txHash = await transferERC20(
         params.fromChain,
         params.toChain,
@@ -10,40 +24,41 @@ export const sendInstallment = createAsyncThunk('send-installment', async (param
         params.transferAmount,
         params.destinationAddress
     );
+    console.log("txHash", txHash)
     const TX = await getTransaction(
         params.fromChain,
         `0x${txHash.slice(2)}`
     );
-
-    return {hash:txHash, status:TX.status}
-})
+    console.log("TX", TX)
+    return { hash: txHash, status: TX.status }
+});
 
 export const transactionSlice = createSlice({
     name: 'transaction',
     initialState: {
-        approvedAmt: 0,
+        approvedAmt: '',
         approvedHash: '',
-        approveSuccess: false,
-        destinationAddress: '0x738b2B2153d78Fc8E690b160a6fC919B2C88b6A4',
+        approveSuccess: true,
+        destinationAddress: '',
         destinationFee: 0,
-        destinationHash: '0x930769eba119329a318ca3ada312654b0aa721df516802d9d6303e7925ff305b',
+        destinationHash: '',
         estimationDestination: "",
         estimationNative: "",
         nativeFee: 0,
-        originalHash: '0x74ce66640f3558a6df42be4de5621ff9ebfc38f63a7e1360a0dd11bdaf796094',
+        originalHash: '',
         pending: false,
         requireApproval: false,
-        receiveAmount:0,
+        receiveAmount: "",
         slippage: 0,
-        transferAmount: 0,
-        transferSuccess: false,
+        transferAmount: '',
+        transferSuccess: '',
     },
     reducers: {
         setApprovedAmount: (state: any, action) => {
             state.approvedAmt = action.payload;
-            if(state.transferAmount < state.approvedAmt){
+            if (state.transferAmount < state.approvedAmt) {
                 state.requireApproval = true;
-            }else{
+            } else {
                 state.requireApproval = false;
             }
         },
@@ -90,9 +105,9 @@ export const transactionSlice = createSlice({
         },
         setTransferAmount: (state: any, action) => {
             state.transferAmount = action.payload;
-            if(state.transferAmount < state.approvedAmt){
+            if (state.transferAmount < state.approvedAmt) {
                 state.requireApproval = true;
-            }else{
+            } else {
                 state.requireApproval = false;
             }
         },
@@ -102,22 +117,47 @@ export const transactionSlice = createSlice({
     },
     extraReducers: (builder: any) => {
         builder
-        .addCase(sendInstallment.fulfilled, (state:any, action: any) => {
-            const {hash, status} = action.payload
-            state.originalHash = hash;
-            state.transferSuccess = status;
-            state.pending = false;
-        })
-        .addCase(sendInstallment.pending, (state:any) => {
-            state.pending = true;
-            state.originalHash = '';
-            state.transferSuccess = '';
-        })
-        .addCase(sendInstallment.rejected, (state:any) => {
-            state.pending = false;
-            state.originalHash = '';
-            state.transferSuccess = '';
-        })
+            .addCase(sendInstallment.fulfilled, (state: any, action: any) => {
+                const { hash, status } = action.payload
+                state.originalHash = hash;
+                state.transferSuccess = status;
+                state.pending = false;
+            })
+            .addCase(sendInstallment.pending, (state: any) => {
+                state.pending = true;
+                state.originalHash = '';
+                state.transferSuccess = '';
+            })
+            .addCase(sendInstallment.rejected, (state: any) => {
+                state.pending = false;
+                state.originalHash = '';
+                state.transferSuccess = '';
+            })
+            .addCase(approveAmount.fulfilled, (state: any, action: any) => {
+                const { hash, status, amount } = action.payload;
+                if (status === 1) { //1 - success, 0 - reverted
+                    state.approvedHash = hash;
+                    state.approveSuccess = true; 
+                    state.approvedAmt = amount;
+                    state.pending = false;
+                }else{
+                    state.approvedHash = '';
+                    state.approveSuccess = false;
+                    state.pending = false;
+                }
+
+            })
+            .addCase(approveAmount.pending, (state: any) => {
+                state.approvedHash = '';
+                state.approveSuccess = '';
+                state.pending = true;
+            })
+            .addCase(approveAmount.rejected, (state: any) => {
+                state.approvedHash = '';
+                state.approveSuccess = '';
+                state.pending = false;
+                console.error("Approve error")
+            })
     }
 });
 

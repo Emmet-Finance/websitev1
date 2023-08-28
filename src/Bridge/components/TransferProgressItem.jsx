@@ -10,7 +10,7 @@ function TransferProgressItem({
         <div
             className={className}
         >
-            <span>{number}</span>
+            <span >{number}</span>
             <label htmlFor="">
                 {title}
             </label>

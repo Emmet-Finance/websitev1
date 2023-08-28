@@ -41,8 +41,9 @@ import {
   setDestinationFee,
   setNativeFee,
 } from '../state/transactions';
-import { shortenAddress } from '../utils';
-import { estimateSend, formatEther, contractCallFeeestimate } from '../wallets/EVM'
+import { shortenAddress, bigIntToHuman } from '../utils';
+import {  formatEther, contractCallFeeestimate } from '../wallets/EVM'
+import { estimateSend } from '../wallets/ethers'
 
 function BridgeHeader() {
 
@@ -68,37 +69,47 @@ function BridgeHeader() {
         // Inject the wallet account
         let accounts = [];
         accounts = await getEvmAccounts();
+        console.log("accounts", accounts)
         dispatch(setAccounts(accounts));
         // Inject the native coin balance
         dispatch(setBalance(await getEvmBalance(accounts[0])));
         dispatch(setChainId(await getEvmChainId()));
         // Collect the token balances of the account
         const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
+        console.log("fromBalances", fromBalances)
         dispatch(setFromTokenBalances(fromBalances));
         // Collect the token allowances of the account
         const alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain);
+        console.log('alowances', alowances)
         dispatch(setFromTokenAllowances(alowances));
 
         // Native fee
-        const nativeFee = await estimateSend(
-          "100000000000000000",
-          accounts[0],
-          chains.fromChain,
-          chains.toChain,
-          tokens.fromTokens
-        );
-        console.log("nativeFee", formatEther(nativeFee));
+        // const nativeFee = await estimateSend(
+        //   "100000000000000000",
+        //   accounts[0],
+        //   chains.fromChain,
+        //   chains.toChain,
+        //   tokens.fromTokens
+        // );
+        // console.log("nativeFee", formatEther(nativeFee/100000n));
 
-        const nativePureEstimate = await contractCallFeeestimate(
-          chains.fromChain,
-          chains.toChain,
-          'sendInstallment',
-          "100000000000000000",
-          tokens.fromTokens,
-          accounts[0]
-        );
-        console.log("nativePureEstimate", formatEther(nativePureEstimate));
-        dispatch(setNativeFee(nativePureEstimate/100000));
+        // const estNative = await estimateSend(
+        //   chains.fromChain,
+        //   chains.toChain,
+        //   tokens.fromTokens
+        // );
+        // console.log("new estNative", estNative)
+
+        // const nativePureEstimate = await contractCallFeeestimate(
+        //   chains.fromChain,
+        //   chains.toChain,
+        //   'sendInstallment',
+        //   "100000000000000000",
+        //   tokens.fromTokens,
+        //   accounts[0]
+        // );
+        // console.log("nativePureEstimate", formatEther(nativePureEstimate));
+        // dispatch(setNativeFee(nativePureEstimate));
 
         // Destination fee
         const destFee = await estimateReceive(
@@ -109,8 +120,8 @@ function BridgeHeader() {
           chains.fromChain,
           tokens.fromTokens
         );
-        console.log("destFee", formatEther(destFee));
-        dispatch(setDestinationFee((destFee / 1000000n).toString()));
+        console.log("destFee", destFee);
+        dispatch(setDestinationFee((destFee).toString()));
       }
 
     } catch (error) {

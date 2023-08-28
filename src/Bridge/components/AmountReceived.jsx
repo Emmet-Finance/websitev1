@@ -21,7 +21,6 @@ function AmountReceived() {
         dispatch(setTransferAmount(_amount.toString()));
         console.log("_received", _received, "_amount", _amount)
     }
-    console.log("transaction.receiveAmount", transaction.receiveAmount)
 
     return (<FormattedInput 
         placeholder="To be received"

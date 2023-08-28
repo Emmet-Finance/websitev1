@@ -23,6 +23,8 @@ import {
 
 import { chainNameToKey } from '../utils';
 
+export type TAllChainNames = keyof typeof ALL_CHAINS;
+
 /**
  * Estimates local TX fee in `wei`
  * @param amount number of tokens planned for transfer
@@ -44,8 +46,10 @@ export async function estimateSend(
 
         const selectedChain = testnets.filter(net =>
             net.name === fromChainName)[0];
+        console.log("selectedChain", selectedChain)
 
         const publicClient = getPublicClient(account, fromChainName, [selectedChain], true);
+        console.log("publicClient", publicClient)
 
         const chainId = allChainNameToIndex[toChainName];
 
@@ -90,12 +94,12 @@ export async function contractCallFeeestimate(
 
     try {
 
-        const selectedChain = testnets.filter(net =>
-            net.name === fromChainName)[0];
+        const selectedChain = ALL_CHAINS[chainNameToKey<TAllChainNames>(fromChainName)];
 
         const contractAddress: string = selectedChain.bridge;
 
         const chainId = allChainNameToIndex[toChainName];
+        console.log("chainId", chainId)
 
         const provider = window!.ethereum!;
 
@@ -104,11 +108,13 @@ export async function contractCallFeeestimate(
                 method: 'eth_accounts'
             });
         const selectedAddress: string = accounts[0];
+        console.log("selectedAddress", selectedAddress, "accounts", accounts)
 
         const nonce = await provider!.request({
             method: 'eth_getTransactionCount',
             params: [selectedAddress, 'latest']
         });
+        console.log("account nonce", nonce)
 
         const functionArgs = [
             BigInt(amount),
@@ -120,6 +126,7 @@ export async function contractCallFeeestimate(
         const encodedParameters = encodeFunctionData({
             abi: FTBridge, functionName, args: [functionArgs]
         });
+        console.log("encodedParameters", encodedParameters)
 
         const transaction = {
             from: selectedAddress,
@@ -127,6 +134,7 @@ export async function contractCallFeeestimate(
             data: `0x${encodedParameters.slice(2)}`,
             nonce: nonce,
         };
+        console.log("transaction", transaction)
 
         const gasEstimate: bigint = await provider.request({
             method: 'eth_estimateGas',
@@ -152,27 +160,33 @@ export function convertToBigIntWithScaling(value: number, scalingFactor: number 
     return BigInt(result);
 }
 
-export type TAllChainNames = keyof typeof ALL_CHAINS;
-
 
 export async function config(chainName: TChainName) {
 
     const key = chainNameToKey<TAllChainNames>(chainName);
+    console.log("key", key)
 
     const chain = ALL_CHAINS[key];
+    console.log("chain", chain);
+
+    const [account] = await window?.ethereum!.request({ method: 'eth_requestAccounts' }) as string[];
 
     const publicClient = createPublicClient({
         chain,
         transport: http(chain.rpcUrls.default.http[0])
     });
+    console.log("publicClient", publicClient)
 
     const signer = createWalletClient({
+        account:`0x${account.slice(2)}`,
         chain,
         transport: custom(window?.ethereum!)
     });
+    console.log("signer", signer)
 
     // JSON-RPC Account
-    const [account] = await signer.getAddresses();
+    // const [account] = await signer.getAddresses();
+    // console.log("account", account)
 
     return {
         account,
@@ -197,37 +211,44 @@ export async function approveERC20(
     amount: string,
 ) {
 
+    console.log("Started config")
     const {
         account,
         chain,
         publicClient,
         signer
     } = await config(chainName);
+    console.log("Done config")
 
     const tokenContract: SupportedTokenType = testnetTokens[
         tokenName
             .toLocaleUpperCase() as keyof typeof testnetTokens
     ];
 
+    console.log("tokenContract", tokenContract)
+
     const args: [string, string] = [
         chain.bridge,
         amount
     ];
+    console.log("args", args)
 
     const tokenContractAddress: string = tokenContract.address[
         chainName
             .toLocaleLowerCase()
             .replace(/[^a-z]/g, '') // remove spaces, etc.
     ];
+    console.log("tokenContractAddress", tokenContractAddress)
 
     const { request } = await publicClient.simulateContract({
         address: `0x${tokenContractAddress.slice(2)}`,
         abi: tokenContract.abi,
         functionName: 'approve',
         args,
-        account,
+        account:`0x${account.slice(2)}`,
         chain,
     });
+    console.log("request", request)
 
     return await signer.writeContract(request);
 
@@ -274,7 +295,7 @@ export async function transferERC20(
         abi: FTBridge,
         functionName: 'sendInstallment',
         args,
-        account,
+        account:`0x${account.slice(2)}`,
         chain,
     });
 

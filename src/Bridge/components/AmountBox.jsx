@@ -30,18 +30,15 @@ function AmountBox() {
             ? tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]
             : 0;
 
-        console.log("a", a, "b", b)
-
         if (a && b) {
             const aToDec = humanToBigInt(value);
-            console.log("aToDec", aToDec)
 
             // Check whether balance (b) is > than transfer amount (aToDec)
             if (isGreaterOrEqual(b, aToDec)) {
                 dispatch(setTransferAmount(aToDec.toString()))
                 const slippage = getSlippage(aToDec, transaction.slippage);
                 const _received = aToDec - slippage
-                console.log("slippage", slippage, "_received", _received)
+
                 dispatch(setReseiveAmount(_received.toString()));
 
                 // Check whether approval is required

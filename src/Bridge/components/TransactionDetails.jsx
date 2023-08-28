@@ -1,14 +1,15 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../state/store';
-import { copyAddressToClipboard, chainNameToKey } from '../utils';
+import { copyAddressToClipboard, chainNameToKey, bigIntToHuman } from '../utils';
 
 import CopySmall from '../../assets/img/new/copy2.svg';
 import Metamask from '../../assets/img/new/Metamask.svg';
 import Close from '../../assets/img/new/close.svg';
 import HashLink from './HashLink';
+import TransferProgress from './TransferProgress';
 
-import {setIsBridgeFormVisible} from '../state/ui'
+import { setIsBridgeFormVisible } from '../state/ui'
 
 function TransactionDetails() {
 
@@ -51,9 +52,9 @@ function TransactionDetails() {
                                     {chains.fromChain}
                                 </div>
                                 <div className="rightText">
-                                    - {transaction.transferAmount}
-                                    {" "}
-                                    {tokens.fromTokens}
+                                    {transaction.transferAmount
+                                        ? `- ${bigIntToHuman(transaction.transferAmount)} ${tokens.fromTokens}`
+                                        : ''}
                                     <img src={Metamask} alt="Metamask" />
                                 </div>
                             </li>
@@ -116,13 +117,13 @@ function TransactionDetails() {
                                     {chains.toChain}
                                 </div>
                                 <div className="rightText">
-                                    + {transaction.transferAmount}
-                                    {" "}
-                                    {tokens.toTokens}
+                                    {transaction.receiveAmount
+                                        ? `+ ${bigIntToHuman(transaction.receiveAmount)} ${tokens.toTokens}`
+                                        : ''}
                                     <img src={Metamask} alt="Metamask" />
                                 </div>
                             </li>
-                            <li>
+                            {/* <li>
                                 <div className="leftText">
                                     TX Hash:
                                 </div>
@@ -144,7 +145,7 @@ function TransactionDetails() {
                                         <img src={CopySmall} alt="CopySmall" />
                                     </button>
                                 </div>
-                            </li>
+                            </li> */}
                             <li>
                                 <div className="leftText">
                                     Receiver:
@@ -173,13 +174,8 @@ function TransactionDetails() {
                         </ul>
                     </div>
                 </div>
-                {/* TODO:
-                 <div className="progressLine">
-                    <div className="steepLine line1 checked"><span>1</span> <label htmlFor="">Sent</label></div>
-                    <div className="steepLine line2 checked"><span>2</span> <label htmlFor="">Confirmed</label></div>
-                    <div className="steepLine line3 current"><span>3</span> <label htmlFor="">Routing</label></div>
-                    <div className="steepLine line4"><span>4</span> <label htmlFor="">Success</label></div>
-                </div> */}
+                PROGRESS:
+                 <TransferProgress />
                 <div
                     className="transtionBtn text-center"
                     onClick={onClickHandle}
