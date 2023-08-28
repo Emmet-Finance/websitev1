@@ -354,12 +354,15 @@ export function bigIntToHuman(
 
         switch (typeof n) {
             case 'string':
-                cleaned = n.replace(/[^0-9.]/g, '');
+                cleaned = n.replace(/[^0-9\.]/g, '');
                 [whole, fraction] = cleaned.split('.')
-                if (!fraction) { fraction = '' }
-                const intger = BigInt(whole + fraction) / divider;
-                fraction = BigInt(whole + fraction) % divider;
-                whole = intger;
+                console.log("inside string:", n, "cleaned", cleaned, "whole", whole, "fraction", fraction)
+                if (!fraction) {
+                    fraction = ''
+                    const intger = BigInt(whole + fraction) / divider;
+                    fraction = BigInt(whole + fraction) % divider;
+                    whole = intger;
+                }
                 break;
             case 'number':
                 whole = parseInt(n.toString());
@@ -373,6 +376,7 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
+        console.log("n", n, typeof n, "whole", whole, "fraction", fraction)
 
         if (fraction) {
             const formattedFractionalPart = formatFractionalPart(fraction.toString());

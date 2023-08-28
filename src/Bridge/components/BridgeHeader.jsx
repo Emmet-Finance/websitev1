@@ -42,7 +42,7 @@ import {
   setNativeFee,
 } from '../state/transactions';
 import { shortenAddress, bigIntToHuman } from '../utils';
-import {  formatEther, contractCallFeeestimate } from '../wallets/EVM'
+import { formatEther, contractCallFeeestimate } from '../wallets/EVM'
 import { estimateSend } from '../wallets/ethers'
 
 function BridgeHeader() {
@@ -100,16 +100,21 @@ function BridgeHeader() {
         // );
         // console.log("new estNative", estNative)
 
-        // const nativePureEstimate = await contractCallFeeestimate(
-        //   chains.fromChain,
-        //   chains.toChain,
-        //   'sendInstallment',
-        //   "100000000000000000",
-        //   tokens.fromTokens,
-        //   accounts[0]
-        // );
-        // console.log("nativePureEstimate", formatEther(nativePureEstimate));
-        // dispatch(setNativeFee(nativePureEstimate));
+        const nativePureEstimate = await contractCallFeeestimate(
+          chains.fromChain,
+          chains.toChain,
+          'sendInstallment',
+          "100000000000000000",
+          tokens.fromTokens,
+          accounts[0]
+        );
+
+        console.log("nativePureEstimate", formatEther(nativePureEstimate));
+        if (chains.fromChain === 'Goerli' || chains.fromChain === 'Mumbai') {
+          dispatch(setNativeFee(formatEther(nativePureEstimate * 100000)));
+        }
+        dispatch(setNativeFee(formatEther(nativePureEstimate)));
+
 
         // Destination fee
         const destFee = await estimateReceive(
