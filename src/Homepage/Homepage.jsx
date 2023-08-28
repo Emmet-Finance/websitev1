@@ -49,7 +49,7 @@ function Homepage() {
                                 via a Decentralized Bridge.
                             </h1>
                             <p>A DAO-managed decentralized fungible token bridge for swift and secure cross-chain transactions from an intuitive user-friendly interface.</p>
-                            <a href="https://emmet.finance" className='enterApp' target="_blank" rel="noopener noreferrer">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
+                            <a href="https://emmet.finance/bridge" className='enterApp' target="_blank" rel="noopener noreferrer">EXPLORE <img src={LinkLogo} alt="LinkLogo" /></a>
                         </div>
                         <div className="banner_bottom">
                             <ul className="social">
