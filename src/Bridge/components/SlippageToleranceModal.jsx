@@ -52,14 +52,14 @@ function SlippageTolerance() {
               type="radio"
               name='toleranceBox'
               id='toleranceBox1'
-              onClick={() => onSlippageClick(0.01)}
+              onClick={() => onSlippageClick(0.1)}
             />
-            <label htmlFor="toleranceBox1">0.01%</label>
+            <label htmlFor="toleranceBox1">0.1%</label>
             <input
               type="radio"
               name='toleranceBox'
               id='toleranceBox2'
-              onClick={() => onSlippageClick(0.02)}
+              onClick={() => onSlippageClick(0.2)}
             />
             <label htmlFor="toleranceBox2">0.2%</label>
             <input

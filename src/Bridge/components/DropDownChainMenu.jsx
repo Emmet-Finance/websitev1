@@ -5,7 +5,7 @@ import { switchEvmChain } from 'emmet.sdk';
 
 // Local imports
 import ListItem from './ListItem';
-import { filterOneOut } from '../utils';
+import { filterTwoOut } from '../utils';
 import { useAppSelector } from '../state/store';
 import DownArrow from '../../assets/img/chevron-down.svg';
 import {
@@ -57,9 +57,7 @@ function DropDownChainMenu(props) {
 
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                    {filterOneOut(chains.supportedChains, props.direction === "from"
-                        ? chains.fromChain
-                        : chains.toChain)
+                    {filterTwoOut(chains.supportedChains, chains.fromChain, chains.toChain)
                         .map(chain =>
                             <ListItem
                                 href="#"

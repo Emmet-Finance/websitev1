@@ -149,7 +149,7 @@ function EmmetBridge2() {
                                         <img src={Info} alt="Info" />
                                         <span>
                                             <b>Warning:</b>
-                                            Not to loose the transfered tokens, make sure the destination address is correct.
+                                            Not to lose the transferred tokens, make sure the destination address is correct.
                                         </span>
                                     </span>
                                 </span>

@@ -41,9 +41,8 @@ import {
   setDestinationFee,
   setNativeFee,
 } from '../state/transactions';
-import { shortenAddress, bigIntToHuman } from '../utils';
+import { shortenAddress } from '../utils';
 import { formatEther, contractCallFeeestimate } from '../wallets/EVM'
-import { estimateSend } from '../wallets/ethers'
 
 function BridgeHeader() {
 
@@ -160,7 +159,7 @@ function BridgeHeader() {
         </Navbar.Collapse>
 
         <div className="mobileMenu">
-          <Dropdown className='mobileDropdown languageDrop'>
+          {/* <Dropdown className='mobileDropdown languageDrop'>
             <Dropdown.Toggle id="languageDrop">
               <img src={Earth} alt="Earth" className="EarthIcon" />
             </Dropdown.Toggle>
@@ -172,7 +171,7 @@ function BridgeHeader() {
                   name={language}
                 />)}
             </Dropdown.Menu>
-          </Dropdown>
+          </Dropdown> */}
         </div>
 
         <Dropdown className='enterAppDropdown'>

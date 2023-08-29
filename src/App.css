@@ -2425,3 +2425,14 @@ button#moreDrop-menu:hover img {
   transform: rotate(180deg);
   right: 4px;
 }
+
+.ListItemFlex {
+  display: flex;
+  justify-content: flex-start;
+  align-items:flex-end;
+}
+
+.wallet-name{
+  width:90px;
+  display: flex;
+}

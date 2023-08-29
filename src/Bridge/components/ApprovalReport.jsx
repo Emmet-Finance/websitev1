@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../state/store';
-import { bigIntToHuman } from 'emmet.sdk'
+import { bigIntToHuman } from '../utils'
 
 function ApprovalReport() {
 
@@ -17,7 +17,7 @@ function ApprovalReport() {
 
     return (
         <>
-            {transaction && transaction.approvedHash
+            {transaction && transaction.approvedHashhh
                 ? (<div className="approveBox">
                     <p className='approveText'>
                         Approve:
