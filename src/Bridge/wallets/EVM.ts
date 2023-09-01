@@ -8,7 +8,7 @@ import {
 } from 'viem';
 
 import {
-    EVMChain,
+    BridgeChainIds,
     SupportedTokenType,
     TChainName,
     allChainNameToIndex,
@@ -21,7 +21,7 @@ import {
     testnetTokens
 } from 'emmet.sdk'
 
-import { chainNameToKey } from '../utils';
+import { chainNameToKey, formatChainName } from '../utils';
 
 export type TAllChainNames = keyof typeof ALL_CHAINS;
 
@@ -45,13 +45,13 @@ export async function estimateSend(
     try {
 
         const selectedChain = testnets.filter(net =>
-            net.name === fromChainName)[0];
+            formatChainName(net.name) === formatChainName(fromChainName))[0];
         console.log("selectedChain", selectedChain)
 
         const publicClient = getPublicClient(account, fromChainName, [selectedChain], true);
         console.log("publicClient", publicClient)
 
-        const chainId = allChainNameToIndex[toChainName];
+        const chainId = allChainNameToIndex[formatChainName(toChainName)];
 
         const populatedArgs: [bigint, number, string, string] = [
             BigInt(amount),
@@ -98,7 +98,7 @@ export async function contractCallFeeestimate(
 
         const contractAddress: string = selectedChain.bridge;
 
-        const chainId = allChainNameToIndex[toChainName];
+        const chainId = allChainNameToIndex[formatChainName(toChainName)];
         console.log("chainId", chainId)
 
         const provider = window!.ethereum!;
@@ -108,13 +108,11 @@ export async function contractCallFeeestimate(
                 method: 'eth_accounts'
             });
         const selectedAddress: string = accounts[0];
-        console.log("selectedAddress", selectedAddress, "accounts", accounts)
 
         const nonce = await provider!.request({
             method: 'eth_getTransactionCount',
             params: [selectedAddress, 'latest']
         });
-        console.log("account nonce", nonce)
 
         const functionArgs = [
             BigInt(amount),
@@ -278,18 +276,18 @@ export async function transferERC20(
         publicClient,
         signer
     } = await config(fromChain);
-
-    const chainId: number = BridgeChainIds[toChainName.toLocaleLowerCase().replace(/[^a-zA-Z]/g, '') as keyof typeof BridgeChainIds]
-
+    console.log("toChainName", toChainName, "formatChainName(toChainName)", formatChainName(toChainName))
+    const chainId: number = BridgeChainIds[formatChainName(toChainName).toLowerCase() as keyof typeof BridgeChainIds]
+    console.log("transferERC20:chainId", chainId)
     const bridgeAddress: string = chain.bridge;
-
+    console.log("transferERC20:bridgeAddress", bridgeAddress)
     const args: [[bigint, number, string, string]] = [[
         BigInt(amount),
         chainId,
         tokenName.toUpperCase(),
         receiver
     ]];
-
+    console.log("transferERC20:args", args)
     const { request } = await publicClient.simulateContract({
         address: `0x${bridgeAddress.slice(2)}`,
         abi: FTBridge,
@@ -298,8 +296,10 @@ export async function transferERC20(
         account:`0x${account.slice(2)}`,
         chain,
     });
-
-    return await signer.writeContract(request);
+    console.log("transferERC20:request", request)
+    const transferResult = await signer.writeContract(request);
+    console.log("transferERC20:transferResult", transferResult)
+    return transferResult;
 
 }
 
@@ -320,9 +320,9 @@ export async function getTransaction(
 }
 
 
-export const BridgeChainIds = {
-    goerly: 1,
-    bsctestnet: 2,
-    mumbai:3,
-    sparknet:4
-}
+// export const BridgeChainIds = {
+//     goerly: 1,
+//     bsctestnet: 2,
+//     mumbai:3,
+//     sparknet:4
+// }

@@ -12,7 +12,7 @@ import {
     setFromChain,
     setToChain,
 } from '../state/chains';
-
+import { formatChainNameMixedCase } from 'emmet.sdk'
 
 function DropDownChainMenu(props) {
 
@@ -21,13 +21,13 @@ function DropDownChainMenu(props) {
 
     const onChainClickHandler = (e, chain) => {
         try {
-
             e.preventDefault()
+            const cleaned = formatChainNameMixedCase(chain)
             if (props.direction === "from") {
-                switchEvmChain(chain)
-                dispatch(setFromChain(chain));
+                switchEvmChain(cleaned)
+                dispatch(setFromChain(cleaned));
             } else if (props.direction === "to") {
-                dispatch(setToChain(chain));
+                dispatch(setToChain(cleaned));
             }
 
         } catch (error) {

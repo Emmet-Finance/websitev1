@@ -20,7 +20,7 @@ import ListItem from './ListItem';
 // UI logos
 import Down from '../../assets/img/new/down.svg';
 import Logo from '../../assets/img/logo.svg';
-import Earth from '../../assets/img/new/earth.svg';
+// import Earth from '../../assets/img/new/earth.svg';
 import { useAppSelector } from '../state/store';
 import {
   setFromTokenBalances,
@@ -33,7 +33,7 @@ import {
   setChainId,
 } from '../state/wallets';
 import {
-  supportedLanguages,
+  // supportedLanguages,
   supportedWallets,
   WalletLogos
 } from '../types';
@@ -62,13 +62,13 @@ function BridgeHeader() {
 
         // If the selected chain is different from the one in the wallet
         if (chains.chainId !== provider.networkVersion) {
+          
           switchEvmChain(chains.fromChain);
         }
 
         // Inject the wallet account
         let accounts = [];
         accounts = await getEvmAccounts();
-        console.log("accounts", accounts)
         dispatch(setAccounts(accounts));
         // Inject the native coin balance
         dispatch(setBalance(await getEvmBalance(accounts[0])));
@@ -109,7 +109,7 @@ function BridgeHeader() {
         );
 
         console.log("nativePureEstimate", formatEther(nativePureEstimate));
-        if (chains.fromChain === 'Goerli' || chains.fromChain === 'Mumbai') {
+        if (chains.fromChain === 'Goerli' || chains.fromChain === 'Mumbai' || 'Athens3') {
           dispatch(setNativeFee(formatEther(nativePureEstimate * 100000)));
         }
         dispatch(setNativeFee(formatEther(nativePureEstimate)));

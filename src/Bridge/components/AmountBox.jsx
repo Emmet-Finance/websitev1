@@ -47,7 +47,7 @@ function AmountBox() {
                     : 0;
                 if (!isGreaterOrEqual(allowance, aToDec)) {
                     dispatch(setNeedApproval(true));
-                    dispatch(setApprovedAmount(getUintDiff(aToDec, allowance).toString()));
+                    dispatch(setApprovedAmount(aToDec.toString()));
                 } else {
                     dispatch(setNeedApproval(false));
                 }

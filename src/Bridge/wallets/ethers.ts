@@ -133,7 +133,7 @@ export function getTokenAddressAndAbi(
     const selToken: SupportedTokenType = testnetTokens[key];
 
     // Normalize chain name for consistency
-    const chainKey: string = chainName.toLowerCase().replace(/[^a-z]/g, '');
+    const chainKey: string = chainName.toLowerCase().replace(/[^a-z0-9]/g, '');
 
     // Get token address and ABI from selected token
     const tokenAddress: string = selToken.address[chainKey];

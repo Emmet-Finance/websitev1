@@ -248,12 +248,13 @@ export function findChain<T>(
     if (chains && chainName) {
         const cleanName = chainName
             .toLowerCase()
-            .replace(/[^a-z]/g, '')
+            .replace(/[^a-z0-9]/g, '')
         return chains[cleanName as keyof T]
     }
     const keys = Object.keys(chains);
     const key = keys[0] as keyof T;
-    return chains[key];
+    const chain = chains[key];
+    return chain;
 }
 
 /**
@@ -351,12 +352,15 @@ export const getUintDiff = (
     return 0n;
 }
 
+export function formatChainName(chainName: string):string {
+    return chainName
+    .replace(/[^a-zA-Z0-9]/g, '')
+}
+
 
 export function chainNameToKey<T>(chainName: string): T {
 
-    return (chainName
-        .toLowerCase()
-        .replace(/[^a-zA-Z]/g, '') as unknown) as T;
+    return (formatChainName(chainName).toLowerCase() as unknown) as T;
 
 }
 
@@ -383,7 +387,7 @@ export function bigIntToHuman(
             case 'string':
                 cleaned = n.replace(/[^0-9\.]/g, '');
                 [whole, fraction] = cleaned.split('.')
-                console.log("inside string:", n, "cleaned", cleaned, "whole", whole, "fraction", fraction)
+                
                 if (!fraction) {
                     fraction = ''
                     const intger = BigInt(whole + fraction) / divider;
@@ -403,7 +407,7 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
-        console.log("n", n, typeof n, "whole", whole, "fraction", fraction)
+        
 
         if (fraction) {
             const formattedFractionalPart = formatFractionalPart(fraction.toString());
