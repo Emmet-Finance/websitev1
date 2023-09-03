@@ -294,13 +294,13 @@ export function filterTwoOut<T>(
     chainOneName: string,
     chainTwoName: string,
 ): EVMChain[] | [] {
-    if (chains && chainOneName && chainTwoName){
+    if (chains && chainOneName && chainTwoName) {
         const chainValues: EVMChain[] | [] = Object.values(chains)
         try {
             return chainValues.filter(chain =>
                 chain.name.toLowerCase() !== chainOneName.toLowerCase()
                 && chain.name.toLowerCase() !== chainTwoName.toLowerCase()
-                );
+            );
         } catch (error) {
             console.error(error)
             return [];
@@ -352,9 +352,9 @@ export const getUintDiff = (
     return 0n;
 }
 
-export function formatChainName(chainName: string):string {
+export function formatChainName(chainName: string): string {
     return chainName
-    .replace(/[^a-zA-Z0-9]/g, '')
+        .replace(/[^a-zA-Z0-9]/g, '')
 }
 
 
@@ -382,12 +382,11 @@ export function bigIntToHuman(
             ? 10n ** BigInt(parseInt(decimals))
             : 10n ** BigInt(decimals);
 
-
         switch (typeof n) {
             case 'string':
                 cleaned = n.replace(/[^0-9\.]/g, '');
                 [whole, fraction] = cleaned.split('.')
-                
+
                 if (!fraction) {
                     fraction = ''
                     const intger = BigInt(whole + fraction) / divider;
@@ -407,10 +406,10 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
-        
+        console.log("whole", whole, "fraction", fraction)
 
         if (fraction) {
-            const formattedFractionalPart = formatFractionalPart(fraction.toString());
+            const formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals));
             return `${whole.toLocaleString()}.${formattedFractionalPart}`
         } else {
             return whole.toLocaleString();
@@ -419,6 +418,26 @@ export function bigIntToHuman(
     } else {
         return ''
     }
+}
+
+/**
+ * Zero-pads a string, number, or bigint to reach the desired target length.
+ *
+ * @param inputString The input string, number, or bigint to be zero-padded.
+ * @param targetLength The target length for the resulting padded string.
+ * @returns The input value zero-padded to the specified target length as a string.
+ */
+export function zerroPadding(
+    inputString: string | number | bigint,
+    targetLength: string | number | bigint
+): string {
+    // Cast the arguments to the expected types
+    const s: string = BigInt(inputString).toString();
+    const L: number = parseInt(BigInt(targetLength).toString());
+    // Compute padding
+    const padding: string = '0'.repeat(L - s.length);
+    // Return a padded string
+    return `${padding}${s}`;
 }
 
 /**

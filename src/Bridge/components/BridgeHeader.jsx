@@ -14,6 +14,7 @@ import {
   getEvmTokenAllowances,
   getEvmTokenBalances,
   switchEvmChain,
+  isThisChainsNativeCoin,
 } from 'emmet.sdk';
 // Local imports
 import ListItem from './ListItem';
@@ -71,10 +72,12 @@ function BridgeHeader() {
         accounts = await getEvmAccounts();
         dispatch(setAccounts(accounts));
         // Inject the native coin balance
-        dispatch(setBalance(await getEvmBalance(accounts[0])));
+        const balance = await getEvmBalance(accounts[0]);
+        dispatch(setBalance(balance));
         dispatch(setChainId(await getEvmChainId()));
         // Collect the token balances of the account
-        const fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
+        let fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain);
+        fromBalances[chains.nativeCurrency] = balance;
         console.log("fromBalances", fromBalances)
         dispatch(setFromTokenBalances(fromBalances));
         // Collect the token allowances of the account

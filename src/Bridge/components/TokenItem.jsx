@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { bnToHumanReadable } from '../utils';
+import { bigIntToHuman } from '../utils';
 
 import CopySmall from '../../assets/img/new/copy2.svg';
 import Metamask from '../../assets/img/new/Metamask.svg';
@@ -17,7 +17,7 @@ function TokenItem(props) {
                 </div>
                 {props.direction === "from"
                     ? <p className='tokkenValue'>
-                        <span>{props.name}:</span> {props.balance ? bnToHumanReadable(props.balance) : '0.00'}
+                        <span>{props.name}:</span> {props.balance ? bigIntToHuman(props.balance) : '0.00'}
                     </p>
                     : ''}
                 <div className="hoverIcons">

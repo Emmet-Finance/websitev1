@@ -20,7 +20,7 @@ import TransactionProgress from './TransactionProgress';
 
 import { copyAddressToClipboard } from '../utils';
 import { setFromChain, setToChain } from '../state/chains'
-import { bnToHumanReadable } from '../utils';
+import { bigIntToHuman } from '../utils';
 import { disconnect } from '../state/wallets';
 import { setDestinationAccount } from '../state/transactions'
 
@@ -123,7 +123,7 @@ function EmmetBridge2() {
                                     <span>Balance:</span>
                                     {tokens && tokens.fromTokenBalances
                                         ? ' '
-                                        + bnToHumanReadable(tokens
+                                        + bigIntToHuman(tokens
                                             .fromTokenBalances[tokens.fromTokens.toUpperCase()])
                                         + ` ${tokens.fromTokens}`
                                         : " 0.00 " + tokens.fromTokens}

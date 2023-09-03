@@ -21,7 +21,7 @@ function InformationalBlock() {
             <div className="calculateBox">
                 <span>Gas Estimation:</span>
                 {transaction.nativeFee
-                    ? bigIntToHuman((transaction.nativeFee), 18).slice(0,17)
+                    ? bigIntToHuman((transaction.nativeFee), tokens.fromDecimals).slice(0,16)
                     : '0.001'}
                 {" "}
                 {chains.nativeCurrency}
