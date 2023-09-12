@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
-import { getTransaction, transferERC20 } from '../wallets/EVM';
-import { approveERC20 } from '../wallets/ethers'
+import { getTransaction } from '../wallets/EVM';
+import { approveERC20 } from '../wallets/approveERC20'
+import { transferERC20 } from '../wallets/transferERC20'
 
 export const approveAmount = createAsyncThunk('approve-amount', async (params: any) => {
     console.log("params", params)
@@ -17,20 +18,15 @@ export const approveAmount = createAsyncThunk('approve-amount', async (params: a
 
 export const sendInstallment = createAsyncThunk('send-installment', async (params: any) => {
     console.log("params", params)
-    const txHash = await transferERC20(
+    const { hash, status, amount } = await transferERC20(
         params.fromChain,
         params.toChain,
         params.fromTokens,
         params.transferAmount,
         params.destinationAddress
     );
-    console.log("txHash", txHash)
-    const TX = await getTransaction(
-        params.fromChain,
-        `0x${txHash.slice(2)}`
-    );
-    console.log("TX", TX)
-    return { hash: txHash, status: TX.status }
+    console.log(hash, status, amount)
+    return { hash, status, amount }
 });
 
 export const transactionSlice = createSlice({
@@ -118,20 +114,23 @@ export const transactionSlice = createSlice({
     extraReducers: (builder: any) => {
         builder
             .addCase(sendInstallment.fulfilled, (state: any, action: any) => {
-                const { hash, status } = action.payload
+                const { hash, status, amount } = action.payload
                 state.originalHash = hash;
                 state.transferSuccess = status;
+                state.receiveAmount = amount;
                 state.pending = false;
             })
             .addCase(sendInstallment.pending, (state: any) => {
                 state.pending = true;
                 state.originalHash = '';
                 state.transferSuccess = '';
+                state.receiveAmount = '';
             })
             .addCase(sendInstallment.rejected, (state: any) => {
                 state.pending = false;
                 state.originalHash = '';
                 state.transferSuccess = '';
+                state.receiveAmount = '';
             })
             .addCase(approveAmount.fulfilled, (state: any, action: any) => {
                 const { hash, status, amount } = action.payload;

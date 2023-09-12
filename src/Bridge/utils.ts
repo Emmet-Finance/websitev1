@@ -314,11 +314,11 @@ export function format2BigInt(
     b: string | number | bigint
 ): { _a: bigint, _b: bigint } {
     let _a, _b;
-    if (typeof a === 'string') { _a = a.replace(/[^0-9]/g, '') }
+    if (a && typeof a === 'string') { _a = a.replace(/[^0-9]/g, '') }
     else { _a = a }
-    if (typeof b === 'string') { _b = b.replace(/[^0-9]/g, '') }
+    if (b && typeof b === 'string') { _b = b.replace(/[^0-9]/g, '') }
     else { _b = b }
-    return { _a: BigInt(_a), _b: BigInt(_b) }
+    return { _a: _a ? BigInt(_a) : 0n, _b: _b ? BigInt(_b) : 0n}
 }
 
 /**
@@ -403,10 +403,10 @@ function hexToDecimalString(s: string): string {
         'f': '15',
     };
 
-    let hexString: string;
     // Remove the '0x' prefix if it exists
-    if (s.startsWith('0x')) { hexString = s.slice(2); }
-    else { hexString = s; }
+    let hexString: string = s.startsWith('0x')
+        ? s.slice(2)
+        : s;
 
     let decimalValue = '0';
 
@@ -500,7 +500,7 @@ export function bigIntToHuman(
             const formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals));
             return `${whole.toLocaleString()}.${formattedFractionalPart}`
         } else {
-            return whole.toLocaleString();
+            return whole ? whole.toLocaleString() : '0.00';
         }
 
     } else {

@@ -14,7 +14,7 @@ function ApprovalReport() {
 
     useEffect(() => {
 
-        if (transaction && tokens
+        if (transaction
             && transaction.approvedHash
             && transaction.approveSuccess
             && transaction.approvedAmt
@@ -23,12 +23,10 @@ function ApprovalReport() {
         }
     }, [
         dispatch,
-        tokens,
         transaction,
         transaction.approvedHash,
         transaction.approveSuccess,
         transaction.approvedAmt,
-        tokens.approvedAmt
     ])
 
     let rootUrl = chains

@@ -22,6 +22,7 @@ import {
 } from 'emmet.sdk'
 
 import { chainNameToKey, formatChainName } from '../utils';
+import { getMetamaskProvider } from './getMetamaskProvider';
 
 export type TAllChainNames = keyof typeof ALL_CHAINS;
 
@@ -34,50 +35,50 @@ export type TAllChainNames = keyof typeof ALL_CHAINS;
  * @param tokenName the uppercased token name (symbol)
  * @returns a bigint | 83889n
  */
-export async function estimateSend(
-    amount: string | bigint,
-    account: string,
-    fromChainName: TChainName,
-    toChainName: string,
-    tokenName: string
-): Promise<bigint> {
+// export async function estimateSend(
+//     amount: string | bigint,
+//     account: string,
+//     fromChainName: TChainName,
+//     toChainName: string,
+//     tokenName: string
+// ): Promise<bigint> {
 
-    try {
+//     try {
 
-        const selectedChain = testnets.filter(net =>
-            formatChainName(net.name) === formatChainName(fromChainName))[0];
-        console.log("selectedChain", selectedChain)
+//         const selectedChain = testnets.filter(net =>
+//             formatChainName(net.name) === formatChainName(fromChainName))[0];
+//         console.log("selectedChain", selectedChain)
 
-        const publicClient = getPublicClient(account, fromChainName, [selectedChain], true);
-        console.log("publicClient", publicClient)
+//         const publicClient = getPublicClient(account, fromChainName, [selectedChain], true);
+//         console.log("publicClient", publicClient)
 
-        const chainId = allChainNameToIndex[formatChainName(toChainName)];
+//         const chainId = allChainNameToIndex[formatChainName(toChainName)];
 
-        const populatedArgs: [bigint, number, string, string] = [
-            BigInt(amount),
-            chainId,
-            tokenName,
-            account
-        ];
+//         const populatedArgs: [bigint, number, string, string] = [
+//             BigInt(amount),
+//             chainId,
+//             tokenName,
+//             account
+//         ];
 
-        const estimation = await publicClient?.estimateContractGas({
-            address: `0x${selectedChain.bridge.slice(2)}`,
-            abi: FTBridge,
-            functionName: 'sendInstallment',
-            args: [populatedArgs],
-            account: `0x${account.slice(2)}`
-        }) as bigint;
+//         const estimation = await publicClient?.estimateContractGas({
+//             address: `0x${selectedChain.bridge.slice(2)}`,
+//             abi: FTBridge,
+//             functionName: 'sendInstallment',
+//             args: [populatedArgs],
+//             account: `0x${account.slice(2)}`
+//         }) as bigint;
 
-        const gasPrice = await publicClient!.getGasPrice()
+//         const gasPrice = await publicClient!.getGasPrice()
 
-        return estimation * gasPrice;
+//         return estimation * gasPrice;
 
-    } catch (error) {
-        console.error("estimateSend Error:", error)
-    }
-    return 83889n * 20n;
+//     } catch (error) {
+//         console.error("estimateSend Error:", error)
+//     }
+//     return 83889n * 20n;
 
-}
+// }
 
 export { formatEther };
 
@@ -89,7 +90,8 @@ export async function contractCallFeeestimate(
     functionName: string,
     amount: string,
     tokenName: string,
-    account: string
+    account: string,
+    provider:any
 ): Promise<string> {
 
     try {
@@ -100,8 +102,6 @@ export async function contractCallFeeestimate(
 
         const chainId = allChainNameToIndex[formatChainName(toChainName)];
         console.log("chainId", chainId)
-
-        const provider = window!.ethereum!;
 
         const accounts: string[] = await provider!.request(
             {
@@ -167,7 +167,9 @@ export async function config(chainName: TChainName) {
     const chain = ALL_CHAINS[key];
     console.log("chain", chain);
 
-    const [account] = await window?.ethereum!.request({ method: 'eth_requestAccounts' }) as string[];
+    const ethereum:any = getMetamaskProvider();
+
+    const [account] = await ethereum.request({ method: 'eth_requestAccounts' }) as string[];
 
     const publicClient = createPublicClient({
         chain,
@@ -178,7 +180,7 @@ export async function config(chainName: TChainName) {
     const signer = createWalletClient({
         account:`0x${account.slice(2)}`,
         chain,
-        transport: custom(window?.ethereum!)
+        transport: custom(ethereum)
     });
     console.log("signer", signer)
 
@@ -276,6 +278,7 @@ export async function transferERC20(
         publicClient,
         signer
     } = await config(fromChain);
+    console.log("publicClient", publicClient, "signer", signer)
     console.log("toChainName", toChainName, "formatChainName(toChainName)", formatChainName(toChainName))
     const chainId: number = BridgeChainIds[formatChainName(toChainName).toLowerCase() as keyof typeof BridgeChainIds]
     console.log("transferERC20:chainId", chainId)

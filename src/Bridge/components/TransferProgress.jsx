@@ -11,7 +11,7 @@ function TransferProgress() {
             <TransferProgressItem
                 className={`steepLine line1 ${transaction.originalHash
                     ? "checked"
-                    : (transaction.transferSuccess === 'success'
+                    : (transaction.transferSuccess
                         ? ""
                         : "current")
                     }`}
@@ -20,7 +20,7 @@ function TransferProgress() {
             />
             <TransferProgressItem
                 className={`steepLine line2 ${transaction.originalHash
-                    ? (transaction.transferSuccess === 'success'
+                    ? (transaction.transferSuccess
                         ? "checked"
                         : "current")
                     : ''
