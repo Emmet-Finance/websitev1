@@ -14,7 +14,6 @@ import {
     sendInstallment
 } from '../state/transactions';
 import { setFromTokenAllowances } from '../state/tokens';
-/* global BigInt */
 
 function Commands() {
 

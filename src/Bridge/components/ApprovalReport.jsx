@@ -1,7 +1,6 @@
 import React from 'react';
 import { useAppSelector } from '../state/store';
 import { bigIntToHuman } from '../utils';
-/* global BigInt */
 
 function ApprovalReport() {
 

@@ -14,7 +14,7 @@ function FormattedInput({ placeholder, onParentChange, externalData }) {
         // Format whole part with comma separators
         const formattedWholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-        if (fractionalPart !== undefined && fractionalPart !== "0") {
+        if (fractionalPart !== undefined) {
             return `${formattedWholePart}.${fractionalPart}`;
         } else {
             return formattedWholePart;

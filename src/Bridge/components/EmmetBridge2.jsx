@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { isEvmAddress } from 'emmet.sdk';
+import { isEvmAddress } from 'emmet.sdk/utils/verifiers';
 import { useAppSelector } from '../state/store';
 
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
@@ -68,6 +68,7 @@ function EmmetBridge2() {
                 dispatch(setDestinationAccount(inputValue))
             }
         }else{
+            setReceiver('')
             dispatch(setDestinationAccount(''))
         }
     }

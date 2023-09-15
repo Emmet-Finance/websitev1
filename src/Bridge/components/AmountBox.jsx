@@ -11,7 +11,6 @@ import {
     isGreaterOrEqual,
     humanToBigInt,
     getSlippage,
-    getUintDiff
 } from '../utils';
 import FormattedInput from './FormattedInput';
 
@@ -23,41 +22,45 @@ function AmountBox() {
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
 
-    const handleAmountChange = (value) => {
+    const handleAmountChange = async (value) => {
         dispatch(setErrorMessage(''));
         const a = parseFloat(value);
-        const b = tokens.fromTokenBalances
-            ? tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]
-            : 0;
 
-        if (a && b) {
-            const aToDec = humanToBigInt(value);
+        if (value && a) {
+            const b = tokens.fromTokenBalances
+                ? tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]
+                : 0;
 
-            // Check whether balance (b) is > than transfer amount (aToDec)
-            if (isGreaterOrEqual(b, aToDec)) {
-                dispatch(setTransferAmount(aToDec.toString()))
-                const slippage = getSlippage(aToDec, transaction.slippage);
-                const _received = aToDec - slippage
+            if (b) {
+                const aToDec = humanToBigInt(value);
 
-                dispatch(setReseiveAmount(_received.toString()));
+                // Check whether balance (b) is > than transfer amount (aToDec)
+                if (isGreaterOrEqual(b, aToDec)) {
+                    dispatch(setTransferAmount(aToDec.toString()))
+                    const slippage = getSlippage(aToDec, transaction.slippage);
+                    const _received = aToDec - slippage
 
-                // Check whether approval is required
-                const allowance = tokens.tokenAllowances
-                    ? tokens.tokenAllowances[tokens.fromTokens.toUpperCase()]
-                    : 0;
-                if (!isGreaterOrEqual(allowance, aToDec)) {
-                    dispatch(setNeedApproval(true));
-                    dispatch(setApprovedAmount(aToDec.toString()));
+                    dispatch(setReseiveAmount(_received.toString()));
+
+                    // Check whether approval is required
+                    const allowance = tokens.tokenAllowances
+                        ? tokens.tokenAllowances[tokens.fromTokens.toUpperCase()]
+                        : 0;
+                    if (!isGreaterOrEqual(allowance, aToDec)) {
+                        dispatch(setNeedApproval(true));
+                        dispatch(setApprovedAmount(aToDec.toString()));
+                    } else {
+                        dispatch(setNeedApproval(false));
+                    }
                 } else {
-                    dispatch(setNeedApproval(false));
+                    dispatch(setErrorMessage(`Balance is not enough for this transaction`));
                 }
             } else {
-                dispatch(setErrorMessage(`Balance is not enough for this transaction`));
+                if (!b) { dispatch(setErrorMessage(`Balance is not available`)); }
+                if (!a) { dispatch(setErrorMessage(`Amount is not provided`)); }
             }
-        } else {
-            if (!b) { dispatch(setErrorMessage(`Balance is not available`)); }
-            if (!a) { dispatch(setErrorMessage(`Amount is not provided`)); }
         }
+
     }
 
 
