@@ -13,7 +13,6 @@ export async function getEvmBalance(account: string, ethereum:any): Promise<stri
                 method: EtherConstants.ETH_GET_BALANCE,
                 params: [account, "latest"],
             }) as string;
-            console.log("getEvmBalance", response)
             if (response) return response
         }
     } catch (error) {

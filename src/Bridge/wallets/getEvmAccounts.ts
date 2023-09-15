@@ -12,7 +12,6 @@ export async function getEvmAccounts(ethereum: any): Promise<string[]> {
             const accounts: string[] = await ethereum.request<string[]>({
                 method: MESSAGE_TYPE.ETH_REQUEST_ACCOUNTS,
             }) as string[];
-            console.log("getEvmAccounts:", accounts)
             if (accounts) return accounts;
         }
     } catch (error) {

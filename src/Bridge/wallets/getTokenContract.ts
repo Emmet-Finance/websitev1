@@ -16,10 +16,8 @@ export const getTokenContract = async (
 ): Promise<ethers.Contract | undefined> => {
     // Get the token address and ABI for the specified token and chain
     const [tokenAddress, abi] = getTokenAddressAndAbi(tokenName, chainName);
-    console.log('getTokenContract:tokenAddress', tokenAddress, "abi", abi)
     // Get the browser signer
     const signer = await getSigner(sender);
-    console.log("getTokenContract:signer", signer)
     // Create and return the token contract handler with the browser signer
     const contract = new ethers.Contract(
         tokenAddress,

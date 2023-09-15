@@ -8,7 +8,6 @@ export function getMetamaskProvider() {
     let _tempEthereum: any;
     if (ethereum.providerMap) {
         for (const record of ethereum.providerMap) {
-            // console.log(record[0], record[1])
             if (record[0] === 'MetaMask') {
                 _tempEthereum = record[1]
             }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
@@ -43,7 +43,6 @@ import { getEvmAccounts } from '../wallets/getEvmAccounts'
 import { getEvmBalance } from '../wallets/getEvmBalance';
 import { getEvmTokenBalances } from '../wallets/getEvmTokenBalances'
 import { getEvmTokenAllowances } from '../wallets/getEvmTokenAllowances'
-import { isThisChainsNativeCoin } from '../wallets/isThisChainsNativeCoin'
 const BigInt = window.BigInt;
 
 function BridgeHeader() {
@@ -51,7 +50,6 @@ function BridgeHeader() {
   const dispatch = useDispatch();
   const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
-  const tokens = useAppSelector((state) => state.tokens);
   const state = useAppSelector(state => state);
 
   const handleConnect = async () => {
@@ -60,8 +58,6 @@ function BridgeHeader() {
 
       // Get the info about the browser wallet
       const provider = await detectEthereumProvider({ silent: true });
-
-      console.log("provider from detectEthereumProvider:", provider)
 
       if (provider && typeof window.ethereum !== 'undefined') {
 
@@ -82,18 +78,10 @@ function BridgeHeader() {
         // Collect the token balances of the account
         let fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain, provider);
         fromBalances[chains.nativeCurrency] = BigInt(balance).toString();
-        console.log("fromBalances", fromBalances)
         dispatch(setFromTokenBalances(fromBalances));
         // Collect the token allowances of the account
         let alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain, provider);
-        if(isThisChainsNativeCoin(
-          tokens.fromTokens,
-          chains.fromChain,
-          'testnet'
-        )){
-          alowances[tokens.fromTokens] = BigInt(balance).toString();
-        }
-        console.log('alowances', alowances)
+        alowances[chains.nativeCurrency] = BigInt(balance).toString();
         dispatch(setFromTokenAllowances(alowances));
 
         // Native fee
@@ -158,7 +146,11 @@ function BridgeHeader() {
     handleConnect();
   }
 
-  console.log("state", state)
+  useEffect(() =>{
+    console.log("state", state)
+  }, [state])
+
+  
 
   return (
     <Navbar className='BridgeHeader' expand="lg">

@@ -13,6 +13,8 @@ import {
     approveAmount,
     sendInstallment
 } from '../state/transactions';
+import { setFromTokenAllowances } from '../state/tokens';
+/* global BigInt */
 
 function Commands() {
 
@@ -51,6 +53,20 @@ function Commands() {
             fromTokens: tokens.fromTokens,
             sender: wallets.account
         }));
+
+        try {
+            if (transaction.approvedAmt) {
+                // Create a new object with the updated value
+                const updatedAllowances = {
+                    ...tokens.tokenAllowances,
+                    [tokens.fromTokens.toUpperCase()]: transaction.approvedAmt,
+                };
+                dispatch(setFromTokenAllowances(updatedAllowances))
+            }
+    
+        } catch (error) {
+            console.error(error)
+        }
 
     };
 

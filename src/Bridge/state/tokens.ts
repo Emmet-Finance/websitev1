@@ -11,7 +11,7 @@ export const tokenSlice = createSlice({
         fromTokensLogo:testnetTokens[TestnetTokenNames[0]].logo,
         isApproved:false,
         supportedTokens: testnetTokens,
-        tokenAllowances: undefined,
+        tokenAllowances: {},
         fromTokenBalances:undefined,
         toDecimals:testnetTokens[TestnetTokenNames[0]].decimals,
         toTokenBalances:undefined,
@@ -46,10 +46,10 @@ export const tokenSlice = createSlice({
             addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
         },
         setFromTokenBalances:(state:any, action) => {
-            state.fromTokenBalances = action.payload;
+            state.fromTokenBalances = action.payload as {[key:string]:string};
         },
         setFromTokenAllowances:(state:any, action) => {
-            state.tokenAllowances = action.payload;
+            state.tokenAllowances = action.payload as {[key:string]:string};
         },
     },
 });

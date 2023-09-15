@@ -1,23 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
-import { getTransaction } from '../wallets/EVM';
 import { approveERC20 } from '../wallets/approveERC20'
 import { transferERC20 } from '../wallets/transferERC20'
 
 export const approveAmount = createAsyncThunk('approve-amount', async (params: any) => {
-    console.log("params", params)
+
     const { hash, status, amount } = await approveERC20(
         params.fromChain,
         params.approvedAmt,
         params.fromTokens,
         params.sender
     );
-    console.log(hash, status, amount)
+
     return { hash, status, amount }
 });
 
 export const sendInstallment = createAsyncThunk('send-installment', async (params: any) => {
-    console.log("params", params)
     const { hash, status, amount } = await transferERC20(
         params.fromChain,
         params.toChain,
@@ -25,7 +23,6 @@ export const sendInstallment = createAsyncThunk('send-installment', async (param
         params.transferAmount,
         params.destinationAddress
     );
-    console.log(hash, status, amount)
     return { hash, status, amount }
 });
 
@@ -66,7 +63,7 @@ export const transactionSlice = createSlice({
         },
         setDestinationAccount: (state: any, action) => {
             state.destinationAddress = action.payload;
-            console.log("state.destinationAddress", state.destinationAddress)
+            
             addCookie({
                 key: "toAddress",
                 value: action.payload,
@@ -136,10 +133,10 @@ export const transactionSlice = createSlice({
                 const { hash, status, amount } = action.payload;
                 if (status === 1) { //1 - success, 0 - reverted
                     state.approvedHash = hash;
-                    state.approveSuccess = true; 
+                    state.approveSuccess = true;
                     state.approvedAmt = amount;
                     state.pending = false;
-                }else{
+                } else {
                     state.approvedHash = '';
                     state.approveSuccess = false;
                     state.pending = false;

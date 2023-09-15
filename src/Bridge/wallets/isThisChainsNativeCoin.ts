@@ -21,6 +21,5 @@ export function isThisChainsNativeCoin(
     const _token = tokens[token];
     const isNative = isNativeCoin(_token)
     const tokenNative = _token.native === formatChainName(chainName)
-    console.log("isThisChainsNativeCoin", _token, "isNative", isNative, "tokenNative", tokenNative)
     return isNative && tokenNative;
 }

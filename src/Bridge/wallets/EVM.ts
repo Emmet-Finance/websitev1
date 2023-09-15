@@ -101,7 +101,6 @@ export async function contractCallFeeestimate(
         const contractAddress: string = selectedChain.bridge;
 
         const chainId = allChainNameToIndex[formatChainName(toChainName)];
-        console.log("chainId", chainId)
 
         const accounts: string[] = await provider!.request(
             {
@@ -124,7 +123,6 @@ export async function contractCallFeeestimate(
         const encodedParameters = encodeFunctionData({
             abi: FTBridge, functionName, args: [functionArgs]
         });
-        console.log("encodedParameters", encodedParameters)
 
         const transaction = {
             from: selectedAddress,
@@ -132,7 +130,6 @@ export async function contractCallFeeestimate(
             data: `0x${encodedParameters.slice(2)}`,
             nonce: nonce,
         };
-        console.log("transaction", transaction)
 
         const gasEstimate: bigint = await provider.request({
             method: 'eth_estimateGas',
@@ -162,10 +159,8 @@ export function convertToBigIntWithScaling(value: number, scalingFactor: number 
 export async function config(chainName: TChainName) {
 
     const key = chainNameToKey<TAllChainNames>(chainName);
-    console.log("key", key)
 
     const chain = ALL_CHAINS[key];
-    console.log("chain", chain);
 
     const ethereum:any = getMetamaskProvider();
 
@@ -175,18 +170,12 @@ export async function config(chainName: TChainName) {
         chain,
         transport: http(chain.rpcUrls.default.http[0])
     });
-    console.log("publicClient", publicClient)
 
     const signer = createWalletClient({
         account:`0x${account.slice(2)}`,
         chain,
         transport: custom(ethereum)
     });
-    console.log("signer", signer)
-
-    // JSON-RPC Account
-    // const [account] = await signer.getAddresses();
-    // console.log("account", account)
 
     return {
         account,
@@ -211,34 +200,28 @@ export async function approveERC20(
     amount: string,
 ) {
 
-    console.log("Started config")
     const {
         account,
         chain,
         publicClient,
         signer
     } = await config(chainName);
-    console.log("Done config")
 
     const tokenContract: SupportedTokenType = testnetTokens[
         tokenName
             .toLocaleUpperCase() as keyof typeof testnetTokens
     ];
 
-    console.log("tokenContract", tokenContract)
-
     const args: [string, string] = [
         chain.bridge,
         amount
     ];
-    console.log("args", args)
 
     const tokenContractAddress: string = tokenContract.address[
         chainName
             .toLocaleLowerCase()
             .replace(/[^a-z]/g, '') // remove spaces, etc.
     ];
-    console.log("tokenContractAddress", tokenContractAddress)
 
     const { request } = await publicClient.simulateContract({
         address: `0x${tokenContractAddress.slice(2)}`,
@@ -248,7 +231,6 @@ export async function approveERC20(
         account:`0x${account.slice(2)}`,
         chain,
     });
-    console.log("request", request)
 
     return await signer.writeContract(request);
 
@@ -278,19 +260,15 @@ export async function transferERC20(
         publicClient,
         signer
     } = await config(fromChain);
-    console.log("publicClient", publicClient, "signer", signer)
-    console.log("toChainName", toChainName, "formatChainName(toChainName)", formatChainName(toChainName))
+
     const chainId: number = BridgeChainIds[formatChainName(toChainName).toLowerCase() as keyof typeof BridgeChainIds]
-    console.log("transferERC20:chainId", chainId)
     const bridgeAddress: string = chain.bridge;
-    console.log("transferERC20:bridgeAddress", bridgeAddress)
     const args: [[bigint, number, string, string]] = [[
         BigInt(amount),
         chainId,
         tokenName.toUpperCase(),
         receiver
     ]];
-    console.log("transferERC20:args", args)
     const { request } = await publicClient.simulateContract({
         address: `0x${bridgeAddress.slice(2)}`,
         abi: FTBridge,
@@ -299,9 +277,7 @@ export async function transferERC20(
         account:`0x${account.slice(2)}`,
         chain,
     });
-    console.log("transferERC20:request", request)
     const transferResult = await signer.writeContract(request);
-    console.log("transferERC20:transferResult", transferResult)
     return transferResult;
 
 }

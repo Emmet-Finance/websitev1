@@ -8,7 +8,6 @@ export async function metamaskERC20Transfer(
 
     if (ethereum) {
         const accounts: string[] = await ethereum.request({ method: 'eth_requestAccounts' });
-        console.log("accounts", accounts, "account:", accounts[0]);
         
         const result = ethereum.request({
             method: 'eth_sendTransaction',

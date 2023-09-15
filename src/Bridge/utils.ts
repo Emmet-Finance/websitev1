@@ -494,7 +494,6 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
-        console.log("whole", whole, "fraction", fraction)
 
         if (fraction) {
             const formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals));

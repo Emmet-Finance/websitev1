@@ -23,7 +23,6 @@ function TransactionDetails() {
     const toExplorer = chains.supportedChains[chainNameToKey(chains.toChain)].blockExplorers.default.url;
 
     function onClickHandle() {
-        console.log("TransactionDetails:onClickHandle")
         dispatch(setIsBridgeFormVisible())
     }
 

@@ -11,7 +11,6 @@ export async function transferERC20(
     receiver: string
 ): Promise<{ hash: string, status: number, amount: string }> {
     try {
-        console.log('inside transferERC20')
         const ethereum: any = getMetamaskProvider();
         // Get the current sender account
         const [account] = await ethereum.request({ method: 'eth_requestAccounts' }) as string[];
@@ -26,14 +25,11 @@ export async function transferERC20(
             tokenName.toUpperCase(),
             receiver
         ]];
-        console.log("transferERC20:args", args)
         const receipt = isThisChainsNativeCoin(tokenName.toUpperCase(), fromChain, 'testnet')
             ? await contract!.functions.sendInstallment(...args, { value: amount })
             : await contract!.functions.sendInstallment(...args);
-        console.log('receipt', receipt)
         // Await the result to get the status
         const result = await receipt.wait();
-        console.log('result', result)
         if (result) {
             // Get the transaction hash
             const hash: string = result.transactionHash;

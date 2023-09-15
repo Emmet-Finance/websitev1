@@ -8,9 +8,7 @@ export async function getBridgeContract(
     senderAddress: string
 ) {
     const bridgeAddress: string = getBridgeAddress(chainName);
-    console.log("bridgeAddress", bridgeAddress)
     const signer = await getSigner(senderAddress);
-    console.log("signer", signer)
     const contract = new ethers.Contract(
         bridgeAddress,
         FTBridge,

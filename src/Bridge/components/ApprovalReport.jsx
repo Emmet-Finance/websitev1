@@ -1,33 +1,13 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { useAppSelector } from '../state/store';
 import { bigIntToHuman } from '../utils';
-import { setFromTokenAllowances } from '../state/tokens';
 /* global BigInt */
 
 function ApprovalReport() {
 
-    const dispatch = useDispatch();
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
-
-    useEffect(() => {
-
-        if (transaction
-            && transaction.approvedHash
-            && transaction.approveSuccess
-            && transaction.approvedAmt
-        ) {
-            dispatch(setFromTokenAllowances(BigInt(transaction.approvedAmt).toString()))
-        }
-    }, [
-        dispatch,
-        transaction,
-        transaction.approvedHash,
-        transaction.approveSuccess,
-        transaction.approvedAmt,
-    ])
 
     let rootUrl = chains
         .supportedChains[chains
