@@ -22,7 +22,7 @@ function Header() {
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">VALIDATE</Nav.Link>
           </Nav>
 
-          <button className='enterApp'>Enter app <img src={LinkLogo} alt="LinkLogo" /></button>
+          <a href="/bridge" className='enterApp'>Enter app <img src={LinkLogo} alt="LinkLogo" /></a>
 
         </Navbar.Collapse>
       </Container>
