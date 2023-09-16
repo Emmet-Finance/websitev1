@@ -318,7 +318,7 @@ export function format2BigInt(
     else { _a = a }
     if (b && typeof b === 'string') { _b = b.replace(/[^0-9]/g, '') }
     else { _b = b }
-    return { _a: _a ? BigInt(_a) : 0n, _b: _b ? BigInt(_b) : 0n}
+    return { _a: _a ? BigInt(_a) : 0n, _b: _b ? BigInt(_b) : 0n }
 }
 
 /**
@@ -496,7 +496,10 @@ export function bigIntToHuman(
         }
 
         if (fraction) {
-            const formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals));
+            let formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, 8));
+            if(formattedFractionalPart.length > 8){
+                formattedFractionalPart = formattedFractionalPart.slice(0,8)
+            }
             return `${whole.toLocaleString()}.${formattedFractionalPart}`
         } else {
             return whole ? whole.toLocaleString() : '0.00';
@@ -522,9 +525,15 @@ export function zerroPadding(
     const s: string = BigInt(inputString).toString();
     const L: number = parseInt(BigInt(targetLength).toString());
     // Compute padding
-    const padding: string = '0'.repeat(L - s.length);
-    // Return a padded string
-    return `${padding}${s}`;
+    if (L > s.length) {
+        const padding: string = '0'.repeat(L - s.length);
+        // Return a padded string
+        return `${padding}${s}`;
+    }else{
+        return s;
+    }
+
+
 }
 
 /**

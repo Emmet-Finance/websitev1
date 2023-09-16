@@ -56,7 +56,7 @@ function AmountBox() {
                     dispatch(setErrorMessage(`Balance is not enough for this transaction`));
                 }
             } else {
-                if (!b) { dispatch(setErrorMessage(`Balance is not available`)); }
+                if (!b) { dispatch(setErrorMessage(`No wallet connected to check the balance.`)); }
                 if (!a) { dispatch(setErrorMessage(`Amount is not provided`)); }
             }
         }
@@ -72,7 +72,7 @@ function AmountBox() {
         if (maxAmount) {
             dispatch(setTransferAmount(maxAmount));
         } else {
-            dispatch(setErrorMessage(`Balance is not available`));
+            dispatch(setErrorMessage(`No wallet connected to check the balance.`));
         }
     }
 

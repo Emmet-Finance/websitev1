@@ -23,7 +23,7 @@ function InformationalBlock() {
             <div className="calculateBox">
                 <span>Allowance:</span>
                 {allowance
-                    ? `${bigIntToHuman(allowance)}`.slice(0,18) + ` ${tokens.fromTokens}`
+                    ? `${bigIntToHuman(allowance)}`.slice(0,10) + ` ${tokens.fromTokens}`
                     : `0.00 ${tokens.fromTokens}`
                 }
             </div>

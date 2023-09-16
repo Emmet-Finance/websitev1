@@ -7,15 +7,27 @@ function FormattedInput({ placeholder, onParentChange, externalData }) {
     const formatValue = (value) => {
         // Convert the bigint to string for formatting
         const stringValue = value.toString();
+        const hasPeriod = stringValue.includes('.')
 
         // Split the string into whole and fractional parts
         const [wholePart, fractionalPart] = stringValue.split('.');
+        console.log("wholePart", wholePart, "fractionalPart", fractionalPart)
 
         // Format whole part with comma separators
         const formattedWholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 
-        if (fractionalPart !== undefined) {
-            return `${formattedWholePart}.${fractionalPart}`;
+        let formattedFractionalPart;
+
+        if (fractionalPart && fractionalPart.length <= 8){
+            formattedFractionalPart = fractionalPart;
+        } else if(fractionalPart){
+            formattedFractionalPart = fractionalPart.slice(0,8);
+        } else {
+            formattedFractionalPart = '';
+        }
+
+        if (formattedFractionalPart || hasPeriod) {
+            return `${formattedWholePart}.${formattedFractionalPart}`;
         } else {
             return formattedWholePart;
         }
