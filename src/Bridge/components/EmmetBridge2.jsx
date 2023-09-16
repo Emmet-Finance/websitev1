@@ -122,10 +122,10 @@ function EmmetBridge2() {
                                 <p className="label label1">Amount to Transfer</p>
                                 <p className="label label2">
                                     <span>Balance:</span>
-                                    {tokens && tokens.fromTokenBalances
+                                    {wallets && wallets.balances
                                         ? ' '
-                                        + bigIntToHuman(tokens
-                                            .fromTokenBalances[tokens.fromTokens.toUpperCase()])
+                                        + bigIntToHuman(wallets
+                                            .balances[tokens.fromTokens.toUpperCase()])
                                         + ` ${tokens.fromTokens}`
                                         : " 0.00 " + tokens.fromTokens}
                                 </p>

@@ -4,50 +4,28 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {
-  // estimateReceive,
-  // estimateSend,
-  // getEvmAccounts,
-  // getEvmBalance,
-  getEvmChainId,
-  // getEvmTokenAllowances,
-  // getEvmTokenBalances,
-  switchEvmChain,
-} from 'emmet.sdk';
-// import { isThisChainsNativeCoin } from 'emmet.sdk/utils/verifiers'
+
 // Local imports
 import ListItem from './ListItem';
 // UI logos
 import Down from '../../assets/img/new/down.svg';
 import Logo from '../../assets/img/logo.svg';
 // import Earth from '../../assets/img/new/earth.svg';
-import { useAppSelector } from '../state/store';
-import {
-  setFromTokenBalances,
-  setFromTokenAllowances
-} from '../state/tokens';
-import {
-  setWallet,
-  setAccounts,
-  setBalance,
-  setChainId,
-} from '../state/wallets';
+import { useAppSelector, useAppDispatch } from '../state/store';
+import { setWallet } from '../state/wallets';
 import {
   // supportedLanguages,
   supportedWallets,
   WalletLogos
 } from '../types';
 import { shortenAddress } from '../utils';
-import { detectEthereumProvider } from '../wallets/detectEthereumProvider'
-import { getEvmAccounts } from '../wallets/getEvmAccounts'
-import { getEvmBalance } from '../wallets/getEvmBalance';
-import { getEvmTokenBalances } from '../wallets/getEvmTokenBalances'
-import { getEvmTokenAllowances } from '../wallets/getEvmTokenAllowances'
-const BigInt = window.BigInt;
+
+import { connectWallet } from '../state/wallets';
 
 function BridgeHeader() {
 
   const dispatch = useDispatch();
+  const asyncDispatch = useAppDispatch();
   const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
   const state = useAppSelector(state => state);
@@ -56,89 +34,11 @@ function BridgeHeader() {
 
     try {
 
-      // Get the info about the browser wallet
-      const provider = await detectEthereumProvider({ silent: true });
-
-      if (provider && typeof window.ethereum !== 'undefined') {
-
-        // If the selected chain is different from the one in the wallet
-        if (chains.chainId !== provider.networkVersion) {
-
-          switchEvmChain(chains.fromChain);
-        }
-
-        // Inject the wallet account
-        let accounts = [];
-        accounts = await getEvmAccounts(provider);
-        dispatch(setAccounts(accounts));
-        // Inject the native coin balance
-        const balance = await getEvmBalance(accounts[0], provider);
-        dispatch(setBalance(balance));
-        dispatch(setChainId(await getEvmChainId()));
-        // Collect the token balances of the account
-        let fromBalances = await getEvmTokenBalances(accounts[0], chains.fromChain, provider);
-        fromBalances[chains.nativeCurrency] = BigInt(balance).toString();
-        dispatch(setFromTokenBalances(fromBalances));
-        // Collect the token allowances of the account
-        let alowances = await getEvmTokenAllowances(accounts[0], chains.fromChain, provider);
-        alowances[chains.nativeCurrency] = BigInt(balance).toString();
-        dispatch(setFromTokenAllowances(alowances));
-
-        // Native fee
-        // const nativeFee = await estimateSend(
-        //   "100000000000000000",
-        //   accounts[0],
-        //   chains.fromChain,
-        //   chains.toChain,
-        //   tokens.fromTokens
-        // );
-        // console.log("nativeFee", formatEther(nativeFee/100000n));
-
-        // const estNative = await estimateSend(
-        //   chains.fromChain,
-        //   chains.toChain,
-        //   tokens.fromTokens
-        // );
-        // console.log("new estNative", estNative)
-
-        // const nativePureEstimate = await contractCallFeeestimate(
-        //   chains.fromChain,
-        //   chains.toChain,
-        //   'sendInstallment',
-        //   "100000000000000000",
-        //   tokens.fromTokens,
-        //   accounts[0],
-        //   provider
-        // );
-
-        // console.log("nativePureEstimate", formatEther(nativePureEstimate));
-        // if (chains.fromChain === 'Goerli'
-        //   || chains.fromChain === 'Mumbai'
-        //   || chains.fromChain === 'Athens3'
-        // ) {
-        //   dispatch(setNativeFee(formatEther(nativePureEstimate * 100000)));
-        // }
-        // dispatch(setNativeFee(formatEther(nativePureEstimate)));
-
-
-        // Destination fee
-      //   const destFee = await estimateReceive(
-      //     "100000000000000000",
-      //     accounts[0],
-      //     accounts[0],
-      //     chains.toChain,
-      //     chains.fromChain,
-      //     tokens.fromTokens
-      //   );
-      //   console.log("destFee", destFee);
-      //   dispatch(setDestinationFee((destFee).toString()));
-      }
+      await asyncDispatch(connectWallet(chains.fromChain));
 
     } catch (error) {
       console.error("BridgeHeader:handleConnect: ERROR:", error)
     }
-
-
   }
 
   const onWalletClickHandler = (wallet) => {
@@ -146,11 +46,11 @@ function BridgeHeader() {
     handleConnect();
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     console.log("state", state)
   }, [state])
 
-  
+
 
   return (
     <Navbar className='BridgeHeader' expand="lg">

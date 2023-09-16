@@ -8,15 +8,16 @@ function InformationalBlock() {
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
+    const wallets = useAppSelector((state) => state.wallets);
     const [allowance, setAllowance] = useState('');
 
     useEffect(() => {
 
-        if(tokens.tokenAllowances){
-            setAllowance(tokens.tokenAllowances[tokens.fromTokens.toUpperCase()])
+        if(wallets.allowances){
+            setAllowance(wallets.allowances[tokens.fromTokens.toUpperCase()])
         }
 
-    },[tokens, tokens.tokenAllowances])
+    },[tokens, wallets.allowances])
 
     return (
         <div className="bridgeCalculation">

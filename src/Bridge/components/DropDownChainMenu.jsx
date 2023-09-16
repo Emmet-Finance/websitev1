@@ -1,29 +1,32 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { formatChainNameMixedCase } from 'emmet.sdk'
 
 // Local imports
 import ListItem from './ListItem';
 import { filterTwoOut } from '../utils';
-import { useAppSelector } from '../state/store';
+import { useAppSelector, useAppDispatch } from '../state/store';
 import DownArrow from '../../assets/img/chevron-down.svg';
-import {
-    setFromChain,
-    setToChain,
-} from '../state/chains';
-import { formatChainNameMixedCase } from 'emmet.sdk'
+import { setFromChain, setToChain } from '../state/chains';
+import { connectWallet } from '../state/wallets';
+
 
 function DropDownChainMenu(props) {
 
     const dispatch = useDispatch();
+    const asyncDispatch = useAppDispatch();
     const chains = useAppSelector((state) => state.chains);
 
-    const onChainClickHandler = (e, chain) => {
+    const onChainClickHandler = async (e, chain) => {
         try {
             e.preventDefault()
             const cleaned = formatChainNameMixedCase(chain)
             if (props.direction === "from") {
+                console.log("DropDownChainMenu:onChainClickHandler:props.direction", props.direction)
                 dispatch(setFromChain(cleaned));
+                console.log("DropDownChainMenu:onChainClickHandler: after dispatch(setFromChain(cleaned))")
+                await asyncDispatch(connectWallet(chain));
             } else if (props.direction === "to") {
                 dispatch(setToChain(cleaned));
             }

@@ -13,7 +13,7 @@ import {
     approveAmount,
     sendInstallment
 } from '../state/transactions';
-import { setFromTokenAllowances } from '../state/tokens';
+import { updateAllowances } from '../state/wallets';
 
 function Commands() {
 
@@ -57,10 +57,10 @@ function Commands() {
             if (transaction.approvedAmt) {
                 // Create a new object with the updated value
                 const updatedAllowances = {
-                    ...tokens.tokenAllowances,
+                    ...wallets.allowances,
                     [tokens.fromTokens.toUpperCase()]: transaction.approvedAmt,
                 };
-                dispatch(setFromTokenAllowances(updatedAllowances))
+                dispatch(updateAllowances(updatedAllowances))
             }
     
         } catch (error) {

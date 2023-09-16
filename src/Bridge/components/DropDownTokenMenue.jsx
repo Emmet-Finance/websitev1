@@ -15,21 +15,18 @@ function DropDownTokenMenu(props) {
 
     const dispatch = useDispatch();
     const tokens = useAppSelector((state) => state.tokens);
+    const wallets = useAppSelector((state) => state.wallets);
     let tokenBalances;
 
-    if (tokens.fromTokenBalances && props.direction === 'from') {
-        tokenBalances = tokens.fromTokenBalances;
-    }
-
-    if (tokens.toTokenBalances && props.direction === 'to') {
-        tokenBalances = tokens.toTokenBalances;
+    if (wallets.balances && props.direction === 'from') {
+        tokenBalances = wallets.balances;
     }
 
     const onTokenSelectClickHandler = (e, token) => {
         e.preventDefault();
-        if(props.direction === 'from'){
+        if (props.direction === 'from') {
             dispatch(setFromTokens(token))
-        }else{
+        } else {
             dispatch(setToTokens(token))
         }
     }
@@ -41,7 +38,9 @@ function DropDownTokenMenu(props) {
             <Dropdown className='tokkenDrop'>
                 <Dropdown.Toggle id="">
                     <div className='flexBox'>
-                        {tokens && tokens.fromTokensLogo && <div className='Logo' dangerouslySetInnerHTML={{ __html: tokens.fromTokensLogo }}></div>}
+                        {tokens
+                            && tokens.fromTokensLogo
+                            && <div className='Logo' dangerouslySetInnerHTML={{ __html: tokens.fromTokensLogo }}></div>}
                         <div className='Caption'>{tokens.fromTokens}</div>
                     </div>
                 </Dropdown.Toggle>
@@ -60,7 +59,7 @@ function DropDownTokenMenu(props) {
                             logo={tokens.supportedTokens[key].logo}
                             name={key}
                             balance={tokenBalances && tokenBalances[key]}
-                            onClick={e=>onTokenSelectClickHandler(e, key)}
+                            onClick={e => onTokenSelectClickHandler(e, key)}
                         />
                     )}
                 </Dropdown.Menu>

@@ -20,14 +20,15 @@ function AmountBox() {
     const dispatch = useDispatch();
     const tokens = useAppSelector(state => state.tokens);
     const transaction = useAppSelector(state => state.transaction);
+    const wallets = useAppSelector((state) => state.wallets);
 
     const handleAmountChange = async (value) => {
         dispatch(setErrorMessage(''));
         const a = parseFloat(value);
 
         if (value && a) {
-            const b = tokens.fromTokenBalances
-                ? tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]
+            const b = wallets.balances
+                ? wallets.balances[tokens.fromTokens.toUpperCase()]
                 : 0;
 
             if (b) {
@@ -38,8 +39,8 @@ function AmountBox() {
                     dispatch(setTransferAmount(aToDec.toString()))
 
                     // Check whether approval is required
-                    const allowance = tokens.tokenAllowances
-                        ? tokens.tokenAllowances[tokens.fromTokens.toUpperCase()]
+                    const allowance = wallets.allowances
+                        ? wallets.allowances[tokens.fromTokens.toUpperCase()]
                         : 0;
                     if (!isGreaterOrEqual(allowance, aToDec)) {
                         dispatch(setNeedApproval(true));
