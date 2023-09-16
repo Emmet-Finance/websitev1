@@ -2,6 +2,7 @@ import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
 import { addCookie, findChain } from '../utils';
 import {EVMChain} from 'emmet.sdk/types';
 import { ALL_CHAINS } from 'emmet.sdk';
+import { switchEvmChain } from '../wallets/switchEvmChain';
 
 const startingFromChain: EVMChain = ALL_CHAINS['goerli'];
 const startingToChain: EVMChain = ALL_CHAINS["mumbai"];
@@ -21,6 +22,7 @@ export const chainSlice = createSlice({
     reducers:{
         setFromChain:(state:any, action) => {
             state.fromChain = action.payload;
+            switchEvmChain(action.payload);
             const _chain = findChain(ALL_CHAINS, action.payload)
             state.fromChainLogo = _chain.logo;
             state.nativeCurrency = _chain.nativeCurrency.symbol;

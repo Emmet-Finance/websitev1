@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { switchEvmChain } from 'emmet.sdk';
 
 // Local imports
 import ListItem from './ListItem';
@@ -24,7 +23,6 @@ function DropDownChainMenu(props) {
             e.preventDefault()
             const cleaned = formatChainNameMixedCase(chain)
             if (props.direction === "from") {
-                switchEvmChain(cleaned)
                 dispatch(setFromChain(cleaned));
             } else if (props.direction === "to") {
                 dispatch(setToChain(cleaned));
