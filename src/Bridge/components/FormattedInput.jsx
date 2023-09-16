@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function FormattedInput({ placeholder, onParentChange, externalData }) {
+function FormattedInput({ placeholder, onParentChange, externalData, disabled }) {
 
     const [formattedValue, setFormattedValue] = useState('');
 
@@ -56,6 +56,7 @@ function FormattedInput({ placeholder, onParentChange, externalData }) {
         value={formattedValue}
         onChange={handleInputChange}
         placeholder={placeholder}
+        disabled={disabled}
     />)
 
 }
