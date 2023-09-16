@@ -4,7 +4,6 @@ import { useAppSelector } from '../state/store';
 import { setErrorMessage, setNeedApproval } from '../state/ui';
 import {
     setApprovedAmount,
-    setReseiveAmount,
     setTransferAmount,
 } from '../state/transactions'
 import {
@@ -37,10 +36,6 @@ function AmountBox() {
                 // Check whether balance (b) is > than transfer amount (aToDec)
                 if (isGreaterOrEqual(b, aToDec)) {
                     dispatch(setTransferAmount(aToDec.toString()))
-                    const slippage = getSlippage(aToDec, transaction.slippage);
-                    const _received = aToDec - slippage
-
-                    dispatch(setReseiveAmount(_received.toString()));
 
                     // Check whether approval is required
                     const allowance = tokens.tokenAllowances
@@ -59,6 +54,8 @@ function AmountBox() {
                 if (!b) { dispatch(setErrorMessage(`No wallet connected to check the balance.`)); }
                 if (!a) { dispatch(setErrorMessage(`Amount is not provided`)); }
             }
+        } else {
+            dispatch(setTransferAmount(''));
         }
 
     }

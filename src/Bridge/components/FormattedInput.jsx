@@ -11,7 +11,6 @@ function FormattedInput({ placeholder, onParentChange, externalData, disabled })
 
         // Split the string into whole and fractional parts
         const [wholePart, fractionalPart] = stringValue.split('.');
-        console.log("wholePart", wholePart, "fractionalPart", fractionalPart)
 
         // Format whole part with comma separators
         const formattedWholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');

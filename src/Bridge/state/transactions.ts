@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { addCookie } from '../utils';
 import { approveERC20 } from '../wallets/approveERC20'
 import { transferERC20 } from '../wallets/transferERC20'
+import { getReceiveAmount } from '../wallets/getReceiveAmount';
 
 export const approveAmount = createAsyncThunk('approve-amount', async (params: any) => {
 
@@ -85,9 +86,6 @@ export const transactionSlice = createSlice({
         setPending: (state: any, action) => {
             state.pending = action.payload;
         },
-        setReseiveAmount: (state: any, action) => {
-            state.receiveAmount = action.payload;
-        },
         setSlippage: (state: any, action) => {
             state.slippage = action.payload;
             addCookie({
@@ -102,6 +100,11 @@ export const transactionSlice = createSlice({
                 state.requireApproval = true;
             } else {
                 state.requireApproval = false;
+            }
+            if(state.transferAmount){
+                state.receiveAmount = getReceiveAmount(state.transferAmount, state.slippage);
+            } else{
+                state.receiveAmount = '';
             }
         },
         setTransferSuccess: (state: any, action) => {
@@ -167,7 +170,6 @@ export const {
     setNativeFee,
     setOriginalHash,
     setPending,
-    setReseiveAmount,
     setSlippage,
     setTransferAmount,
     setTransferSuccess,

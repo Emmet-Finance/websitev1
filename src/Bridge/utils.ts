@@ -156,8 +156,13 @@ export const bnToHumanReadable = (
 
     const factor = BigInt(10 ** digits);
     const roundedFraction = fraction * factor / dividend;
+    console.log("bnToHumanReadable:",
+        "roundedFraction", roundedFraction,
+        "fraction", fraction,
+        "factor", factor,
+        "dividend", dividend)
     let formattedFraction = roundedFraction.toString().padStart(digits, '0');
-
+    console.log("bnToHumanReadable:", "formattedWhole", formattedWhole, "formattedFraction", formattedFraction)
     return `${formattedWhole}.${formattedFraction}`
 }
 
@@ -494,11 +499,11 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
-
+        
         if (fraction) {
-            let formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, 8));
-            if(formattedFractionalPart.length > 8){
-                formattedFractionalPart = formattedFractionalPart.slice(0,8)
+            let formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals, 8));
+            if (formattedFractionalPart.length > 8) {
+                formattedFractionalPart = formattedFractionalPart.slice(0, 8)
             }
             return `${whole.toLocaleString()}.${formattedFractionalPart}`
         } else {
@@ -519,17 +524,19 @@ export function bigIntToHuman(
  */
 export function zerroPadding(
     inputString: string | number | bigint,
+    decimals: string | number | bigint,
     targetLength: string | number | bigint
 ): string {
     // Cast the arguments to the expected types
     const s: string = BigInt(inputString).toString();
+    const d: number = parseInt(BigInt(decimals).toString());
     const L: number = parseInt(BigInt(targetLength).toString());
     // Compute padding
-    if (L > s.length) {
-        const padding: string = '0'.repeat(L - s.length);
+    if (d > s.length) {
+        const padding: string = '0'.repeat(d - s.length);
         // Return a padded string
-        return `${padding}${s}`;
-    }else{
+        return `${padding}${s.slice(0,L)}`;
+    } else {
         return s;
     }
 

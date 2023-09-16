@@ -9,7 +9,6 @@ function AmountReceived() {
 
     return (<FormattedInput 
         placeholder="To be received"
-
         externalData={transaction.receiveAmount
             ? bigIntToHuman(transaction.receiveAmount)
             : ''}
