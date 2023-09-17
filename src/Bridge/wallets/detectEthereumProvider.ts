@@ -1,5 +1,5 @@
 import { EthereumProvider } from "emmet.sdk";
-import EtherConstants from 'emmet.sdk/wallets/EthreumConstants'
+import EtherConstants from 'emmet.sdk/wallets/EthreumConstants';
 
 /**
  * Checks an EthereumProvider availability
@@ -39,16 +39,14 @@ export function detectEthereumProvider<T = EthereumProvider>(
             handled = true;
 
             let _tempEthereum: any;
-            if(ethereum.providerMap){
-                for (const record of ethereum.providerMap){
-                    // console.log(record[0], record[1])
-                    if(record[0] === 'MetaMask'){
+            if (ethereum.providerMap) {
+                for (const record of ethereum.providerMap) {
+                    if (record[0] === 'MetaMask') {
                         _tempEthereum = record[1]
                     }
                 }
             }
-            if(_tempEthereum){ethereum = _tempEthereum}
-            // console.log("found MetaMask ethereum:", ethereum)
+            if (_tempEthereum) { ethereum = _tempEthereum }
 
             window?.removeEventListener(EtherConstants.ETH_INITIALISED, handleEthereum);
 

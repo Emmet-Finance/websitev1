@@ -503,6 +503,10 @@ img.selectArrow {
   transform: translateY(-50%);
 }
 
+#leftArrowSelect {
+  right: 0px;
+}
+
 .EmmetBridge_title {
   margin-bottom: 40px;
   display: flex;
@@ -1527,8 +1531,7 @@ span.amountHeight {
 .bridgeDrop .dropdown-menu {
   right: -20px !important;
   margin-top: 2px !important;
-  left: -20px !important;
-  width: auto;
+  left: -10px !important;
 }
 
 .bridgeDrop .dropdown-menu::before {

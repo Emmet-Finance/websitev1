@@ -39,7 +39,7 @@ function DropDownTokenMenu(props) {
                             && <div className='Logo' dangerouslySetInnerHTML={{ __html: tokens.fromTokensLogo }}></div>}
                         <div className='Caption'>{tokens.fromTokens}</div>
                     </div>
-                    <img src={DownArrow} alt="DownArrow" className="selectArrow" />
+                    <img src={DownArrow} alt="DownArrow" className="selectArrow" id="leftArrowSelect" />
                 </div>
             </Dropdown.Toggle>
             <Dropdown.Menu>
