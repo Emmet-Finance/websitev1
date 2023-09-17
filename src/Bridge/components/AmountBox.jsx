@@ -9,7 +9,6 @@ import {
 import {
     isGreaterOrEqual,
     humanToBigInt,
-    getSlippage,
 } from '../utils';
 import FormattedInput from './FormattedInput';
 

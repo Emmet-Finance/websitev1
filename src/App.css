@@ -479,7 +479,7 @@ img.updownCircle {
   text-align: left;
   color: #8d98a1;
   font-family: Montserrat;
-  margin-bottom: 4px;
+  margin-bottom: 10px;
   white-space: nowrap;
 }
 
@@ -1206,7 +1206,7 @@ span.amountHeight {
   display: block;
   width: 2px;
   position: absolute;
-  right: -1px;
+  right: -20px;
   left: auto;
   top: 10px;
   bottom: 10px;
@@ -2288,6 +2288,10 @@ img.BinanceIcon {
 
 .mobileDropdown.coinDrop.dropdown .dropdown-toggle::after {
   right: 0;
+}
+
+.dropdown-toggle{
+  width: 100%;
 }
 
 button#languageDrop {

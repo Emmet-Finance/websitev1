@@ -1,12 +1,12 @@
-import { /*createAsyncThunk,*/ createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const uiSlice = createSlice({
     name: 'ui',
-    initialState:{
+    initialState: {
         errorMessage: '',
         isTransferReady: false,
         isBridgeFormVisible: true,
-        isTxDetailVisible:false,
+        isTxDetailVisible: false,
         needApproval: false,
     },
     reducers: {

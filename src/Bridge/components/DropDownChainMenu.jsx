@@ -37,10 +37,11 @@ function DropDownChainMenu(props) {
     }
 
     return (
-        <div className="originNetwork">
-            <label htmlFor="">{props.name}</label>
-            <Dropdown className='bridgeDrop'>
-                <Dropdown.Toggle id="logoDropdown">
+
+        <Dropdown className='bridgeDrop'>
+            <Dropdown.Toggle id="logoDropdown">
+                <div className="originNetwork">
+                    <label htmlFor="">{props.name}</label>
                     <div className='flexBox'>
                         <div className='Logo'
                             dangerouslySetInnerHTML={{
@@ -55,23 +56,23 @@ function DropDownChainMenu(props) {
                                 : chains.toChain}
                         </div>
                     </div>
+                    <img src={DownArrow} alt="DownArrow" className="selectArrow" />
+                </div>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                {filterTwoOut(chains.supportedChains, chains.fromChain, chains.toChain)
+                    .map(chain =>
+                        <ListItem
+                            href="#"
+                            key={chain.name}
+                            name={chain.name}
+                            logo={chain.logo}
+                            onClick={(e) => onChainClickHandler(e, chain.name)}
+                        />
+                    )}
+            </Dropdown.Menu>
+        </Dropdown>
 
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                    {filterTwoOut(chains.supportedChains, chains.fromChain, chains.toChain)
-                        .map(chain =>
-                            <ListItem
-                                href="#"
-                                key={chain.name}
-                                name={chain.name}
-                                logo={chain.logo}
-                                onClick={(e) => onChainClickHandler(e, chain.name)}
-                            />
-                        )}
-                </Dropdown.Menu>
-            </Dropdown>
-            <img src={DownArrow} alt="DownArrow" className="selectArrow" />
-        </div>
     )
 
 }

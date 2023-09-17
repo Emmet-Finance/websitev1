@@ -63,11 +63,11 @@ function EmmetBridge2() {
 
         if (pattern.test(inputValue)) {
             setReceiver(inputValue);
-            
+
             if (isEvmAddress(inputValue)) {
                 dispatch(setDestinationAccount(inputValue))
             }
-        }else{
+        } else {
             setReceiver('')
             dispatch(setDestinationAccount(''))
         }
@@ -89,10 +89,10 @@ function EmmetBridge2() {
                     </div>
                     <div className="emmetFromTo">
                         <p>From</p>
-                        <div className="emmetFrom emmetFromtop">
+                        <div className="emmetFrom emmetFromtop" styles={"padding-right:0px;"}>
                             <DropDownTokenMenu
                                 direction="from"
-                                name="Token"
+                                name="From Token"
                             />
                             <DropDownChainMenu
                                 direction="from"
@@ -110,7 +110,7 @@ function EmmetBridge2() {
                         <div className="emmetFrom">
                             <DropDownTokenMenu
                                 direction="to"
-                                name="Token"
+                                name="To Token"
                             />
                             <DropDownChainMenu
                                 direction="to"
