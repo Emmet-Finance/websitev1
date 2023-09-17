@@ -1449,7 +1449,7 @@ span.amountHeight {
 .tokkenDrop .dropdown-menu,
 .bridgeDrop .dropdown-menu,
 .enterAppDropdown .dropdown-menu {
-  width: 250px;
+  width: 235px;
   right: -10px !important;
   left: auto !important;
   border-radius: 8px;

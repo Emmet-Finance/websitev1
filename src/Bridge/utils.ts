@@ -300,11 +300,11 @@ export function filterTwoOut<T>(
     chainTwoName: string,
 ): EVMChain[] | [] {
     if (chains && chainOneName && chainTwoName) {
-        const chainValues: EVMChain[] | [] = Object.values(chains)
+        const chainValues: EVMChain[] | [] = Object.values(chains);
         try {
             return chainValues.filter(chain =>
-                chain.name.toLowerCase() !== chainOneName.toLowerCase()
-                && chain.name.toLowerCase() !== chainTwoName.toLowerCase()
+                chain.name.toLowerCase().replace(/[^a-z0-9]/g, '') !== chainOneName.toLowerCase()
+                && chain.name.toLowerCase().replace(/[^a-z0-9]/g, '') !== chainTwoName.toLowerCase()
             );
         } catch (error) {
             console.error(error)
@@ -499,7 +499,7 @@ export function bigIntToHuman(
                 fraction = BigInt(n) % divider;
                 break;
         }
-        
+
         if (fraction) {
             let formattedFractionalPart = formatFractionalPart(zerroPadding(fraction, decimals, 8));
             if (formattedFractionalPart.length > 8) {
@@ -535,7 +535,7 @@ export function zerroPadding(
     if (d > s.length) {
         const padding: string = '0'.repeat(d - s.length);
         // Return a padded string
-        return `${padding}${s.slice(0,L)}`;
+        return `${padding}${s.slice(0, L)}`;
     } else {
         return s;
     }
