@@ -62,7 +62,7 @@ function BridgeHeader() {
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
             <Nav.Link href="/" title="Home Page">HOME</Nav.Link>
-            <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">TRADE</Nav.Link>
+            <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">SWAP</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">STAKE</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">FARM</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">LEND</Nav.Link>
@@ -96,13 +96,13 @@ function BridgeHeader() {
             </span>
             <img src={Down} alt="Down" />
           </Dropdown.Toggle>
-          <Dropdown.Menu>
+          <Dropdown.Menu style={{width:"290px"}}>
             {supportedWallets.map(wallet =>
               <ListItem
                 onClick={() => onWalletClickHandler(wallet)}
                 href="#"
                 key={wallet}
-                logo={WalletLogos[wallet]}
+                logo={WalletLogos[wallet.replace(/[^a-zA-Z0-9]/g, '')]}
                 name={wallet}
                 disabled={wallet !== 'Metamask'}
               />

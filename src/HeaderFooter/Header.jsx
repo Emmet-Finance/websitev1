@@ -15,7 +15,7 @@ function Header() {
         <Navbar.Collapse id="emmetNav">
           <Nav className="ms-auto me-auto">
             <Nav.Link href="/bridge" title="Emmet.Bridge" >BRIDGE</Nav.Link>
-            <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">TRADE</Nav.Link>
+            <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">SWAP</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">STAKE</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">FARM</Nav.Link>
             <Nav.Link href="#" title="Coming Soon" onClick={event => event.preventDefault()} target="_blank">LEND</Nav.Link>

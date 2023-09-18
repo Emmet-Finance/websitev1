@@ -2440,6 +2440,7 @@ button#moreDrop-menu:hover img {
 }
 
 .wallet-name{
-  width:90px;
+  width:125px;
   display: flex;
+  padding-bottom: 5px;
 }

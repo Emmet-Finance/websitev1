@@ -1,5 +1,8 @@
 import { EthereumProvider } from "emmet.sdk";
 import EtherConstants from 'emmet.sdk/wallets/EthreumConstants';
+import { isMobile } from 'mobile-device-detect';
+import { MetaMaskSDK } from '@metamask/sdk';
+const MMSDK = new MetaMaskSDK();
 
 /**
  * Checks an EthereumProvider availability
@@ -14,7 +17,14 @@ export function detectEthereumProvider<T = EthereumProvider>(
 
     let handled = false;
 
-    let ethereum = (window as any).ethereum;
+    let ethereum: any;
+    
+    if(isMobile){
+        ethereum = MMSDK.getProvider();
+    } else{
+        ethereum = (window as any).ethereum;
+    }
+     
 
     return new Promise(resolve => {
 

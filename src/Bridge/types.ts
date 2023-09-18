@@ -25,19 +25,19 @@ export const supportedLanguages: LanguageNames[] = [
 
 export enum WalletNames {
     Metamask = "Metamask",
-    TrustWallet = "TrustWallet",
-    Coinbase = "Coinbase",
+    TrustWallet = "Trust Wallet",
+    CoinbaseWallet = "Coinbase Wallet",
 };
 
 export const supportedWallets: WalletNames[] = [
     WalletNames.Metamask,
     WalletNames.TrustWallet,
-    WalletNames.Coinbase
+    WalletNames.CoinbaseWallet
 ]
 
 export const WalletLogos: { [key in keyof typeof WalletNames]: string } = {
     Metamask:WALLET_LOGOS.LOGO_METAMASK,
     TrustWallet:WALLET_LOGOS.LOGO_TRUST,
-    Coinbase:WALLET_LOGOS.LOGO_COINBASE
+    CoinbaseWallet:WALLET_LOGOS.LOGO_COINBASE
 };
 

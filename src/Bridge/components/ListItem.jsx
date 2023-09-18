@@ -10,7 +10,7 @@ function ListItem(props) {
                 className='Caption ListItemFlex'
                 disabled={props.disabled}
             >
-                <span className='wallet-name'>{props.name.replace(/\s/g, '') + ' '}</span>
+                <span className='wallet-name'>{props.name + ' '}</span>
                 {props.disabled ? <span className='coming-soon'>Coming soon</span> : '' }
             </div>
         </Dropdown.Item>
