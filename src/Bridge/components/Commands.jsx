@@ -8,12 +8,13 @@ import Check from '../../assets/img/new/check.svg';
 import LinkLogo from '../../assets/img/link.svg';
 
 // Local imports
-import {setIsTxDetailVisible} from '../state/ui'
+import {setIsTxDetailVisible, setNeedApproval} from '../state/ui'
 import {
     approveAmount,
     sendInstallment
 } from '../state/transactions';
 import { updateAllowances } from '../state/wallets';
+import { isGreaterOrEqual } from '../utils'
 
 function Commands() {
 
@@ -61,6 +62,10 @@ function Commands() {
                     [tokens.fromTokens.toUpperCase()]: transaction.approvedAmt,
                 };
                 dispatch(updateAllowances(updatedAllowances))
+                if(isGreaterOrEqual(transaction.approvedAmt, transaction.transferAmount)){
+                    dispatch(setNeedApproval(false))
+                }
+                
             }
     
         } catch (error) {
