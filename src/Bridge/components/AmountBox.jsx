@@ -57,15 +57,14 @@ function AmountBox() {
         } else {
             dispatch(setTransferAmount(''));
         }
-
     }
 
-
-    const onMaxClickHandle = (e) => {
-        e.preventDefault()
-        const maxAmount = tokens.fromTokenBalances
-            ? tokens.fromTokenBalances[tokens.fromTokens.toUpperCase()]
+    const onMaxClickHandle = () => {
+        console.log("MAX clicked")
+        const maxAmount = wallets.balances
+            ? wallets.balances[tokens.fromTokens]
             : '';
+        console.log("onMaxClickHandle", "maxAmount", maxAmount)
         if (maxAmount) {
             dispatch(setTransferAmount(maxAmount));
         } else {

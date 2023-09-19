@@ -511,7 +511,7 @@ export function bigIntToHuman(
         }
 
     } else {
-        return ''
+        return '0.00'
     }
 }
 
