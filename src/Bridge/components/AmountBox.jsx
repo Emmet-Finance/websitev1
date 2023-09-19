@@ -27,19 +27,18 @@ function AmountBox() {
 
         if (value && a) {
             const b = wallets.balances
-                ? wallets.balances[tokens.fromTokens.toUpperCase()]
+                ? wallets.balances[tokens.fromTokens]
                 : 0;
 
             if (b) {
                 const aToDec = humanToBigInt(value);
-
                 // Check whether balance (b) is > than transfer amount (aToDec)
                 if (isGreaterOrEqual(b, aToDec)) {
                     dispatch(setTransferAmount(aToDec.toString()))
 
                     // Check whether approval is required
                     const allowance = wallets.allowances
-                        ? wallets.allowances[tokens.fromTokens.toUpperCase()]
+                        ? wallets.allowances[tokens.fromTokens]
                         : 0;
                     if (!isGreaterOrEqual(allowance, aToDec)) {
                         dispatch(setNeedApproval(true));
@@ -60,11 +59,9 @@ function AmountBox() {
     }
 
     const onMaxClickHandle = () => {
-        console.log("MAX clicked")
         const maxAmount = wallets.balances
             ? wallets.balances[tokens.fromTokens]
             : '';
-        console.log("onMaxClickHandle", "maxAmount", maxAmount)
         if (maxAmount) {
             dispatch(setTransferAmount(maxAmount));
         } else {

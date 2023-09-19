@@ -319,9 +319,22 @@ export function format2BigInt(
     b: string | number | bigint
 ): { _a: bigint, _b: bigint } {
     let _a, _b;
-    if (a && typeof a === 'string') { _a = a.replace(/[^0-9]/g, '') }
+    if (a && typeof a === 'string') {
+        if (isHexString(a)){
+            _a = hexToDecimalString(a)
+        }else{
+            _a = a.replace(/[^0-9]/g, '')
+        }
+    }
     else { _a = a }
-    if (b && typeof b === 'string') { _b = b.replace(/[^0-9]/g, '') }
+    if (b && typeof b === 'string') { 
+        if(isHexString(b)){
+            _b = hexToDecimalString(b)
+        }else{
+            _b = b.replace(/[^0-9]/g, '')
+        }
+         
+    }
     else { _b = b }
     return { _a: _a ? BigInt(_a) : 0n, _b: _b ? BigInt(_b) : 0n }
 }
@@ -337,6 +350,7 @@ export const isGreaterOrEqual = (
     b: string | number | bigint
 ): boolean => {
     const { _a, _b } = format2BigInt(a, b);
+    console.log("_a", _a, "_b", _b, BigInt(_a) >= BigInt(_b))
     return (BigInt(_a) >= BigInt(_b));
 }
 
