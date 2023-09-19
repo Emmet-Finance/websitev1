@@ -1,0 +1,26 @@
+{
+    "schemaVersion": 1,
+    "types": [
+        {
+            "name": "promotional",
+            "description": "Get notified when new features or products are launched"
+        },
+        {
+            "name": "transactional",
+            "description": "Get notified when new on-chain transactions target your account"
+        },
+        {
+            "name": "private",
+            "description": "Get notified when new updates or offers are sent privately to your account"
+        },
+        {
+            "name": "alerts",
+            "description": "Get notified when urgent action is required from your account"
+        }
+    ],
+    "name": "Emmet.Bridge.Testnet",
+    "icons": [
+        "https://imagedelivery.net/_aTEfDRm7z3tKgu9JhfeKA/02bcc9e6-6ddb-4916-1ad6-70a262715900/md"
+    ],
+    "description": "Fungible Token Bridge"
+}

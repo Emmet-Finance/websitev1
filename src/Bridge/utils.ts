@@ -350,7 +350,6 @@ export const isGreaterOrEqual = (
     b: string | number | bigint
 ): boolean => {
     const { _a, _b } = format2BigInt(a, b);
-    console.log("_a", _a, "_b", _b, BigInt(_a) >= BigInt(_b))
     return (BigInt(_a) >= BigInt(_b));
 }
 

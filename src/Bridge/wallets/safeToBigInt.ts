@@ -5,7 +5,6 @@
  * @returns a bigint representation of the input
  */
 export function safeToBigInt(x: string | number | bigint): bigint {
-    console.log("typeof x", typeof x, x)
     switch (typeof x) {
         case 'bigint':
             return x;
