@@ -154,7 +154,7 @@ function Homepage() {
                         </div>
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Trade</h3>
+                                <h3>Swap</h3>
                                 <p>Securely swap your tokens or stablecoins with other peers. Tune and automate your trading strategy.</p>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ function Homepage() {
                     <div className="row">
                         <div className="col-lg-4 col-md-6 col-sm-6 col-12">
                             <div className="oneStopBox">
-                                <h3>Trade (Swap)</h3>
+                                <h3>Swap</h3>
                                 <p>Swapping refers to the process
                                     of exchanging one cryptocurrency or token for another through a decentralized exchange (DEX). DEXs allow users to trade their tokens in a peer-to-peer manner.</p>
                             </div>
