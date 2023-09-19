@@ -91,7 +91,7 @@ function BridgeHeader() {
             <span>
               {wallets && wallets.account
                 ? shortenAddress(wallets.account)
-                : "CONNECT A WALLET"
+                : "CONNECT WALLET"
               }
             </span>
             <img src={Down} alt="Down" />
