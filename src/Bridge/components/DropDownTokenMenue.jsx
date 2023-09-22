@@ -51,6 +51,8 @@ function DropDownTokenMenu(props) {
                 </div>
                 {Object.keys(tokens.supportedTokens).map(key =>
                     <TokenItem
+                        contract={tokens.supportedTokens[key].address}
+                        decimals={tokens.supportedTokens[key].decimals}
                         direction={props.direction}
                         href="#"
                         key={key}
