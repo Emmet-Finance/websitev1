@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useWeb3Modal } from '@web3modal/react'
 import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -26,24 +27,37 @@ function BridgeHeader() {
 
   const dispatch = useDispatch();
   const asyncDispatch = useAppDispatch();
+
+  const { open } = useWeb3Modal();
+
   const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
   const state = useAppSelector(state => state);
 
   const handleConnect = async () => {
-
     try {
-
       await asyncDispatch(connectWallet(chains.fromChain));
-
     } catch (error) {
       console.error("BridgeHeader:handleConnect: ERROR:", error)
     }
   }
 
   const onWalletClickHandler = (wallet) => {
+    console.log("onWalletClickHandler", wallet)
     dispatch(setWallet(wallet));
-    handleConnect();
+
+    switch (wallet) {
+      case 'Metamask':
+        handleConnect();
+        break;
+      case 'Wallet Connect':
+        open();
+        break;
+      default:
+        break;
+    }
+
+    
   }
 
   useEffect(() => {
@@ -104,7 +118,7 @@ function BridgeHeader() {
                 key={wallet}
                 logo={WalletLogos[wallet.replace(/[^a-zA-Z0-9]/g, '')]}
                 name={wallet}
-                disabled={wallet !== 'Metamask'}
+                disabled={wallet !== 'Metamask' /*&& wallet !== 'Wallet Connect'*/}
               />
             )}
           </Dropdown.Menu>

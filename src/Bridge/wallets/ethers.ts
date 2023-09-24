@@ -1,18 +1,15 @@
-import { ethers } from 'ethers';
-import { chainNameToKey } from '../utils';
-import { 
-    ALL_CHAINS, 
-    EVMChain, 
-    SupportedTokenType,
-    TChainName,
-    testnetTokens,
-} from 'emmet.sdk';
-import FTBridge from 'emmet.sdk/abi/FTBridge';
-import { detectEthereumProvider } from './detectEthereumProvider'
+// import { ethers } from 'ethers';
+// import { chainNameToKey } from '../utils';
+// import { 
+//     ALL_CHAINS, 
+//     EVMChain, 
+//     SupportedTokenType,
+//     TChainName,
+//     testnetTokens,
+// } from 'emmet.sdk';
+// import FTBridge from 'emmet.sdk/abi/FTBridge';
+// import { detectEthereumProvider } from './detectEthereumProvider'
 import { getMetamaskProvider } from './getMetamaskProvider'
-
-
-
 
 export async function getAccount(): Promise<string> {
     const ethereum = getMetamaskProvider();
