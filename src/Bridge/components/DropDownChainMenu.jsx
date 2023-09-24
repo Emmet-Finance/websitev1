@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { formatChainNameMixedCase } from 'emmet.sdk'
@@ -18,12 +18,21 @@ function DropDownChainMenu(props) {
     const asyncDispatch = useAppDispatch();
     const chains = useAppSelector((state) => state.chains);
 
-    const onChainClickHandler = async (e, chain) => {
+    const onChainClickHandler = (e, chain) => {
+
         try {
+
             e.preventDefault()
             const cleaned = formatChainNameMixedCase(chain)
+
             if (props.direction === "from") {
-                dispatch(setFromChain(cleaned));
+                (async () => {
+                    console.log("DropDownChainMenu:onChainClickHandler:cleaned", cleaned)
+                    await asyncDispatch(setFromChain(cleaned));
+                    await asyncDispatch(connectWallet(cleaned));
+                })().catch(e => {
+                    console.error(e)
+                })
                 
             } else if (props.direction === "to") {
                 dispatch(setToChain(cleaned));
@@ -33,14 +42,6 @@ function DropDownChainMenu(props) {
             console.error("DropDownChainMenu:onChainClickHandler ERROR:", error)
         }
     }
-
-    useEffect(() => {
-
-        (async () => {
-            await asyncDispatch(connectWallet(chains.fromChain));
-        })()
-
-    }, [asyncDispatch, chains.fromChain])
 
     return (
 

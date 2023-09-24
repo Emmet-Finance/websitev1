@@ -54,8 +54,6 @@ export const changeMetamaskAccount = createAsyncThunk(
 
 export const connectWallet = createAsyncThunk('conncet-wallet', async (fromChain: TChainName) => {
 
-    console.log("connectWallet:fromChain", fromChain)
-
     const chain = getSelectedChain(fromChain);
     
     const provider = await detectEthereumProvider();
@@ -160,6 +158,7 @@ export const walletSlice = createSlice({
                 state.balances = {};
                 state.allowances = {};
                 state.chainId = '';
+                state.provider = undefined;
             })
             .addCase(connectWallet.rejected, (state: any) => {
                 state.pending = false;
@@ -170,6 +169,7 @@ export const walletSlice = createSlice({
                 state.allowances = {};
                 state.chainId = '';
                 state.error = "Wallet conncetion Failure";
+                state.provider = undefined;
             })
     }
 });

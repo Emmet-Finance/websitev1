@@ -251,6 +251,7 @@ export function findChain<T>(
     chainName: string
 ): EVMChain {
     if (chains && chainName) {
+        console.log("findChain:chainName", chainName)
         const cleanName = chainName
             .toLowerCase()
             .replace(/[^a-z0-9]/g, '')

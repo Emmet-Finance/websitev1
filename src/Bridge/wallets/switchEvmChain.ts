@@ -14,7 +14,7 @@ export async function switchEvmChain(chainName: string) {
     const newChain: EVMChain = ALL_CHAINS[formattedName];
     // Extract the chain Id & convert to 0x-prefixed hexadecimal
     const chainId: string = `0x${newChain.id.toString(16)}`
-
+    // Inject Ethereum Provider
     const ethereum: any = await detectEthereumProvider();
 
     try {

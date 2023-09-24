@@ -1,8 +1,6 @@
 import { EthereumProvider } from "emmet.sdk";
 import EtherConstants from 'emmet.sdk/wallets/EthreumConstants';
 import { isMobile } from 'mobile-device-detect';
-import { MetaMaskSDK } from '@metamask/sdk';
-const MMSDK = new MetaMaskSDK();
 
 /**
  * Checks an EthereumProvider availability
@@ -19,12 +17,20 @@ export function detectEthereumProvider<T = EthereumProvider>(
 
     let ethereum: any;
     
-    if(isMobile){
-        ethereum = MMSDK.getProvider();
-    } else{
-        ethereum = (window as any).ethereum;
-    }
-     
+    // If on mobile browser:
+    if(window && isMobile && !(window as any).ethereum){
+
+        // Get the current url
+        let temp:string = window.location.href;
+        // Build a metamask deep link
+        const metamaskDeepLink = `https://metamask.app.link/dapp/${temp}`;
+        // Open Metamask
+        window.open(metamaskDeepLink)
+    } 
+
+    ethereum = (window as any).ethereum;
+    
+    console.log("detectEthereumProvider:ethereum", ethereum);
 
     return new Promise(resolve => {
 

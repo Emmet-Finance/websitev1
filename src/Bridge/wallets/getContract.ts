@@ -12,6 +12,7 @@ export function getContract(
     abi: any,
     publicClient: PublicClient | undefined
 ) {
+    // @ts-ignore
     const contract = getViemContract({
         address: `0x${address.slice(2)}`,
         abi,
