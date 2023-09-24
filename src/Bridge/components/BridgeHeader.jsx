@@ -118,7 +118,7 @@ function BridgeHeader() {
                 key={wallet}
                 logo={WalletLogos[wallet.replace(/[^a-zA-Z0-9]/g, '')]}
                 name={wallet}
-                disabled={wallet !== 'Metamask' /*&& wallet !== 'Wallet Connect'*/}
+                disabled={wallet !== 'Metamask' && wallet !== 'Wallet Connect'}
               />
             )}
           </Dropdown.Menu>

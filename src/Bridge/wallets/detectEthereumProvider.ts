@@ -22,6 +22,7 @@ export function detectEthereumProvider<T = EthereumProvider>(
 
         // Get the current url
         let temp:string = window.location.href;
+        temp.replace("https://", "").replace("http://", "")
         // Build a metamask deep link
         const metamaskDeepLink = `https://metamask.app.link/dapp/${temp}`;
         // Open Metamask
