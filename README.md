@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Start an SSH tunnel
+To test mobile wallets a website requires SSH. To dynamically add one, run in the terminal:
+
+```shell
+cloudflared tunnel --url http://localhost:3000
+```
