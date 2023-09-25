@@ -14,13 +14,9 @@ import Logo from '../../assets/img/logo.svg';
 // import Earth from '../../assets/img/new/earth.svg';
 import { useAppSelector, useAppDispatch } from '../state/store';
 import { setWallet } from '../state/wallets';
-import {
-  // supportedLanguages,
-  supportedWallets,
-  WalletLogos
-} from '../types';
+import { supportedWallets, WalletLogos } from '../types';
 import { shortenAddress } from '../utils';
-
+import { setFromChain } from '../state/chains';
 import { connectWallet } from '../state/wallets';
 
 function BridgeHeader() {
@@ -36,6 +32,7 @@ function BridgeHeader() {
 
   const handleConnect = async () => {
     try {
+      await asyncDispatch(setFromChain(chains.fromChain));
       await asyncDispatch(connectWallet(chains.fromChain));
     } catch (error) {
       console.error("BridgeHeader:handleConnect: ERROR:", error)
@@ -43,7 +40,7 @@ function BridgeHeader() {
   }
 
   const onWalletClickHandler = (wallet) => {
-    console.log("onWalletClickHandler", wallet)
+
     dispatch(setWallet(wallet));
 
     switch (wallet) {
@@ -57,13 +54,11 @@ function BridgeHeader() {
         break;
     }
 
-    
   }
 
   useEffect(() => {
     console.log("state", state)
   }, [state])
-
 
 
   return (
