@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { isEvmAddress } from 'emmet.sdk/utils/verifiers';
-import { useAppSelector } from '../state/store';
+import { useAppSelector, useAppDispatch } from '../state/store';
 
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
 import CopyBridge from '../../assets/img/new/copy.svg';
@@ -21,12 +21,14 @@ import TransactionProgress from './TransactionProgress';
 import { copyAddressToClipboard } from '../utils';
 import { setFromChain, setToChain } from '../state/chains'
 import { bigIntToHuman } from '../utils';
-import { disconnect } from '../state/wallets';
-import { setDestinationAccount } from '../state/transactions'
+import { connectWallet, disconnect } from '../state/wallets';
+import { setDestinationAccount } from '../state/transactions';
 
 function EmmetBridge2() {
 
     const dispatch = useDispatch();
+    const asyncDispatch = useAppDispatch();
+
     const wallets = useAppSelector(state => state.wallets);
     const chains = useAppSelector(state => state.chains);
     const tokens = useAppSelector(state => state.tokens);
@@ -42,11 +44,12 @@ function EmmetBridge2() {
         }
     }
 
-    const onSwapChainsClickHandle = (e) => {
+    const onSwapChainsClickHandle = async (e) => {
         const fromChain = chains.fromChain;
         const toChain = chains.toChain;
         dispatch(disconnect());
-        dispatch(setFromChain(toChain))
+        await asyncDispatch(setFromChain(toChain));
+        await asyncDispatch(connectWallet(toChain));
         dispatch(setToChain(fromChain))
     }
 
