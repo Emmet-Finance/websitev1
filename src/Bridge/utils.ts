@@ -127,6 +127,8 @@ export const handleAccountsChanged = (accounts: any[]) => {
     }
 }
 
+// ================== moved to Emmet.SDK =============================
+
 /**
  * Converts a (big) number to a string like 123,456.00
  * @param balance - processed amount of tokens
@@ -156,13 +158,7 @@ export const bnToHumanReadable = (
 
     const factor = BigInt(10 ** digits);
     const roundedFraction = fraction * factor / dividend;
-    console.log("bnToHumanReadable:",
-        "roundedFraction", roundedFraction,
-        "fraction", fraction,
-        "factor", factor,
-        "dividend", dividend)
     let formattedFraction = roundedFraction.toString().padStart(digits, '0');
-    console.log("bnToHumanReadable:", "formattedWhole", formattedWhole, "formattedFraction", formattedFraction)
     return `${formattedWhole}.${formattedFraction}`
 }
 
@@ -230,13 +226,31 @@ export function humanToBigInt(
     return BigInt(whole + fraction);
 }
 
+
 /**
- * Cuts an EVM address in the middle
- * @param address an EVM address
- * @returns a sliced version like 0xA12B...C345
+ * Shortens a cryptocurrency address by replacing the middle portion with an ellipsis.
+ *
+ * @param {string} address - The full cryptocurrency address to be shortened.
+ * @param {number} first - The number of characters to keep from the beginning of the address (default: 6).
+ * @param {number} last - The number of characters to keep from the end of the address (default: 6).
+ * @returns {string} - The shortened address with the specified number of characters at the beginning and end, separated by an ellipsis.
  */
-export function shortenAddress(address: string) {
-    return `${address.slice(0, 6)}…${address.slice(38, 42)}`
+export function shortenAddress(address: string, first: number = 6, last: number = 6) {
+    const length = 42;
+
+    // Check for invalid input and edge cases.
+    if (!address || first < 0 || last < 0 || last > length) {
+        return '';
+    }
+
+    // If the requested characters to keep from the beginning are more than the address length,
+    // return the original address.
+    if (first >= length) {
+        return address;
+    }
+
+    // Shorten the address by replacing the middle part with an ellipsis ('…').
+    return `${address.slice(0, first)}…${address.slice(length - last, length)}`;
 }
 
 
@@ -321,20 +335,20 @@ export function format2BigInt(
 ): { _a: bigint, _b: bigint } {
     let _a, _b;
     if (a && typeof a === 'string') {
-        if (isHexString(a)){
+        if (isHexString(a)) {
             _a = hexToDecimalString(a)
-        }else{
+        } else {
             _a = a.replace(/[^0-9]/g, '')
         }
     }
     else { _a = a }
-    if (b && typeof b === 'string') { 
-        if(isHexString(b)){
+    if (b && typeof b === 'string') {
+        if (isHexString(b)) {
             _b = hexToDecimalString(b)
-        }else{
+        } else {
             _b = b.replace(/[^0-9]/g, '')
         }
-         
+
     }
     else { _b = b }
     return { _a: _a ? BigInt(_a) : 0n, _b: _b ? BigInt(_b) : 0n }
@@ -553,8 +567,6 @@ export function zerroPadding(
     } else {
         return s;
     }
-
-
 }
 
 /**

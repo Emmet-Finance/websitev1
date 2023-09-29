@@ -1,3 +1,6 @@
+// Highly experimantal. The image addition does not work. need more research why.
+
+
 /**
  * A dictionary of supported token names and their corresponding image file names.
  */

@@ -1,25 +1,18 @@
 // External imports
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector, useAppDispatch } from '../state/store';
-
+import { isGreaterOrEqual } from 'emmet.sdk';
 // SVGs
 import Check from '../../assets/img/new/check.svg';
 import LinkLogo from '../../assets/img/link.svg';
-
 // Local imports
-import {setIsTxDetailVisible, setNeedApproval} from '../state/ui'
-import {
-    approveAmount,
-    sendInstallment
-} from '../state/transactions';
 import { updateAllowances } from '../state/wallets';
-import { isGreaterOrEqual } from '../utils'
+import {setIsTxDetailVisible, setNeedApproval} from '../state/ui'
+import { useAppSelector, useAppDispatch } from '../state/store';
+import { approveAmount, sendInstallment } from '../state/transactions';
+
 
 function Commands() {
-
-    const [showTransferButton, setShowTransferButton] = useState(false);
-
 
     const dispatch = useDispatch();
     const asyncDispatch = useAppDispatch();
@@ -29,6 +22,7 @@ function Commands() {
     const ui = useAppSelector(state => state.ui);
     const wallets = useAppSelector(state => state.wallets);
 
+    const [showTransferButton, setShowTransferButton] = useState(false);
 
     useEffect(()=> {
         if(!ui.needApproval

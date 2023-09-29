@@ -1,5 +1,4 @@
 import * as WALLET_LOGOS from 'emmet.sdk/logos/wallets'
-import {WALLET_CONNECT } from "./wallets/logos"
 
 /******************************************
  *              UI ONLY TYPES             *
@@ -40,7 +39,7 @@ export const supportedWallets: WalletNames[] = [
 
 export const WalletLogos: { [key in keyof typeof WalletNames]: string } = {
     Metamask:WALLET_LOGOS.LOGO_METAMASK,
-    WalletConnect:WALLET_CONNECT,
+    WalletConnect:WALLET_LOGOS.WALLET_CONNECT,
     TrustWallet:WALLET_LOGOS.LOGO_TRUST,
     CoinbaseWallet:WALLET_LOGOS.LOGO_COINBASE
 };

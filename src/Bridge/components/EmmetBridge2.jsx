@@ -1,12 +1,14 @@
+// External Imports
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { isEvmAddress } from 'emmet.sdk/utils/verifiers';
 import { useAppSelector, useAppDispatch } from '../state/store';
-
+import { bigIntToHuman } from 'emmet.sdk'
+// SVGs
 import UpDownCirlce from '../../assets/img/up-down-circle.svg';
 import CopyBridge from '../../assets/img/new/copy.svg';
 import Info from '../../assets/img/new/info.svg';
-
+// Local imports
 import AmountBox from './AmountBox';
 import AmountReceived from './AmountReceived';
 import ApprovalReport from './ApprovalReport';
@@ -17,10 +19,8 @@ import ErrorBlock from './ErrorBlock';
 import InformationalBlock from './InformationalBlock';
 import TransactionDetails from './TransactionDetails';
 import TransactionProgress from './TransactionProgress';
-
 import { copyAddressToClipboard } from '../utils';
 import { setFromChain, setToChain } from '../state/chains'
-import { bigIntToHuman } from '../utils';
 import { connectWallet, disconnect } from '../state/wallets';
 import { setDestinationAccount } from '../state/transactions';
 
@@ -170,16 +170,11 @@ function EmmetBridge2() {
                                     className='max-button'
                                 >SELF</p>
                             </div>
-                            {/* *************** Error Block *************** */}
                             <ErrorBlock />
                         </div>
-                        {/* *************** Informational Block *************** */}
                         <InformationalBlock />
-                        {/* ***************** Progress Bar ***************** */}
                         <TransactionProgress />
-                        {/* *************** Approval Report *************** */}
                         <ApprovalReport />
-                        {/* *************** BUTTONS *************** */}
                         <Commands />
                     </div>
                 </div>

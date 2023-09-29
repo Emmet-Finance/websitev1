@@ -1,16 +1,13 @@
+// External imports
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { isGreaterOrEqual, humanToBigInt } from 'emmet.sdk';
+// Local Imports
+import FormattedInput from './FormattedInput';
 import { useAppSelector } from '../state/store';
 import { setErrorMessage, setNeedApproval } from '../state/ui';
-import {
-    setApprovedAmount,
-    setTransferAmount,
-} from '../state/transactions'
-import {
-    isGreaterOrEqual,
-    humanToBigInt,
-} from '../utils';
-import FormattedInput from './FormattedInput';
+import { setApprovedAmount, setTransferAmount } from '../state/transactions'
+
 
 const BigInt = window.BigInt;
 
@@ -22,6 +19,7 @@ function AmountBox() {
     const wallets = useAppSelector((state) => state.wallets);
 
     const handleAmountChange = async (value) => {
+
         dispatch(setErrorMessage(''));
         const a = parseFloat(value);
 
@@ -69,7 +67,6 @@ function AmountBox() {
         }
     }
 
-
     return (
         <>
             <FormattedInput
@@ -88,6 +85,5 @@ function AmountBox() {
         </>
     )
 }
-
 
 export default AmountBox;

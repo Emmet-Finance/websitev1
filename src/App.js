@@ -22,33 +22,39 @@ import Homepage from './Homepage/Homepage';
 import PrivacyPolicy from './Homepage/PrivacyPolicy';
 import EmmetBridgepage from './Bridge/components/EmmetBridgepage';
 
-const chains = Object.values(ALL_CHAINS);
-const projectId = process.env.WC_API_KEY || '2bcf20e00bc0f72513e22cd16ce9ae83';
+// import { CoinBase, MetaMask, TrustWallet } from './Bridge/wallets/supportedWallets'
 
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })])
+const supportedChains = Object.values(ALL_CHAINS);
+const projectId = '2bcf20e00bc0f72513e22cd16ce9ae83';
+
+const { publicClient } = configureChains(supportedChains, [w3mProvider({ projectId })])
 const wagmiConfig = createConfig({
   autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
+  connectors: w3mConnectors({ projectId, chains: supportedChains }),
   publicClient
 })
-const ethereumClient = new EthereumClient(wagmiConfig, chains)
+const ethereumClient = new EthereumClient(wagmiConfig, supportedChains)
 
 function App() {
+  
 
   return (
     <div className="App">
       <WagmiConfig config={wagmiConfig}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/bridge" element={<EmmetBridgepage/>} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        </Routes>
-        <ScrollToTop smooth color="#35CE8D" />
-      </Router>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/form" element={<Form />} />
+            <Route path="/bridge" element={<EmmetBridgepage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          </Routes>
+          <ScrollToTop smooth color="#35CE8D" />
+        </Router>
       </WagmiConfig>
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+      <Web3Modal
+        projectId={projectId}
+        ethereumClient={ethereumClient}
+      />
     </div >
   );
 }

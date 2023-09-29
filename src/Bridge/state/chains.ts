@@ -1,8 +1,9 @@
+// External imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { addCookie, findChain } from '../utils';
-import { EVMChain } from 'emmet.sdk/types';
-import { ALL_CHAINS } from 'emmet.sdk';
-import { switchEvmChain } from '../wallets/switchEvmChain';
+import { ALL_CHAINS, EVMChain, findChain, switchEvmChain } from 'emmet.sdk';
+// Local imports
+import { addCookie } from '../utils';
+
 
 export const setFromChain = createAsyncThunk('set-from-chain', async (fromChain: string) => {
 

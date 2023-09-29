@@ -1,56 +1,16 @@
-import { TChainName, TokenBalanceObject } from 'emmet.sdk';
+// External imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { detectEthereumProvider } from '../wallets/detectEthereumProvider';
-import { getEvmAccounts } from '../wallets/getEvmAccounts';
-import { getEvmBalance } from '../wallets/getEvmBalance';
-import { getEvmTokenBalances } from '../wallets/getEvmTokenBalances';
-import { getSelectedChain } from '../wallets/getSelectedChain';
-import { getEvmTokenAllowances } from '../wallets/getEvmTokenAllowances'
+import { 
+    detectEthereumProvider,
+    getEvmAccounts,
+    getEvmBalance,
+    getEvmTokenAllowances,
+    getSelectedChain, 
+    TChainName, 
+    TokenBalanceObject
+} from 'emmet.sdk';
+import { getEvmTokenBalances } from 'emmet.sdk/utils/viem/getEvmTokenBalances';
 
-
-export type TChangeEVMChain = {
-    ethereum: any,
-    newChain: {
-        chainName: string,
-        chainId: number,
-        nativeCurrency: {
-            name: string,
-            decimals: number,
-            symbol: string
-        },
-        rpcUrls: string[]
-    }
-}
-
-/**
- * Switches Metamask to another chain
- * @param params \{ethereum,newChain{chainId,chainName,nativeCurrency, rpcUrls}}
- * @returns params.newChain
- */
-export const changeMetamaskAccount = createAsyncThunk(
-    'change-metamask-account',
-    async (params: TChangeEVMChain): Promise<any> => {
-        if (params.ethereum.networkVersion !== params.newChain.chainId) {
-            try {
-                // Try switching to another chain
-                await params.ethereum.request({
-                    method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: params.newChain.chainId }]
-                })
-            } catch (err: any) {
-                // If chain not added
-                if (err.code === 4902) {
-                    // Add new chain to metamask:
-                    await params.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [params.newChain]
-                    })
-                }
-            }
-            return params.newChain
-        }
-    }
-);
 
 export const connectWallet = createAsyncThunk('conncet-wallet', async (fromChain: TChainName) => {
 
@@ -69,7 +29,7 @@ export const connectWallet = createAsyncThunk('conncet-wallet', async (fromChain
     // Collect balances
     let balances: TokenBalanceObject | undefined = await getEvmTokenBalances(accounts[0], fromChain, provider);
     if (balances) {
-        balances[chain.nativeCurrency.symbol] = balance ? balance : '';
+        balances[chain.nativeCurrency.symbol] = balance ? BigInt(balance).toString() : '';
     }
     // Collect Allowances
     let allowances: TokenBalanceObject | undefined = await getEvmTokenAllowances(accounts[0], fromChain, provider);
@@ -168,7 +128,7 @@ export const walletSlice = createSlice({
                 state.balances = {};
                 state.allowances = {};
                 state.chainId = '';
-                state.error = "Wallet conncetion Failure";
+                state.error = "Wallet connection Failure";
                 state.provider = undefined;
             })
     }

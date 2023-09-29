@@ -1,16 +1,15 @@
+// External Imports
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { formatChainNameMixedCase } from 'emmet.sdk'
-
+import { filterTwoOut, formatChainNameMixedCase } from 'emmet.sdk'
+// SVGs
+import DownArrow from '../../assets/img/chevron-down.svg';
 // Local imports
 import ListItem from './ListItem';
-import { filterTwoOut } from '../utils';
-import { useAppSelector, useAppDispatch } from '../state/store';
-import DownArrow from '../../assets/img/chevron-down.svg';
-import { setFromChain, setToChain } from '../state/chains';
 import { connectWallet } from '../state/wallets';
-
+import { setFromChain, setToChain } from '../state/chains';
+import { useAppSelector, useAppDispatch } from '../state/store';
 
 function DropDownChainMenu(props) {
 
@@ -24,7 +23,6 @@ function DropDownChainMenu(props) {
 
             e.preventDefault()
             const cleaned = formatChainNameMixedCase(chain)
-
             if (props.direction === "from") {
                 (async () => {
                     console.log("DropDownChainMenu:onChainClickHandler:cleaned", cleaned)
@@ -33,7 +31,7 @@ function DropDownChainMenu(props) {
                 })().catch(e => {
                     console.error(e)
                 })
-                
+
             } else if (props.direction === "to") {
                 dispatch(setToChain(cleaned));
             }
@@ -44,7 +42,6 @@ function DropDownChainMenu(props) {
     }
 
     return (
-
         <Dropdown className='bridgeDrop'>
             <Dropdown.Toggle id="logoDropdown">
                 <div className="originNetwork">
@@ -79,9 +76,7 @@ function DropDownChainMenu(props) {
                     )}
             </Dropdown.Menu>
         </Dropdown>
-
     )
-
 }
 
 export default DropDownChainMenu;

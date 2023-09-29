@@ -1,8 +1,8 @@
+// External imports
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { approveERC20, getReceiveAmount, transferERC20} from 'emmet.sdk';
+// Local imports
 import { addCookie } from '../utils';
-import { approveERC20 } from '../wallets/approveERC20'
-import { transferERC20 } from '../wallets/transferERC20'
-import { getReceiveAmount } from '../wallets/getReceiveAmount';
 
 export const approveAmount = createAsyncThunk('approve-amount', async (params: any) => {
 

@@ -1,3 +1,4 @@
+// External imports
 import React from 'react';
 
 function TransferProgressItem({

@@ -1,14 +1,16 @@
+// External imports
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../state/store';
-import { copyAddressToClipboard, chainNameToKey, bigIntToHuman } from '../utils';
-
+import { bigIntToHuman, chainNameToKey } from 'emmet.sdk'
+// SVGs
 import CopySmall from '../../assets/img/new/copy2.svg';
 import Metamask from '../../assets/img/new/Metamask.svg';
 import Close from '../../assets/img/new/close.svg';
+// Local imports
 import HashLink from './HashLink';
+import { copyAddressToClipboard } from '../utils';
+import { useAppSelector } from '../state/store';
 import TransferProgress from './TransferProgress';
-
 import { setIsBridgeFormVisible } from '../state/ui'
 
 function TransactionDetails() {
@@ -174,7 +176,7 @@ function TransactionDetails() {
                     </div>
                 </div>
                 PROGRESS:
-                 <TransferProgress />
+                <TransferProgress />
                 <div
                     className="transtionBtn text-center"
                     onClick={onClickHandle}

@@ -1,6 +1,8 @@
+// External imports
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
+// Local imports
 import { chainSlice } from './chains';
 import { miscelaneousSlice } from './miscelaneous';
 import { tokenSlice } from './tokens'

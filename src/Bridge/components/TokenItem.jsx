@@ -1,17 +1,16 @@
+// External imports
 import React, { useEffect, useState } from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
-
-// Internal Imports
-import { bigIntToHuman } from '../utils';
-import { copyAddressToClipboard } from '../utils';
-import { useAppSelector } from '../state/store';
-import { getTokenImage } from '../wallets/supportedTokens';
-import { metamaskAddToken } from '../wallets/metamaskAddToken';
-
+import { bigIntToHuman, metamaskAddToken } from 'emmet.sdk';
 // SVGs
 import CopySmall from '../../assets/img/new/copy2.svg';
 import Metamask from '../../assets/img/new/Metamask.svg';
 import Star from '../../assets/img/new/star.svg';
+// Local Imports
+import { copyAddressToClipboard } from '../utils';
+import { useAppSelector } from '../state/store';
+import { getTokenImage } from '../wallets/supportedTokens';
+
 
 function TokenItem(props) {
 

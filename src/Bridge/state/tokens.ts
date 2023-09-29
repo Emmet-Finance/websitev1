@@ -1,7 +1,8 @@
+// External imports
 import { createSlice } from '@reduxjs/toolkit';
+import {testnetTokens, TestnetTokenNames} from 'emmet.sdk';
+// Local imports
 import { addCookie } from '../utils';
-import {testnetTokens} from 'emmet.sdk/tokens';
-import {TestnetTokenNames} from 'emmet.sdk/types';
 
 export const tokenSlice = createSlice({
     name:'token',
@@ -20,30 +21,36 @@ export const tokenSlice = createSlice({
     },
     reducers:{
         setFromTokens:(state:any, action) => {
-            state.fromTokens = action.payload;
-            state.toTokens = action.payload;
-            // @ts-ignore
-            state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
-            // @ts-ignore
-            state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
-            // @ts-ignore
-            state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
-            // @ts-ignore
-            state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
-            addCookie({key:"fromTokens", value:state.fromTokens, ...state.cookieExpires});
+            if(action.payload){
+                state.fromTokens = action.payload;
+                state.toTokens = action.payload;
+                // @ts-ignore
+                state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+                // @ts-ignore
+                state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+                // @ts-ignore
+                state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+                // @ts-ignore
+                state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+                addCookie({key:"fromTokens", value:state.fromTokens, ...state.cookieExpires});
+                addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
+            }
         },
         setToTokens:(state:any, action) => {
-            state.fromTokens = action.payload;
-            state.toTokens = action.payload;
-            // @ts-ignore
-            state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
-            // @ts-ignore
-            state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
-            // @ts-ignore
-            state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
-            // @ts-ignore
-            state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
-            addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
+            if(action.payload){
+                state.fromTokens = action.payload;
+                state.toTokens = action.payload;
+                // @ts-ignore
+                state.fromTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+                // @ts-ignore
+                state.toTokensLogo = testnetTokens[action.payload.toUpperCase()].logo;
+                // @ts-ignore
+                state.fromDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+                // @ts-ignore
+                state.toDecimals = testnetTokens[action.payload.toUpperCase()].decimals;
+                addCookie({key:"fromTokens", value:state.fromTokens, ...state.cookieExpires});
+                addCookie({key:"toTokens", value:state.toTokens, ...state.cookieExpires});
+            }
         },
     },
 });

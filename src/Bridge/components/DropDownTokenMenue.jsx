@@ -1,12 +1,14 @@
+// External Imports
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { useAppSelector } from '../state/store';
-import TokenItem from './TokenItem';
-import { setFromTokens, setToTokens } from '../state/tokens';
-
+// SVGs
 import DownArrow from '../../assets/img/chevron-down.svg';
 import Search from '../../assets/img/new/search.svg';
+// Local imports
+import TokenItem from './TokenItem';
+import { useAppSelector } from '../state/store';
+import { setFromTokens, setToTokens } from '../state/tokens';
 
 function DropDownTokenMenu(props) {
 

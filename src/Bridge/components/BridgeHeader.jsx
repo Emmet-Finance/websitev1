@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { shortenAddress } from 'emmet.sdk';
 
 // Local imports
 import ListItem from './ListItem';
@@ -15,7 +16,6 @@ import Logo from '../../assets/img/logo.svg';
 import { useAppSelector, useAppDispatch } from '../state/store';
 import { setWallet } from '../state/wallets';
 import { supportedWallets, WalletLogos } from '../types';
-import { shortenAddress } from '../utils';
 import { setFromChain } from '../state/chains';
 import { connectWallet } from '../state/wallets';
 
@@ -99,7 +99,7 @@ function BridgeHeader() {
           <Dropdown.Toggle className='enterApp' id="dropdown-enterApp">
             <span>
               {wallets && wallets.account
-                ? shortenAddress(wallets.account)
+                ? shortenAddress(wallets.account, 6, 6)
                 : "CONNECT WALLET"
               }
             </span>

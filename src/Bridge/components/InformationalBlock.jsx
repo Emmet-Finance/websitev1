@@ -1,7 +1,9 @@
+// External imports
 import React, {useEffect, useState} from 'react';
+import { bigIntToHuman } from 'emmet.sdk';
+// Local imports
 import { useAppSelector } from '../state/store';
 import SlippageTolerance from './SlippageToleranceModal';
-import { bigIntToHuman } from '../utils';
 
 function InformationalBlock() {
 

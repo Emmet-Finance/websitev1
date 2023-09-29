@@ -1,11 +1,13 @@
+// External imports
 import React from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
+// SVGs
 import Info from '../../assets/img/new/info.svg';
 import Check from '../../assets/img/new/check.svg';
-
+// Local imports
 import { setSlippage } from '../state/transactions';
 
 function SlippageTolerance() {

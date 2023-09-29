@@ -1,4 +1,6 @@
+// External imports
 import React from 'react';
+// Local imports
 import { useAppSelector } from '../state/store';
 import TransferProgressItem from './TransferProgressItem'
 

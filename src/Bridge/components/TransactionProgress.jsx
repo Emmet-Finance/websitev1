@@ -1,7 +1,8 @@
 // External imports
 import React, { useState, useEffect } from 'react';
-import { useAppSelector } from '../state/store';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+// Local imports
+import { useAppSelector } from '../state/store';
 
 function TransactionProgress() {
 
