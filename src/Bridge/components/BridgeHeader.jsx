@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useWeb3Modal } from '@web3modal/react'
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -55,11 +55,6 @@ function BridgeHeader() {
     }
 
   }
-
-  useEffect(() => {
-    console.log("state", state)
-  }, [state])
-
 
   return (
     <Navbar className='BridgeHeader' expand="lg">
