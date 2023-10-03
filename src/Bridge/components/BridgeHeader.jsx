@@ -28,7 +28,6 @@ function BridgeHeader() {
 
   const chains = useAppSelector((state) => state.chains);
   const wallets = useAppSelector((state) => state.wallets);
-  const state = useAppSelector(state => state);
 
   const handleConnect = async () => {
     try {
