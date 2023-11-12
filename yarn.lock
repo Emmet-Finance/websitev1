@@ -7858,14 +7858,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emmet.sdk@npm:0.1.14":
-  version: 0.1.14
-  resolution: "emmet.sdk@npm:0.1.14"
+"emmet.sdk@npm:0.1.17":
+  version: 0.1.17
+  resolution: "emmet.sdk@npm:0.1.17"
   dependencies:
     ethers: 5.7.2
     mobile-device-detect: ^0.4.3
     viem: ^1.3.0
-  checksum: d2dec31d65a9a0dfdcf5cceb49767014509ab410fa4ae9ee6e7fc2aa5ac41043c1da622cbe5638b3280bc44e376ae0c2ae07ba3245b1418d636020d269f402de
+  checksum: 5f354bf6b68fa21479f0f281904aa90e07d31b9c59ddc29568a66e85e099c7a269e04ab327dd127394edd51a8418a3838b7084dc62ed9f889ef27e56c1ea06c9
   languageName: node
   linkType: hard
 
@@ -7889,7 +7889,7 @@ __metadata:
     "@web3modal/ethereum": ^2.7.1
     "@web3modal/react": ^2.7.1
     bootstrap: ^5.2.3
-    emmet.sdk: 0.1.14
+    emmet.sdk: 0.1.17
     ethers: 5.7.2
     mobile-device-detect: ^0.4.3
     prop-types: ^15.6.0
